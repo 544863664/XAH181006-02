@@ -1,12 +1,23 @@
 # XAH181006-02
 
 ## XAH181006-02
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
+### 文件分支所含知识点
 ```
-npm run serve
+	HTML
+	
+	JavaScript
+	
+	jQuery
+	
+	PHP
+	
+	ES6
+	
+	Vue
+	
+	课程PPT
+	
+	......
 ```
 
