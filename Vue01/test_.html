@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //模拟vue底层代码，将实例化vue实例化时，声明在data中的所有变量，和methods中的所有函数，都绑定给当前的vue实例本身，形成共同的上下文环境
+    class Vue {
+        constructor (obj) {
+            //循环参数obj，就将data中的键值对和methods中的键值对，都绑定给this，让他们形成统一上下文环境，方便函数和数据之间的户型访问
+            for (let o in obj) {
+                //循环第一次，哦是data，循环执行第二次o是methods
+                for (let key in obj[o]) {
+                    this[key] = obj[o][key];
+                }
+            }
+        };
+    }
+    //app是使用new关键词调用vue函数，拿到其返回值
+    const app = new Vue({
+        data: {
+            title: 'biaoti',
+            arr: [2,1,1,3,32],
+            num: 90,
+            bol: true
+        },
+        methods: {
+            move () {},
+            fn () {}
+        }
+    });
+    console.log(app);
+</script>
+</body>
+</html>

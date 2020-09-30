@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .default {
+            color: #eee;
+            padding: 20px;
+            font-size: 40px;
+        }
+        .active {
+            background: aliceblue;
+        }
+        .warning {
+            background: #ff6700;
+        }
+    </style>
+</head>
+<body>
+<!--
+    样式绑定：动态的为元素设置类名和style，使用指令：v-bind
+-->
+<div id="app">
+    <div v-bind:class="{
+        default: true,
+        active: bol
+    }">
+        咖啡机欧克烦恼多撒
+    </div>
+
+    <div :class="classObj">
+        科技搜房接文件费司法鉴定
+    </div>
+
+    <div v-bind:class="['default', 'warning']">
+        啥快递件后方可都是父母
+    </div>
+
+    <div :style="{background: 'green',color: '#fff','font-size': '40px'}">
+        哦if饥饿哦是的呢
+    </div>
+</div>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_2.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--Vue渲染数据的第二种方式
+        1.v-html
+        2.v-bind
+    -->
+    <h1 v-html="title"></h1>
+    <!--
+        指令渲染和声明式的渲染的区别：
+            （1）v-html是以innerHTML的形式渲染的
+            （2）{{}}是以innertext的形式渲染
+            （3）如果Vue.js由于网络问题未加载成功，
+            那么声明式的渲染会直接将代码暴露在页面上，
+            指令只是作为一标签的自定义属性出现
+    -->
+    <div v-html="inner"></div>
+    <div>{{inner}}</div>
+    <!--
+        v-bind指令的作用：
+            将Vue实例的数据动态的绑定在标签的任何属性上
+    -->
+    <div v-bind:class="className"></div>
+    <!--v-bind指令的简写形式-->
+    <p :class="className"></p>
+</div>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_1.js"></script>
+
+</body>
+</html>

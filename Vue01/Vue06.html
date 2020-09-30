@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1, .box1 div {
+            padding: 30px;
+            border: 10px solid;
+        }
+    </style>
+</head>
+<body>
+<!--
+    鼠标事件修饰符：
+    .stop: 阻止事件冒泡
+    .prevent: 阻止默认事件
+    .capture: 绑定事件流的捕获
+    .self: 只能在点击元素本身时触发
+    .once: vue事例被解析后，首次触发生效
+
+    self和stop在某种特殊的代码环境下，产生的效果是相同的，但是，内部的机制完全不一样。
+    self只是阻止事件冒泡或捕获对于本身的影响。stop是在调用完当前元素的事件之后，阻止
+    调整事件流。
+-->
+<div id="app">
+    <!--阻止默认事件-->
+    <h1 @contextmenu.prevent="ulE()">鼠标右键点击</h1>
+
+    <a @click.prevent="ulE()" href="http://www.baidu.com">百度</a>
+
+    <!--阻止事件冒泡-->
+    <ul @click="ulE()">
+        <li @click="liE()">1</li>
+        <li @click.stop="liE()">2</li>
+        <li @click="liE()">3</li>
+    </ul>
+    <!--
+        如果一个事件流的流向中同时存在冒泡和捕获，现有外向里执行所有的捕获，再有里向外执行所有的冒泡
+    -->
+    <div class="box1" @click.capture="captureFn(1)">box1
+        <div class="box2" @click="captureFn(2)">box2
+            <div class="box3" @click="captureFn(3)">box3
+                <div class="box4" @click.capture="captureFn(4)">box4</div>
+            </div>
+        </div>
+    </div>
+    <!--
+        self:只有当操作元素本身时，才会触发（操作元素子级不能触发元素本身）
+    -->
+    <div class="box1" @click.self="captureFn(1)">box1
+        <div class="box2" @click="captureFn(2)">box2</div>
+    </div>
+    <h1 @click.once="captureFn('once')">测试</h1>
+</div>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_1.js"></script>
+</body>
+</html>

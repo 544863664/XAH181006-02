@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--数据的双向绑定
+        m->v    {{}} v-if v-for
+        v->m    v-model
+    -->
+    <input type="text" v-model="username">
+    <h1>{{username}}</h1>
+
+    <!--键盘事件-->
+    <input v-on:keydown="kd($event)" type="text">
+    <input v-on:keydown.shift="kd($event)" type="text">
+    <!--
+        键盘事件的事件修饰符组合使用时，功能键出现多个，逻辑正常，字母键出现多个，字母和字母是或的关系
+    -->
+    <input v-on:keydown.ctrl.83="kd($event)" type="text">
+</div>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_1.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="mess">
+    <h1>{{mess}}</h1>
+
+    <div>
+        <input type="checkbox" id="tom" value="tom" v-model="hobby">
+        <label for="tom">tom</label>
+        <input type="checkbox" id="jerry" value="jerry" v-model="hobby">
+        <label for="jerry">jerry</label>
+        <input type="checkbox" id="kjd" value="kjd" v-model="hobby">
+        <label for="kjd">kjd</label>
+    </div>
+    <h1>{{hobby}}</h1>
+
+    <div>
+        <input type="radio" value="0" v-model="sex">
+        <input type="radio" value="1" v-model="sex">
+    </div>
+    <h1>{{sex == '0' ? '男' : '女'}}</h1>
+
+    <div>
+        <select name="" id="" v-model="cl">
+            <option value="Java">Java</option>
+            <option value="Html5">Html5</option>
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <option value="UI">UI</option>
+        </select>
+    </div>
+    <h2>{{cl}}</h2>
+
+</div>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_2.js"></script>
+</body>
+</html>

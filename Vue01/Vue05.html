@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--为某个元素绑定事件:v-on指令-->
+    <button v-on:click="count == 1 ? 1 : --count">-</button>
+    <span>{{count}}</span>
+    <!--绑定事件的简写形式-->
+    <button @click="++count">+</button>
+    <div>
+        <button @click="filter1()">字符串</button>
+        <button @click="filter2()">数字</button>
+        <h1>{{resArr}}</h1>
+        <button @click="filter('string')">字符串</button>
+        <button @click="filter('number')">数字</button>
+    </div>
+    <h2 @click="getEvent('string', {a:1,b:2}, $event)">跟据事件对象获取当前具体的元素</h2>
+</div>
+<h3 id="btn">测试</h3>
+<script src="../Vue2.6.9/vue.min.js"></script>
+<script src="js/Vue01_1.js"></script>
+</body>
+</html>
