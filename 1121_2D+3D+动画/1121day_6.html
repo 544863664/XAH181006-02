@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>keyframes3D动画</title>
+		<style>
+			.box {
+				font-size: 30px;
+				text-align: center;
+				color: darkkhaki;
+				animation-name: heart;
+				/*动画名称*/
+				
+				animation-duration: 0.1s;
+				/*动画周期*/
+				
+				animation-delay: 0s;
+				/*动画延时*/
+				
+				animation-iteration-count: infinite;
+				/*动画次数 整数或infinite*/
+				
+				animation-timing-function: linear;
+				/*动画的速度曲线 参照transition*/
+				
+				/*以上综合：
+				 	animation：名称 运动时间 运动方式 运动次数 延时
+				*/
+			}
+			/*@-moz-keyframes name{
+				from{}
+				to{}
+			}
+			@-ms-keyframes name{
+				from{}
+				to{}
+			}
+			@-webkit-keyframes name{
+				from{}
+				to{}
+			}
+			@-o-keyframes name{
+				from{}
+				to{}
+			}*/
+			@keyframes heart{
+				0% {
+					font-size: 30px;
+					color: darkkhaki;
+				}
+				50% {
+					font-size: 50px;
+					color: darkorange;
+				}
+				100% {
+					font-size: 30px;
+					color: darkkhaki;
+				}
+			}
+			/*@keyframes 动画声明
+			 	heart：动画名称，自拟，任意
+			 	动画被封装之后，任何元素都可以根据指定代码调用这个动画*/
+		</style>
+	</head>
+	<body>
+		<div class="box">啧啧啧啧啧啧</div>
+	</body>
+</html>

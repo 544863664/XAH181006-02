@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>渐变(线性渐变)</title>
+		<style>
+			.wrap {
+				width: 400px;
+				height: 400px;
+				/*background: linear-gradient(to top,red,black,green,grey);*/
+				/*to bottom/top/left/right*/
+				/*background: linear-gradient(to right top,red,yellow,green,grey);*/
+				/*指定角度：（对角线）45deg-135deg*/
+				/*right top
+				  right bottom
+				  left top
+				  left bottom
+			   	*/
+			   	/*background: linear-gradient(20deg,red,black,green,grey);*/
+			   	/*可以设置任意度数的渐变角度*/
+			   	background: linear-gradient(to right top,red 50%,yellow 80%,green,grey,blue,orange);
+			   	/*规定某一个颜色线性渐变的中心线在线性渐变范围之内的位置*/
+			}
+			.content {
+				width: 400px;
+				height: 400px;
+				/*background: linear-gradient(rgba(255,0,0,0.7),rgba(0,255,0,0.4),rgba(20,1,56,0.8));*/
+				/*可以为渐变中的颜色设置不同的透明度rgba（）*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<div class="box"></div>
+		<div class="content"></div>
+	</body>
+</html>

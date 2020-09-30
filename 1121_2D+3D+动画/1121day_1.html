@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>transition过渡1</title>
+		<style>
+			.box {
+				width: 300px;
+				height: 300px;
+				background: url(img/XCPP.jpg) no-repeat;
+				background-size: 100% 100%;
+				margin: 100px auto;
+				/*transition: all 3s;*/
+				/*transition: width 2s,height 4s,filter 4s;*/
+				/*-webkit-transition: 3s;*/   /*谷歌*/
+				/*-moz-transition: 3s;*/   /*火狐*/
+				/*-ms-transition: 3s;*/   /*IE*/
+				/*-moz-transform: 3s;*/   /*opera*/
+				filter: grayscale(20%);
+			}
+			.box:hover {
+				cursor: pointer;
+				width: 600px;
+				height: 400px;
+				filter: grayscale(80%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

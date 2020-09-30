@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景（蒙版）</title>
+		<style>
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: url(img/1120.jpg);
+				background-size: 100% 100%;
+				-webkit-mask: url(img/Apple.png) no-repeat;
+				-webkit-mask-position: 50% 70%;
+				/*可以使用-webkit-mask系列为元素扣取指定的背景图片中的一部分形状，
+				 	还可以为这个形状设置大小，位置等。*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+	</body>
+</html>

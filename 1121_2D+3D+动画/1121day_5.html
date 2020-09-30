@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>transform3D动画</title>
+		<style>
+			body {
+				transform-style: preserve-3d;
+				/*创建3D环境*/
+			}
+			.box {
+				width: 400px;
+				height: 400px;
+				background: #00748F;
+				color: red;
+				font-size: 40px;
+				transition: 2s;
+			}
+			.box:hover {
+				transform: translateZ(100px);
+				transform: rotatez(530deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">呵呵呵呵呵呵</div>
+	</body>
+</html>

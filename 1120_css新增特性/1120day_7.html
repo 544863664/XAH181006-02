@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒影</title>
+		<style>
+			.wrap {
+				width: 600px;
+				height: 400px;
+				background: url(img/1120.jpg);
+				background-size: 100% 100%;
+				margin: 200px 0;
+				-webkit-box-reflect: right 40px -webkit-gradient(linear,left top,right bottom,from(rgba(0,0,0,1)),to(rgba(0,0,0,0)));
+				/*倒影方向：above below left right*/
+				box-reflect: right 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+	</body>
+</html>
