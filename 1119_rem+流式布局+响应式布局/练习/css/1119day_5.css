@@ -1,0 +1,161 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: rgb(242,242,242);
+	border-top: 1px solid transparent;
+}
+header {
+	width: 100%;
+	padding: 10px 0;
+	background-color: rgba(0,0,0,0.8);
+	text-align: center;
+	box-shadow: 0 0 20px #000;
+	position: fixed;
+	z-index: 1;
+}
+nav a {
+	text-decoration: none;
+	color: #999;
+	margin: 3%;
+	font-size: 14px;
+}
+nav a:hover {
+	cursor: pointer;
+	color: #eee;
+}
+header img {
+	width: 8%;
+	margin-bottom: 0.5%;
+}
+.content {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+.slider {
+	margin-top: 10%;
+	position: relative;
+}
+.slider>img {
+	width: 100%;
+}
+.slider .leftBtn>img {
+	cursor: pointer;
+	position: absolute;
+	top:40%;
+	left: 1%; 
+}
+.slider .rightBtn>img {
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	right: 1%;
+}
+.slider p {
+	width: 100%;
+	color: #eee;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	bottom: 0.7%;
+	padding: 5px 0;
+}
+.paganations span {
+	width: 6px;
+	height: 6px;
+	border: 1px solid #000;
+	border-radius: 100%;
+	margin: 10px;
+	display: inline-block;
+}
+.paganations span:hover {
+	cursor: pointer;
+	background-color: #999;
+	border: 1px solid #999;
+}
+.introduce {
+	border-top: 2px solid rgb(220,220,220);
+	border-bottom: 2px solid rgb(220,220,220);
+	padding: 10px 50px;
+	font-size: 18px;
+	text-indent: 36px;
+	text-align: left;
+}
+.adList img {
+	width: 5%;
+	margin: 2% 0.5%;
+
+}
+.waterFlow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.waterFlow .item {
+	width: 30%;
+	margin: 20px 0;
+	overflow: hidden;
+	border-radius: 7px;
+	position: relative;
+	border: 1px solid #999;
+}
+.waterFlow .item>img {
+	width: 100%;
+}
+.waterFlow .item>p {
+	font-size: 14px;
+	margin-top: -4px;
+	padding: 3px;
+}
+.waterFlow .item:nth-child(3n-1) {
+	margin: 20px 20px; 
+}
+.waterFlow .item .mask {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 70%;
+	padding-top: 45px;
+	color: #eee;
+	background-color: rgba(0,0,0,0.6);
+	display: none;
+}
+.waterFlow .item .mask h3 {
+	margin: 13px 0 10px;
+}
+.item:hover .mask{
+	cursor: pointer;
+	display: block;
+}
+.footer {
+	background-color: #e0e0e0;
+	width: 100%;
+	margin-top: 40px;
+	padding: 15px 0 10px;
+	text-shadow: 2px 2px 0px #bcbcbc;
+	color: #666;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+.footer_left,.footer_right {
+	display: inline-block;
+	width: 49%;
+}
+.footer_left a{
+	width: 30px;
+	float: right;
+	margin-right: 10px;
+}
+.footer_left img {
+	width: 100%;
+}
+.footer_right img {
+	width: 166px;
+}
+.footer_right {
+	border-left: 1px solid #bcbcbc;
+	padding-left: 20px;
+	float: right;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>弹性盒子4</title>
+	<style type="text/css">
+		.wrap {
+			border: 1px solid red;
+			height: 900px;
+			/*font-size: 0;*/
+			display: flex;
+			flex-wrap: wrap;
+			/*align-items: flex-start;*/
+			/*align-items: flex-end;*/
+			/*子元素底部对齐*/
+			align-items: center;
+			/*子元素中线对齐*/
+			/*align-items: baseline;*/
+			/*align-items: stretch;*/
+			/*
+			 (10)align-items:; 设置弹性子元素之间的对齐方式。
+
+				flex-star 顶部对齐
+
+				flex-end 底部对齐
+
+				center 中线对齐
+
+				baseline 基线对齐
+
+				stretch 子元素在y轴方向均分父元素的高度
+
+				 条件：父元素有高度，且子级元素不设高度。
+				 注：如果为某个子元素设置了高度，会影响均分效果。
+			 (11)align-self:; 为某个需要单独对齐的子元素设置样式
+
+				  flex-start 顶部对齐
+
+				  flex-end 底部对齐
+
+				  center 中线对齐
+
+				  baseline 基线对齐
+				  
+				  auto默认值，继承父级align-items的值
+			*/
+		}
+		.box {
+			flex-basis: 200px;
+			height: 200px;
+			border: 1px solid blue;
+			line-height: 200px;
+		}
+		.item1 {
+			height: 100px;
+			line-height: 100px;
+		}
+		.item2 {
+			height: 300px;
+			line-height: 300px;
+			align-self: flex-end;
+			/*单独为某个子元素设置对齐方式*/
+		}
+		.item3 {
+			height: 260px;
+			line-height: 260px;
+			align-self: flex-start;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box item1">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box item2">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box item3">8</div>
+		<div class="box">9</div>
+		<div class="box">10</div>
+	</div>
+</body>
+</html>

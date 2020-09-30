@@ -1,0 +1,25 @@
+nav a {
+	font-size: 13px;
+}
+.content .slider {
+	margin-top: 18%;
+}
+.adList img {
+	width: 7%;
+	margin: 2% 3%;
+}
+.waterFlow .item {
+	width: 40%;
+	margin: 20px;
+}
+.waterFlow .item .mask {
+	font-size: 14px;
+	height: 64%;
+	padding-top: 15%;
+}
+.slider p {
+	font-size: 12px;
+}
+.introduce {
+	font-size: 14px;
+}

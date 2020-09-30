@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>弹性盒子5</title>
+	<style type="text/css">
+		.wrap {
+			display: flex;
+			border: 1px solid red;
+			/*flex-wrap: wrap;*/
+		}
+		.box {
+			/*flex-grow: 1;*/
+			/*width: 100px;*/
+			flex-basis: 100px;
+			height: 100px;
+			border: 1px solid blue;
+			font-size: 30px;
+			text-align: center;
+			line-height: 100px;
+		}
+		.item1 {
+			/*flex-grow: 5;*/
+			flex-grow: 1;
+		}
+		/*
+		 (12)flex-grow:; 默认都是0.
+		 	1.当所有盒子都设置1时，所有子元素等分父级的宽度，
+		 	父级的flex-wrap失效。
+		 	 单独为某一个元素设置flex-grow值>1，其余都为1，
+		 	那么所有子元素按比例均分父元素的宽度。
+			2.只为部分元素设置flex-gorw
+			这些元素会等分父级元素中未被元素使用的宽度
+			 等分规律：按照这些子元素的flex-grow值等分父级剩余
+			的宽度。将等分的宽度累加到原来的宽度上。
+		*/
+		.item2 {
+			flex-grow: 2;
+			order: -1;
+			/*
+		（13）older：；改变子元素在父容器之内的顺序
+				默认值为0，值越大，越靠后。
+				可以设置负值。
+			*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">1</div>
+		<div class="box item1">2</div>
+		<div class="box item2">3</div>
+		<div class="box item1">4</div>
+		<div class="box">5</div>
+		<!-- <div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box">8</div>
+		<div class="box">9</div>
+		<div class="box">10</div> -->
+	</div>
+</body>
+</html>

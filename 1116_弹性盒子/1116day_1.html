@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>弹性盒子01</title>
+	<style type="text/css">
+		.wrap {
+			border: 1px solid red;
+			display: flex;
+			/*flex-wrap: wrap;*/
+			flex-wrap: wrap-reverse;
+		}
+		.box {
+			flex-basis: 200px;
+			/*为子元素设置出初始宽度*/
+			
+			height: 100px;
+			/*padding: 20px;*/
+			border: 1px solid blue;
+			/*display: inline-block;*/
+		}
+		/*
+			弹性盒子
+			（1）需要一个弹性父容器和一些子元素。
+			（2）让布局变得更便捷，代码更少。
+			（3）让一个布局模式变成一个弹性和，只要给父级设置
+				display：flex；
+				子元素会按照指定规律排列。
+			（4）当不为子元素设置宽度时，子元素的宽度有内容撑开，
+				如果既不设置宽度又没内容，子元素宽度为0
+				（失去了标签原来的特点）。
+			（5）使用flex-basis为子元素设置宽度。
+				 如果子元素没有设置可以换行，所有子元素的总宽度
+				 小于父级元素的宽度时，展示所有自己的初始宽度，
+				 如果在改变浏览器的可是窗口大小的过程中，所有的
+				 子元素的flex-basis总值大于父级元素的宽度，那么
+				 子元素均分父元素的宽度。
+
+				！ padding会影响父元素flex——basis的总合。 ！
+
+			 (6)flex-wrap: wrap;
+			 	 如果不行要弹性子元素在父级标签中被压缩，那就为弹
+			 	 性父级设置flex-wrap，它有三个值：
+
+			 	 nowrap 比换行；
+
+			 	 wrap 换行；
+			 	 
+			 	 wrap-reverse 第一行在父级的最下方（上-下，左->右）
+			*/
+	</style>
+
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box">8</div>
+		<div class="box">9</div>
+		<div class="box">10</div>
+	</div>
+</body>
+</html>

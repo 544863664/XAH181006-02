@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=2,user-scalable=no">
+	<title>流式布局</title>
+	<style type="text/css">
+	/*小于等于480*/
+		@media screen and (max-width: 480px) {
+			body {
+				color: yellow;
+				font-size: 40px;
+			}
+		}
+		/*大于等于480   小于等于980*/
+		@media screen and (min-width: 480px) and (max-width: 980px) {
+			body {
+				font-size: 60px;
+				color: blue;
+			}
+		}
+		/*大于等于980*/
+		@media screen and (min-width: 980px) {
+			body {
+				font-size: 20px;
+				color: skyblue;
+			}
+		}
+	</style>
+</head>
+<body>
+	孔雀东南飞，五里一徘徊。
+</body>
+</html>	
