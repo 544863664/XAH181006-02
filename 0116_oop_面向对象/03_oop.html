@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>oop</title>
+	</head>
+	<body>
+		<button id="btn">按钮</button>
+		<script type="text/javascript">
+//			console.log(this);
+//			function fn() {
+//				console.log(this);
+//			}
+//			fn();
+//			btn.onclick = fn;
+			/*
+			 this指向当前代码运行的上下文环境（context）。
+			 * */
+			function getAuthor(name, mj) {
+				return {
+					name: name,
+					mj: mj,
+					sing: function () {
+						console.log(this.name + '他说的名句是' + this.mj);
+					}
+				}
+			}
+			var obj = getAuthor('欧阳修', '庭院深深深几许');
+			obj.sing();
+			var obj2 = getAuthor('李清照', '寻寻觅觅');
+			obj2.sing();
+		</script>
+	</body>
+</html>

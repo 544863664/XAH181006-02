@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+     var t = 54, b = 102;
+     var min = t > b ? b : t;
+     var max = t + b - min;
+     var count = 0;
+
+     //穷举法
+    for ( var i = min; i >= 1; i--) {
+        count++;
+        if (t % i == 0 && b % i == 0) {
+            console.log(i); //最大公约数
+            break;
+        }
+    }
+    console.log(count);
+
+    //辗转相除法
+    var count2 = 0;
+    while (min != 0) {
+        count++;
+        var temp = max % min;
+        max = min;
+        min = temp;
+    }
+    console.log(count2);
+</script>
+</body>
+</html>

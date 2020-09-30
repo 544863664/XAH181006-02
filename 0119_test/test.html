@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas绘制三角形</title>
+</head>
+<body>
+<div>
+    <canvas id="tri1"></canvas>
+    <canvas id="tri2"></canvas>
+    <canvas id="tri3"></canvas>
+</div>
+<script src="jquery-3.3.1.js"></script>
+<script>
+
+    //绘制三角形
+    function drawTri() {
+        var canvas1 = document.getElementById('tri1');
+        var ctx = canvas1.getContext('2d');
+        //开始一个新的绘制路径
+        ctx.beginPath();
+        //起点坐标
+        ctx.moveTo(100, 100);
+        //定义重点坐标
+        ctx.lineTo(300, 100);
+        ctx.lineTo(200, 50);
+        ctx.fillStyle = '#d2691e';
+        ctx.fill();
+    }
+    $(function () {
+        drawTri();
+    });
+
+    //绘制圆形
+    function circle() {
+        var canvas2 = document.getElementById('tri2');
+        var ctx = canvas2.getContext('2d');
+        //表示路径开始
+        ctx.beginPath();
+        //前两个代表xy，第三个代表半径，第四个代表结束角度，第五个代表圆周率，第六个代表顺逆，
+        ctx.arc(100, 50, 50, 0, Math.PI*2, true);
+        //沿着坐标点顺序的路径绘制
+        ctx.stroke();
+    }
+    $(function () {
+        circle();
+    });
+    
+    //绘制直线
+    function zx() {
+        var canvas3 = document.getElementById('tri3');
+        var ctx = canvas3.getContext('2d');
+        //开始一个新的绘制路径
+        ctx.beginPath();
+        //定义直线的起点坐标为
+        ctx.moveTo(10, 100);
+        //定义直线的终点坐标为
+        ctx.lineTo(100, 100);
+        //沿着坐标点顺序的路径绘制直线
+        ctx.stroke();
+        //关闭当前的绘制路径
+        ctx.closePath();
+    }
+    $(function () {
+        zx();
+    })
+
+</script>
+</body>
+</html>

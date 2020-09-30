@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //Animal类
+    function Animal() {
+        this.eat = function () {};
+    }
+    Animal.prototype.run = function () {
+        console.log('我们奔跑在大草原的湖边');
+    };
+    Animal.prototype.type = '动物';
+    Animal.prototype.mouse = '1';
+    //dog类
+    function Dog() {
+        Animal.call(this);
+    }
+    console.log(Dog.prototype);
+    //使用拷贝继承的方式让Dog类继承Animal类
+    for (var key in Animal.prototype) {
+        Dog.prototype[key] = Animal.prototype[key];
+        //Dog.prototype[run] = function () {};
+        //Dog.prototype[type] = '动物';
+        //Dog.prototype[mouse] = 1;
+    }
+    console.log(Dog.prototype);
+
+    //实例化一个对象
+    var d1 = new Dog();
+    console.log(d1);
+    //拷贝继承，拷贝了什么，就能继承什么
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!---->

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="box">
+				<div class="item"></div>
+			</div>
+			<div class="box"></div>
+			<h1 class="title"></h1>
+			<p></p>
+			<mark class="box"></mark>
+		</div>
+		<div class="box"></div>
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			//获取节点的父级节点，获取结果是一个jq的节点对象
+			console.log($('.item').parent());
+			
+			//获取这个节点的祖先元素，一只到HTML标签
+			console.log($('.item').parents());
+			
+			/*获取这个节点和指定节点之间的所有祖先元素，parentsUntil只接受一个参数，这
+			 个参数是调用parentsUntil的jq节点对象的某个元素的选择器，如果不传参数，获取
+			 结果和parents一样。*/
+			console.log($('.item').parentsUntil('body'));
+			
+			/*
+			 $(ele).children(param);
+			  如果不传参数，就会返回ele所有的元素节点。
+			  如果传参数，参数类型是字符串，代表ele中的子元素的选择器，children函数就会返回ele中符合参数选择器的子元素。
+			  children函数获取到的是直接子元素*/
+			console.log($('.wrap').children());
+			console.log($('.wrap').children('.box'));
+			
+			//js原生中在某个元素内部查找指定的子元素
+			var wrap = document.getElementsByClassName('wrap')[0];
+			var boxs = wrap.getElementsByClassName('box');
+			console.log(boxs);
+			
+			/*
+			 $(ele).find(param);
+			  从ele的所有后代中（直接子级和间接子级）查找符合param选择器的后代元素。
+			 param如果不传，就不查找，返回一个空集合*/
+			console.log($('.wrap').find('.box'));
+			console.log($('.wrap').find('div'));
+			console.log($('.wrap').find());  //0
+			
+			/*
+			 $(ele).siblings(param);
+			  查找ele所有的同胞节点（兄弟节点）。
+			 param是可选参数，不传找到所有，传了，找到兄弟节点中所有符合param代表的选择器的兄弟节点。*/
+			console.log($('.title').siblings());
+			console.log($('.title').siblings('.box'));
+			
+			//获取节点后一个兄弟节点
+			console.log($('.title').next());
+			
+			//获取后面所有的兄弟节点
+			console.log($('.title').nextAll());
+			
+			//获取节点和其后面某个指定熊德之间的兄弟节点
+			console.log($('.title').nextUntil());
+			
+			//获取节点的前一个兄弟节点
+			console.log($('.title').prev());
+			
+			//获取节点前面所有的兄弟节点
+			console.log($('.title').prevAll());
+			
+			//获取节点和其前面指定兄弟节点之间的兄弟节点
+			console.log($('.title').prevUntil());
+			
+			//
+			console.log($('.wrap').first());  //wrap本身
+			
+			//找到wrap中的第一个box
+			console.log($('.wrap .box').first());
+			//找到wrap中最后一个box
+			console.log($('.wrap .box').last());
+			
+			/*
+			 $(ele).last();
+			 先根据ele的选择器查找元素，从查找结果中取出最后一个*/
+			
+			//从查找结果中找到指定循序的节点对象，第一个循序是0
+			console.log($('.box').eq(0));
+			
+			//查找结果中过滤符合filter参数选择器代表的元素
+			console.log($('.wrap').children().filter('.box'));
+			
+			//从查找结果中拿掉符合not参数的选择器的元素
+			console.log($('.wrap').children().not('.box'));
+		</script>
+	</body>
+
+</html>

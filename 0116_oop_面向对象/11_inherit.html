@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Animal() {
+        Animal.prototype.eat = function() {};
+        Animal.prototype.mouse = 1;
+        Animal.prototype.type = '动物';
+    }
+    function Dog() {
+        Dog.prototype = Animal.prototype;
+        Dog.prototype.voice = '汪汪汪';
+    }
+    var dog1 = new Dog();
+    console.log(dog1);
+
+    console.log(Animal.prototype);
+
+    /*
+    *   这种直接拿父类的额原型赋值给子类原型的方式，可以实现继承，但是，子类和父类的prototype
+    * 会指向同一块内存区域。
+    *   如果想要子类单独添加一些属于自己的属性和行为，这个改变同时会影响父类。
+    *   关系混乱，不建议使用。
+    * */
+</script>
+</body>
+</html>

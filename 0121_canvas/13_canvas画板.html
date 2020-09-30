@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>画板</title>
+    <style>
+        .wrap {
+            width: 800px;
+            height: 600px;
+            box-shadow: 0 0 20px #000;
+            margin: 20px auto;
+            font-size: 0;
+        }
+        .list {
+            background: #c5c5c573   ;
+            width: 150px;
+            height:600px;
+            display: inline-block;
+            border-top: 1px solid transparent;
+            float: left;
+            text-align: center;
+        }
+        .list>input{
+            text-align: center;
+            width: 60px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius:20%;
+            outline: none;
+        }
+        #canv {
+            background: #fff;
+        }
+
+        .colorPicker{
+            width: 100px;
+            height: 20px;
+            margin-left: 30px;
+            cursor: pointer;
+        }
+        .ylColor {
+            position: absolute;
+            z-index: 99999;
+            width: 250px;
+            background: #fff;
+            box-shadow: 1px 1px 2px #c6d9f1, -1px -1px 2px #c6d9f1;
+            font-size: 14px;
+            color: #000;
+        }
+        .ylColor .aCol {
+            display: inline-block;
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin: 0 7px 7px 0;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+        .ylColor .aCol:nth-child(10n) {
+            margin-right: 0;
+        }
+        .ylColor-default {
+            padding: 7px;
+        }
+        .ylColor-custom ul {
+            overflow: hidden;
+            padding: 7px 7px 0;
+        }
+        .ylColor .title {
+            padding: 7px;
+            background-color: #f4f4f8;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="list">
+        <input type="text" value="直线" id="zx"/>
+        <input type="text" value="曲线" id="qx"/>
+        <input type="text" value="空心矩形" id="jx"/>
+        <input type="text" value="实心矩形" id="sj"/>
+        <input type="text" value="空心圆" id="ky"/>
+        <input type="text" value="实心圆" id="sy"/>
+        <input type="" name="" id="qk" value="清空" />
+        <input type="color" class="colorPicker" id="color" </input>
+        <!--<input type="text" />-->
+    </div>
+    <canvas id="canv" width="650" height="600"></canvas>
+</div>
+    <script>
+        var inp = document.querySelectorAll('input');
+        var canv = document.getElementById('canv');
+        var ctx = canv.getContext('2d');
+
+        // 为不同选项绑定点击事件
+        for(var i = 0;i<inp.length;i++){
+            inp[i].onclick = function() {
+                var id = this.getAttribute('id');
+                switch(id) {
+                    case 'zx':
+                        drawZhi();
+                        break;
+                    case 'qx':
+                        drawQu();
+                        break;
+                    case 'jx':
+                        drawKJ();
+                        break;
+                    case 'sj':
+
+                        drawSJ();
+                        break;
+                    case 'ky':
+                        drawCircle();
+                        break;
+                    case 'sy':
+                        drawCircleS();
+                        break;
+                    case 'qk':
+                        clearCanv();
+                        break;
+                }
+            }
+        }
+
+        // 曲线
+        function drawQu() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                ctx.moveTo(e.clientX-canv.offsetLeft,e.clientY - canv.offsetTop);
+                document.onmousemove = function(ev) {
+                    var e = ev || window.event;
+                    ctx.lineTo(e.clientX-canv.offsetLeft,e.clientY - canv.offsetTop);
+                    ctx.stroke();
+                }
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    document.onmousemove = document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+        //				drawQu();
+
+        // 直线
+        function drawZhi() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                ctx.moveTo(e.clientX-canv.offsetLeft,e.clientY - canv.offsetTop);
+                // 鼠标抬起
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    ctx.lineTo(e.clientX-canv.offsetLeft,e.clientY - canv.offsetTop);
+                    ctx.stroke();
+                    document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+        //				drawZhi();
+
+        // 空心矩形
+        function drawKJ() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                var x = e.clientX-canv.offsetLeft;
+                var y = e.clientY - canv.offsetTop;
+                ctx.moveTo(x,y);
+                // 鼠标抬起
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    var w = e.clientX-canv.offsetLeft -x ;
+                    var h = e.clientY - canv.offsetTop - y;
+                    ctx.rect(x,y,w,h);
+                    ctx.stroke();
+                    document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+        //				drawKJ();
+
+        // 实心矩形
+        function drawSJ() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.fillStyle ="#000";
+                ctx.lineWidth = 5;
+                var x = e.clientX-canv.offsetLeft;
+                var y = e.clientY - canv.offsetTop;
+                ctx.moveTo(x,y);
+                // 鼠标抬起
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    var w = e.clientX-canv.offsetLeft -x ;
+                    var h = e.clientY - canv.offsetTop - y;
+                    ctx.rect(x,y,w,h);
+                    ctx.fill();
+                    document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+
+        // 圆
+        function drawCircle() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                var x = e.clientX - canv.offsetLeft;
+                var y = e.clientY - canv.offsetTop;
+//						ctx.moveTo(x,y);
+                // 鼠标抬起
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    var x2 = e.clientX-canv.offsetLeft ;
+                    var y2 = e.clientY - canv.offsetTop;
+                    var distance = Math.sqrt(Math.pow(x-x2, 2) + Math.pow(y - y2, 2));
+                    var r = distance / 2;
+                    ctx.arc(x+r,y+r,r,0,2*Math.PI);
+                    ctx.stroke();
+                    document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+        //				drawCircle();
+
+        // 实心圆
+        function drawCircleS() {
+            canv.onmousedown = function(ev) {
+                var e = ev || window.event;
+                // 获取鼠标按下的位置
+                ctx.beginPath();
+                ctx.fillStyle = "#000";
+                ctx.lineWidth = 5;
+                var x = e.clientX - canv.offsetLeft;
+                var y = e.clientY - canv.offsetTop;
+//						ctx.moveTo(x,y);
+                // 鼠标抬起
+                document.onmouseup = function(ev) {
+                    var e = ev || window.event;
+                    var x2 = e.clientX-canv.offsetLeft ;
+                    var y2 = e.clientY - canv.offsetTop;
+                    var distance = Math.sqrt(Math.pow(x-x2, 2) + Math.pow(y - y2, 2));
+                    var r = distance / 2;
+                    ctx.arc(x+r,y+r,r,0,2*Math.PI);
+                    ctx.fill();
+                    document.onmouseup  =null;
+                    ctx.closePath();
+                }
+            }
+        }
+        //清空
+        function clearCanv() {
+            ctx.clearRect(0, 0, 650, 600);
+        }
+
+    </script>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    (function($){
+        $.fn.ylColor = function(options){
+            var defaults = {
+                containerId: 'ylColor',
+                left: 50,
+                top: 0,
+                defaultColor: '#000'
+            };
+            defaults.customColor = [
+                '#fff','#000','#eeece1','#1f497d','#4f81bd',
+                '#c0504d','#9bbb59','#8064a2','#4bacc6','#f79646',
+                '#f2f2f2','#808080','#ddd9c3','#c6d9f1','#dce6f2',
+                '#f2dcdb','#ebf1de','#e6e0ec','#dbeef4','#fdeada',
+                '#d9d9d9','#595959','#c4bd97','#8eb4e3','#b9cde5',
+                '#e6b9b8','#d7e4bd','#ccc1da','#b7dee8','#fcd5b5',
+                '#bfbfbf','#404040','#948a54','#558ed5','#95b3d7',
+                '#d99694','#c3d69b','#b3a2c7','#93cddd','#fac090',
+                '#a6a6a6','#262626','#4a452a','#17375e','#376092',
+                '#953735','#77933c','#604a7b','#31859c','#e46c0a',
+                '#7f7f7f','#0d0d0d','#1e1c11','#10243f','#254061',
+                '#632523','#4f6228','#403152','#215968','#984807'
+            ];
+            defaults.formatColor = [
+                '#c00000','#ff0000','#ffc000','#ffff00','#92d050',
+                '#00b050','#00b0f0','#0070c0','#002060','#7030a0'
+            ];
+
+            var settings = $.extend(defaults,options);
+            var elems = this;
+            var cur_elem;
+
+            var event = function(){
+                $(elems).each(function(){
+                    $(this).click(function(){
+                        show(this);
+                    });
+                });
+                $('#' + settings.containerId).find('.aCol').click(function(){
+                    onSelect(this);
+                });
+            };
+            var build = function(){
+                var containerId = settings.containerId;
+                var containerDiv = $('<div id="'+ containerId+'" class="ylColor" style="display: none"></div>');
+                var defaultDiv = $('<div class="ylColor-default"></div>');
+                var customDiv = $('<div class="ylColor-custom"></div>');
+                var formatDiv = $('<div class="ylColor-format"></div>');
+
+                defaultDiv.append('<span class="aCol" style="background-color: '+ settings.defaultColor +'" title="'+settings.defaultColor +'"></span>自动');
+                var liHtml = '';
+                $.each(settings.customColor,function(i,e){
+                    liHtml += '<li class="aCol" data-color="'+e+'" style="background-color: '+ e +'" title="'+ e +'"></li>';
+                });
+                customDiv.append('<div class="title">主题颜色</div><ul>'+liHtml+'</ul>');
+
+                liHtml = '';
+                $.each(settings.formatColor,function(i,e){
+                    liHtml += '<li class="aCol" data-color="'+e+'" style="background-color: '+e+'" title="'+ e +'"></li>';
+                });
+                customDiv.append('<div class="title">标准色</div><ul>'+liHtml+'</ul>');
+
+                if($('#' + containerId).length == 0){
+                    //不存在，则创建
+                    $('body').append(containerDiv);
+                }
+                containerDiv.append(defaultDiv,customDiv,formatDiv);
+
+            }
+            var show = function(elem){
+                cur_elem = elem;
+                var top = $(elem).offset().top;
+                var left = $(elem).offset().left;
+                $('#' + settings.containerId).css({
+                    top: top + settings.top,
+                    left: left + settings.left,
+                }).fadeIn();
+            };
+            var onSelect = function(selectOne){
+                $('#'+ settings.containerId).fadeOut();
+                if(options.onSelect){
+                    options.onSelect(selectOne,cur_elem);
+                }
+            };
+
+            build();
+            event();
+
+            return this;
+        };
+    })(jQuery);
+
+    // $('.colorPicker').ylColor({
+    //     left: 220,
+    //     onSelect: function(oCol,elem){
+    //         var color = $(oCol).attr('data-color');
+    //         $('.colorPicker').css({'background-color':color});
+    //     }
+    // });
+
+
+</script>
+</body>
+<html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			#mc {
+				box-shadow: 0 0 20px gray;
+				display: block;
+				margin: 0 auto;
+				background: url(timg.jpg) no-repeat;
+				background-size: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="mc" width="1000" height="550" style="border: 1px solid red"></canvas>
+		<script>
+			/*
+			     1.循环数组，取出每一个元素，将其绘制在mc中
+			     2.在绘制当前姓名之前，要随机生成其位置，这个位置的范围跟圆心和即将要绘制的这个球的半径有关。
+			     3.绘制
+			     4.利用requsetAmialtionFrame函数实现不停的绘制(将1,2,3,4)排成一个函数，不听的调用这个函数
+			     5.实现3d视觉效果
+			     先绘制的文字，字体比较小，透明度低
+			     后绘制的文字，字体比较大，透明度高
+			     */
+			var mc = document.getElementById('mc');
+			var ctx = mc.getContext('2d');
+			//文字数组
+			var textArr = ['郝佳伟', '李斌', '葛杨', '张楠', '宋东', '盛强', '王毅', '张浩龙', '姚梦圆', '张林林', '李斌', '王胜兵', '张飞扬', '王浩腾', '王兰新', '李红', '周路', '安阳', '梁静', '露西', '刘晓', '唐厚媛', '张苗苗', '付飘飘', '找高燕 ', '张浩龙', '李国栋', '李泽辉', '杨子瑶', '张琛', '李旭阳'];
+			// 随机数函数
+			function rn(min, max) {
+				return Math.round(Math.random() * (max - min)) + min;
+			};
+			//画圆
+			function draw() {
+				ctx.beginPath();
+				ctx.fillStyle = 'rgba(0,0,0,0)';
+				ctx.arc(500, 300, 300, 0, 2 * Math.PI);
+				ctx.fill();
+
+			}
+
+			var x1, x2;
+			// 随机的位置
+			function getPosition() {
+				ctx.clearRect(0, 0, 1000, 600);
+				draw();
+
+				for(var i = 0; i < textArr.length; i++) {
+
+					x1 = rn(100, 800);
+					x2 = rn(100, 500);
+					if(Math.sqrt(Math.pow(x1 - 500, 2) + Math.pow(x2 - 300, 2)) <= 190) {
+						ctx.beginPath();
+						ctx.font = "oblique 18px '微软雅黑'";
+						ctx.fillStyle = 'rgba(' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0.2, 1) + ')';
+						ctx.fillText(textArr[i], x1, x2);
+					}
+				}
+				requestAnimationFrame(getPosition);
+			}
+			getPosition();
+		</script>
+	</body>
+
+</html>

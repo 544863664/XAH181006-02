@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>oop</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*Array,*/
+			//console.dir(Array);
+			//console.dir(String);
+			var fs = ['王昭君', '诸葛亮', '张亮', '诸葛亮', '嬴政'];
+			var tk = ['夏侯惇', '廉颇', '夏侯惇', '廉颇'];
+			//通过prototype为js以声明好的类绑定自定义的原型方法
+			Array.prototype.noRepeat = function () {
+				//原型方法中的this指向调用这个原型方法的对象（其实还是指向当前代码执行的上下文环境）.
+				var temp = [];
+				for (var i = 0; i < this.length; i++) {
+					if (temp.indexOf(this[i]) == -1) {
+						temp.push(this[i]);
+					}
+				}
+				return temp;
+			};
+			var fsRes = fs.noRepeat();
+			var tkRes = tk.noRepeat();
+			console.log(fsRes);
+			console.log(tkRes);
+		</script>
+	</body>
+</html>

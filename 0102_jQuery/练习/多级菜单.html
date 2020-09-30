@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多级菜单</title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			ul,li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.list {
+				width: 200px;
+				margin: 100px auto;
+				text-align: left;
+				border: 1px solid #999999;
+			}
+			.item-title {
+				padding-left: 20px;
+				height: 30px;
+				line-height: 30px;
+				background: #EEEEEE;
+				border-top: 1px solid #b8cad8;
+				border-bottom: 1px solid #b8cad8;
+			}
+			
+			.item-title:hover {
+				cursor: pointer;
+				background: #ddd;
+			}
+			.item-title.active {
+				background: #a3cdea;
+			}
+			.item>li {
+				height: 30px;
+				line-height: 30px;
+				padding-left: 30px;
+				font-size: 14px;
+				border-top: 1px solid #999999;
+			}
+			.item>li:hover {
+				cursor: pointer;
+				color: red;
+			}
+			.item {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<div class="item-title">电影</div>
+				<ul class="item">
+					<li>一出好戏</li>
+					<li>西虹市首富</li>
+					<li>夏洛特烦恼</li>
+					<li>侏罗纪公园</li>
+				</ul>
+			</li>
+			<li>
+				<div class="item-title">书</div>
+				<ul class="item">
+					<li>我是个算命先生</li>
+					<li>不负如来不负卿</li>
+					<li>三生三世十里桃花</li>
+					<li>盗墓笔记</li>
+				</ul>
+			</li>
+			<li>
+				<div class="item-title">电视剧</div>
+				<ul class="item">
+					<li>父母爱情</li>
+					<li>平凡的世界</li>
+					<li>大江大河</li>
+					<li>甄嬛传</li>
+				</ul>
+			</li>
+		</ul>
+		
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			//为他们的一级菜单绑定点击事件
+			$('.item-title').click(function () {
+				//让其他的标题移除被选中状态
+				$('.item-title').not(this).removeClass('active');
+				//让当前标题变成被选中状态
+				$(this).toggleClass('active');
+				//让其他的菜单合上
+				$('.item').not($(this).next()).slideUp();
+				//让当前点击的这个一级对应的子菜单列表（当前点击的标题后的一个兄弟节点）根据当前状态切换
+				$(this).next().slideToggle();
+			})
+		</script>
+	</body>
+</html>

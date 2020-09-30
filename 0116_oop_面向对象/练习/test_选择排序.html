@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组的选择排序</title>
+</head>
+<body>
+<script>
+    //
+    function selectSort(arr){
+        for(var i = 0; i < arr.length-1 ;i++){
+            var index = i;
+            for(var j = i + 1 ; j< arr.length; j++){
+                if(arr[j] < arr[index]){//寻找最小的数
+                    index = j;//保存最小数的索引
+                }
+            }
+            var temp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = temp;
+        }
+        return arr;
+    }
+    var arr = [1,45,37,5,48,15,37,26,29,2,46,4,17,50,52];
+    console.log(selectSort(arr));
+
+    //
+    function selectSort2(arr2) {
+        for (var i = 0; i < arr2.length - 1; i++) {
+            var index = i;
+            for (var j = i + 1; j < arr2.length; j++) {
+                //寻找最小的数
+                if (arr2[j] < arr2[index]) {
+                    //保留最小数的索引
+                    index = j;
+                }
+            }
+            var temp2 = arr2[i];
+            arr2[i] = arr2[index];
+            arr2[index] = temp2;
+        }
+        return arr2;
+    }
+    var arr2 = [1,32,4,5,3,65,234,87,98,2,35];
+    console.log(selectSort2(arr2));
+</script>
+</body>
+</html>

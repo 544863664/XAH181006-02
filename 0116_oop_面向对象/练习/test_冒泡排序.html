@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组的冒泡排序</title>
+</head>
+
+<body>
+<script>
+    //
+    var arr = [3,4,2,34,54,234,];
+    //采用冒泡排序，向上冒泡，最小值在最上边
+    for(var x = 0 ; x < arr.length; x++){//控制趟数
+        for(var y = x + 1 ; y < arr.length ; y++){
+            //依次比较，如果后面的元素大于前面的元素则交换
+            if(arr[x] > arr[y]){
+                var temp = arr[x];
+                arr[x] = arr[y];
+                arr[y] = temp;
+            }
+        }
+    }
+    console.log(arr);
+
+    //
+    var arr2 = [3,4,2,34,54,234,54,356,35,2];
+    //采用冒泡排序，向上冒泡，最小的在最上边
+    for (var i = 0; i < arr2.length; i++) { //控制趟数
+        for (var j = i + 1; j < arr2.length; j++) {
+            //依次比较，如果后面的元素大于前面的元素则交换
+            if (arr2[i] > arr2[j]) {
+                var temp2 = arr2[i];
+                arr2[i] = arr2[j];
+                arr2[j] = temp2;
+            }
+        }
+    }
+    console.log(arr2);
+</script>
+</body>
+
+</html>

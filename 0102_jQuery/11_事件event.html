@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 200px;
+				height: 200px;
+				background: #87CEFA;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box">好冷啊</div>
+			<div class="box">box2</div>
+			<div class="box">box3</div>
+			<p>p标签</p>
+			<mark></mark>
+			<h1></h1>
+		</div>
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			/*//事件绑定的方式
+			$('.wrap').mouseenter(function (ev) {
+				var e = ev || window.event;
+				console.log(e);
+				//触发事件时的处理程序
+				console.log(this);
+			});*/
+			
+			//事件绑定第二种
+			/*$('.wrap').on('dblclick', function (ev) {
+				var e = ev || window.event;
+				console.log(e);
+				console.log('这是鼠标双击事件');
+			});
+			
+			//on函数的第二种用法，实现了事件代理
+			$('.wrap').on('click', '.box', function () {
+				console.log(1);
+			})
+			
+			//
+			$('.wrap').on('click', '.box', 400, function (ev) {
+				var e = ev || window.event;
+				console.log(e);
+			})*/
+			
+			//事件绑定的第三种方式
+			//可以使用on为一同个元素添加多个监听事件
+			$('.wrap').on({
+				//当on函数就收一个参数时，参数类型是对象，
+				click: function () {
+					console.log(1);
+				},
+				mouseover: function () {
+					console.log('鼠标移入');
+				},
+				dblclick: function () {
+					console.log(2);
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//分数类
+			function Grade(top, bottom) {
+			    //规避错误的传值方式
+                if (top == undefined || bottom == undefined || typeof(top) != 'number' || typeof(bottom) != 'number' ) {
+                    console.error('The params 1 or the params 2 is not alowed');
+                    return;
+				}
+				if (bottom == 0) {
+                    console.warn('警告：分数的分母不能为0');
+                    return;
+				}
+				//绑定共有属性
+			    this.t = top; // 分子
+				this.b = bottom; // 分母
+            }
+
+            //约分
+			Grade.prototype.yf = function () {
+				//找到分子和分母的最大公约数（辗转相除）
+				var min = this.t > this.b ? this.b : this.t;
+				var max = this.t + this.b - min;
+				while (min != 0) {
+					var temp = max % min;
+					max = min;
+					min = temp;
+				}
+				this.t /= max;
+				this.b /= max;
+            };
+
+            //加
+			Grade.prototype.add = function (another) {
+				this.t = this.t * another.b + another.t * this.b;
+				this.b = this.b * another.b;
+				this.yf();
+				return this;
+            };
+
+            var grade1 = new Grade(10, 30);
+			grade1.yf();
+			console.log(grade1);
+
+			var grade2 = new Grade(4, 20);
+			var grade3 = new Grade(7, 30);
+			var res = grade2.add(grade3);
+			console.log(res);
+		</script>
+	</body>
+
+</html>

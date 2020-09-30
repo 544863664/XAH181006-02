@@ -1,0 +1,172 @@
+/* 重置样式 */
+body,html,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+	padding: 0;
+	margin: 0;
+	font: 12px Arial,Helvetica,sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { 
+	font-weight: normal; 
+}
+li { 
+	list-style: none; 
+}
+a { 
+	text-decoration: none; 
+}
+img { 
+	vertical-align: top;
+	color:#999;
+	font-size:14px; 
+}
+.fl {
+	float: left;
+}
+.innerNav>a {
+	width: 190px;
+	height: 55px;
+	background: url(../img/logo.png);
+	margin: 0 10px 15px;
+}
+.innerNav>span {
+	float: right;
+	margin-top: 43px;
+}
+.innerNav>span>a {
+	color: #040505;
+}
+.fr {
+	float: right;
+}
+.clear:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/*公共部分*/
+body {
+	background: #F8F8F8;
+}
+/*head部分*/
+.innerNav {
+	margin: 0 auto;
+	width: 1000px;
+	position: relative;
+	padding-top: 20px;
+	border-bottom: 4px solid #FFAA00;
+}
+.headFont {
+	line-height: 18px;
+	font-family: "SimSun";
+	font-size: 12px;
+	color: #999;
+	padding-top: 37px;
+}
+.headFont span a {
+	color: #06c;
+}
+.headFont span a:hover {
+	color: #f60;
+}
+.headFont>a {
+	margin-left: 25px;
+	color: #E60012;
+}
+.headFont>a {
+	margin-left: 25px;
+	color: #333;
+}
+
+.runbun,.turnb {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	margin: 0 4px;
+}
+.runbun {
+	background: url(../images/runbun.png) no-repeat;
+	background-size: 100% 100%;
+}
+.turnb {
+	background: url(../images/turnb.png) no-repeat;
+	background-size: 100% 100%;
+}
+.helpLink {
+	color: #333;
+	font-size: 12px;
+}
+.helpLink:hover {
+	color: #E60012;
+}
+.outHelp {
+	position: absolute;
+	top: -4px;
+	right: 0;
+	width: 98px;
+	padding-top: 25px;
+	border: 1px solid #CCC;
+}
+.helpYou {
+	background: #fff;
+}
+.helpLink:hover .helpYou {
+	display: block;
+}
+.helpYou li a {
+	height: 24px;
+	display: block;
+	padding-left: 25px;
+	border-top: 1px dotted #e4e4e4;
+	background: #FFF;
+	line-height: 24px;
+	color: #333;
+}
+.helpYou li a:hover {
+	color: #E60012;
+	
+}
+/*按钮*/
+.tableBtn {
+	width: 300px;
+	height: 52px;
+	border: 0 none;
+	border-radius: 3px;
+	background: #FFAA00;
+	font-size: 16px;
+	color: #FFF;
+	cursor: pointer;
+	text-shadow: 1px 1px 1px #FFAA00;
+	font-family: "Microsoft YaHei";
+	line-height: 52px;
+}
+/*foot部分*/
+#footNav {
+	width: 980px;
+	margin: 20px auto 0;
+	text-align: center;
+}
+#footNav>p {
+	margin-bottom: 5px;
+}
+#footNav p span {
+	color: #888888;
+	padding: 0 8px;
+}
+#footNav .ng-url-list a {
+	color: #666666;
+}
+#footNav .ng-url-list a:hover {
+	color: red;
+}
+#footNav .ng-copyright a {
+	color: #999999;
+}
+#footNav .ng-authentication a>img {
+	width: 76px;
+	height: 24px;
+	margin: 8px;
+}
+#footNav a:hover {
+	text-decoration: underline;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.active {
+				background: red;
+				color: #eee;
+			}
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: #EEEEEE;
+			}
+			.wrap-active {
+				border-radius: 50%;
+				box-shadow: 0 0 20px #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<div class="wrap"></div>
+
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<!--<script type="text/javascript">
+			var list = document.querySelector('.list');
+			list.onclick = function(ev) {
+				var e = ev || window;
+				//for  in  循环不能循环节点列表，因为for  in能循环到这个循环中的键值对，如length，那么本来对于节点操作会报错
+				for (var i = 0; i < list.children.length; i++) {
+					list.children[i].style.color = '#000000';
+				}
+				e.target.style.color = 'red';
+				//console.log(e);
+			}
+		</script>-->
+		<script type="text/javascript">
+			//点击元素时，为元素切换类名
+			$('.wrap').click(function () {
+				//如果已经有，就移除，如果没有那就设置
+				$('.wrap').toggleClass('wrap-active');
+			})
+			//为所有的li绑定点击事件
+			$('.list li').click(function () {
+				//将所有菜单设置为初始状态
+				$('.list li').removeClass('active');
+				//为当前元素设置类名 active
+				$(this).addClass('active');
+			});
+		</script>
+	</body>
+
+</html>

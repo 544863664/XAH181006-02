@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+		<div id="item"></div>
+		
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			/*
+			 1.jQuery是在js的基础上封装的一个函数库。
+			 2.封装将js对于DOM的常用的一些操作。
+			 3.jQuery代码的本身就是js，与js的代码不互斥，是一体的。
+			 4.减少了原生js对于DOM节点操作的代码，提高代码效率，底层
+			 对于不同浏览器一级浏览的不同版做了完美的兼容（我们早使用jQuery
+			 代码时，不用再去写复杂的兼容代码）。
+			 * */
+			/*
+			 1.$函数是jQuery的函数库中我们最常用的一个函数，它的作用是使用css选择器（也是一些jq自己提供的）获取节点，
+			 并对其操作。
+			 	$函数的参数是一个字符串，代表要查找的元素的选择器。
+			 	$函数的返回值是一个对象（数组）。
+			 2.虽然jq代码和js代码不互斥，但是，js获取到的节点对象是$这个函数的返回值，并不是js的原生的节点对象。
+			 3.js原生的节点对象不能用js操作dom的方式操作它们，同样，jq的dom操作函数只能操作jq的$函数获取js节点对象。
+			 4.jq的节点对象和js云生的节点对象之间可以互相转换。从jq的节点对象列表中使用下标拿到的就是js原生对象。将一个
+			 js原生节点对象作为实参传到$函数中，那么$函数就会返回这个原生节点对象所对应的jq节点对象。
+			 * */
+			
+			var item = document.getElementById('item');
+			console.log(item);
+			console.log($(item));
+			var wrap = $('.wrap');
+			console.log(wrap);
+			var boxs = $('.box');
+			console.log(boxs);
+		</script>
+	</body>
+</html>

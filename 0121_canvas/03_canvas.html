@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格背景绘制</title>
+    <style>
+        #mc {
+            display: block;
+            box-shadow: 0 0 30px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mc" width="1000" height="600"></canvas>
+    <script>
+        //获取画布
+        var mc = document.getElementById('mc');
+        var pen = mc.getContext('2d');
+        pen.lineWidth = .5;
+        pen.beginPath(); //开始一条路径
+        pen.strokeStyle = '#bbb';
+        var y = 0, xCount = mc.clientHeight / 50;
+        var x = 0, yCount = mc.clientWidth / 50;
+        var overCount = xCount > yCount ? xCount : yCount;
+        for (var i = 0; i < overCount; i++) {
+            pen.moveTo(0, y);
+            pen.lineTo(1000, y);
+            pen.moveTo(x, 0);
+            pen.lineTo(x, 600);
+            y += 50;
+            x += 50;
+        }
+        pen.closePath();
+        pen.stroke();
+    </script>
+</body>
+</html>

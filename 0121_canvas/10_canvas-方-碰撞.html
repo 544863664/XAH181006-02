@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mc {
+            display: block;
+            box-shadow: 0 0 30px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    //获取画笔
+    var ctx = mc.getContext('2d');
+
+    var smallStyle = 'pink';
+
+    //在画布中央绘制一个矩形
+    function drawBig() {
+        ctx.beginPath();
+        ctx.fillStyle = 'orange';
+        ctx.fillRect(400, 200, 200, 200);
+    }
+
+
+    mc.onmousemove = function (ev) {
+        //清除画布
+        ctx.clearRect(0, 0, 1000, 600);
+        drawBig();
+        //获取鼠标基于canvas坐标
+        var e = ev || window.event;
+        var mx = e.offsetX;
+        var my = e.offsetY;
+
+        ctx.beginPath();
+        ctx.fillStyle = smallStyle;
+        ctx.fillRect(mx - 50, my - 50, 100, 100);
+
+        //碰撞检测（跟据两个盒子的坐标）
+        var a = mx - 50, b = my - 50;
+        var lc = a + 100 >= 400;
+        var rc = a <= 600;
+        var tc = b + 100 >= 200;
+        var bc = b <= 400;
+        if (lc && rc && tc && bc) {
+            smallStyle = 'red';
+        } else {
+            smallStyle = 'pinlk';
+        }
+
+
+        // var leftCase = box1.offsetLeft + box1.offsetWidth >= box2.offsetLeft;
+        // var bottomCase = box1.offsetTop <= box2.offsetTop + box2.offsetHeight;
+        // var rightCase = box1.offsetLeft <= box2.offsetWidth + box2.offsetLeft;
+        // var topCase = box1.offsetTop + box1.offsetHeight >= box2.offsetTop;
+        // if (leftCase && bottomCase && rightCase && topCase) {
+        //     box2.style.background = '#' + String(Math.random()).substr(3,6);
+        // } else {
+        //     box2.style.background = '#808080';
+        // }
+
+
+    };
+
+</script>
+</body>
+</html>

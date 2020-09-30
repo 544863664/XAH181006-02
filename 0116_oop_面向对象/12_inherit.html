@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Animal() {
+        this.mouse = 1;
+        this.run = function () {
+            console.log('i can run fastly');
+        };
+    }
+    Animal.prototype.eyes = 2;
+    Animal.prototype.eat = function () {
+        console.log('sdasdf');
+    }
+    var animal = new Animal();
+    console.log(animal);
+    
+    function Dog() {};
+
+    //让dog原型继承Animal
+    Dog.prototype = new Animal();
+    //原型继承会造成子类的constructor指向错误，需要重新指向
+    Dog.prototype.constructor = Dog;
+
+    var dog = new Dog();
+    console.log(dog);
+</script>
+</body>
+</html>

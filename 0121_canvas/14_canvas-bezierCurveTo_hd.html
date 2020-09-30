@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>被萨尔曲线</title>
+    <style>
+        #mc {
+            display: block;
+            box-shadow: 0 0 30px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    var ctx = mc.getContext('2d');
+    // ctx.beginPath();
+    // ctx.moveTo(20,20);
+    // ctx.bezierCurveTo(20,100,200,100,200,20);
+    // ctx.stroke();
+    var xCount = mc.width / 50, yCount = mc.height / 50;
+    var count = xCount > yCount ? xCount : yCount;
+    //由于有时候绘制过程计算复杂，在某个指定位置绘制时，坐标系的（0， 0）点非常重要，所以我们需要将画布的坐标系点进行重置，。画布的点一旦被改变，之后的绘制，都要以这个点位原点
+    ctx.translate(500, 300);
+    var x = 0, y = 0;
+    function createBg() {
+        var dis = 50;
+        var x = -500, y = -300;
+        for (var i = 0; i < count; i++) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'grey';
+            ctx.moveTo(x, -300);
+            ctx.lineTo(x, 300);
+            ctx.stroke();
+            x += dis;
+
+            ctx.beginPath();
+            ctx.moveTo(-500, y);
+            ctx.lineTo(500, y);
+            ctx.stroke();
+            y += dis;
+        }
+    }
+    createBg();
+    //
+    function drawFly() {
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'red';
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(142, -313, 313, -142, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(153, -241, 241, -153, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(104, -159, 159, -104, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-229, 98, -98, 229, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-159, 106, -106, 159, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-83, 47, -47, 83, 0, 0);
+        ctx.stroke();
+        //
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-142, -313, -313, -142, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-153, -241, -241, -153, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-104, -159, -159, -104, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(229, 98, 98, 229, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(159, 106, 106, 159, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(83, 47, 47, 83, 0, 0);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.lineWidth = .5;
+        ctx.bezierCurveTo(0, 0, 2, -83, 100, -190);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.lineWidth = .5;
+        ctx.bezierCurveTo(0, 0, -2, -83, -100, -190);
+        ctx.stroke();
+    }
+    drawFly();
+
+    //为画布绑定拖动事件
+    mc.onmousedown = function () {
+        mc.onmousemove = function (ev) {
+            //计算鼠标基于当前坐标系中西的位置
+            var mx = ev.offsetX - 500, my = ev.offsetY - 300;
+            //清除画布
+            ctx.clearRect(-500, -300, 1000, 600);
+            createBg();
+            drawFly();
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            //计算鼠标基于坐标系中心位置
+            //ctx.bezierCurveTo(-my, -mx, mx, my, 0, 0);
+            ctx.bezierCurveTo(my, mx, 0, my, 0, my);
+            ctx.stroke();
+            console.log(my, mx, mx, my);
+        };
+
+    };
+    mc.onmouseup = function () {
+        mc.onmousemove = null;
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

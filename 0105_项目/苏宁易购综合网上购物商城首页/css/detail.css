@@ -1,0 +1,381 @@
+.proinfo-container {
+	width: 1190px;
+	height: 640px;
+	margin: 0 auto 100px;
+}
+
+.proinfo-container li,
+dt,
+dd {
+	display: inline-block;
+}
+
+.proinfo-container>div {
+	float: left;
+}
+
+.proinfo-container .proinfo-left {
+	width: 400px;
+	height: 520px;
+	position: relative;
+}
+
+.proinfo-left .imgzoom-main {
+	width: 360px;
+	height: 360px;
+	padding: 20px;
+	border: 1px solid #EEEEEE;
+}
+
+.proinfo-left .imgzoom-main>img {
+	width: 100%;
+	height: 100%;
+}
+
+
+/*放大镜开始*/
+
+#move {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	box-shadow: 0 0 40px #00CED1 inset;
+	display: none;
+	/*先让他隐藏，用js使其显示*/
+	border-radius: 100%;
+}
+
+#bimg {
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	left: 402px;
+	display: none;
+	/*先让他隐藏，用js使其显示*/
+}
+
+#bimg img {
+	width: 700px;
+	height: 640px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.proinfo-left .imgzoom-memo {
+	height: 20px;
+	line-height: 20px;
+	margin-top: 10px;
+}
+
+
+/*放大镜结束*/
+
+.proinfo-left .imgzoom-memo a {
+	margin-right: 3px;
+}
+
+.proinfo-left .imgzoom-memo a {
+	/*color: #999;*/
+	display: inline-block;
+	line-height: 18px;
+}
+
+.proinfo-container .proinfo-main {
+	width: 770px;
+	padding: 0 10px;
+}
+
+.proinfo-main>img {
+	width: 100%;
+}
+
+.proinfo-main dl {
+	margin-bottom: 10px;
+}
+
+.proinfo-main dl dt {
+	float: left;
+	width: 70px;
+	padding-left: 10px;
+	color: #999999;
+	overflow: hidden;
+	font-family: simsun;
+}
+
+.proinfo-main dl dt .w3 {
+	letter-spacing: .4em;
+}
+
+.proinfo-main dl dt .w2 {
+	letter-spacing: 1.9em;
+}
+
+.proinfo-main .title {
+	padding: 10px 10px 12px;
+}
+
+.proinfo-main .title .displayDesc {
+	font: normal 14px/18px \5FAE\8F6F\96C5\9ED1;
+	color: #f60;
+	margin-top: 3px;
+	word-break: break-all;
+}
+
+.proinfo-main .proinfo-focus {
+	background: url(../img/price_bg_1.png);
+	margin-bottom: 15px;
+	padding: 14px 0 8px;
+	margin-top: -5px;
+}
+
+.proinfo-focus dl {
+	margin-bottom: 4px;
+}
+
+.price-container .price-promo {
+	margin-bottom: 2px;
+}
+
+.price-promo dt {
+	margin-top: 8px;
+}
+
+.price-promo .mainprice {
+	height: 28px;
+	float: left;
+	font: 700 30px/25px tahoma;
+	color: #ee0000;
+}
+
+.price-promo .mainprice i {
+	font: 700 18px arial;
+}
+
+.price-promo .mainprice span {
+	font: 700 24px tahoma;
+}
+
+.price-promo .super {
+	margin-left: 80px;
+}
+
+.super .super-vip {
+	width: 40px;
+	height: 13px;
+	background: url(../img/vip-super-lpg.gif);
+	margin-right: 6px;
+	border: 1px solid;
+	border-radius: 3px;
+}
+
+.super .more-equity {
+	color: #38d;
+}
+
+.price-container .proinfo-comments {
+	float: right;
+	margin: -40px 10px;
+	text-align: right;
+}
+
+.proinfo-comments span {
+	text-decoration: underline;
+	color: #666666;
+	font-weight: 600;
+}
+
+.proinfo-promo {
+	padding: 5px 0;
+	margin-bottom: 0;
+}
+
+.couponTitle .more-juan,
+.receive-yxhd {
+	margin-bottom: 10px;
+}
+
+.couponTitle .receive-yxhd em {
+	vertical-align: middle;
+	display: inline-block;
+	height: 12px;
+	width: 12px;
+	margin-right: 4px;
+	background: url(../img/f-icons-ex1.png) no-repeat;
+	background-position: -1038px -532px;
+	margin-top: -2px;
+}
+
+.couponTitle .more-juan .quan {
+	color: #FFFFFF;
+	line-height: 18px;
+	display: inline-block;
+	margin-right: 10px;
+	position: relative;
+}
+
+.more-juan .quan .quan-border {
+	position: absolute;
+	top: 1px;
+	width: 2px;
+	height: 16px;
+}
+
+.more-juan .quan .bl {
+	background: url(../img/f-icons-ex1.png);
+	background-position: -1056px -464px;
+}
+
+.more-juan .quan .bm {
+	width: 5px;
+	display: inline-block;
+	height: 18px;
+	vertical-align: top;
+	background: url(../img/f-icons-ex1.png);
+	background-position: -1051px -624px;
+	margin: 0 -3px;
+}
+
+.more-juan .quan .br {
+	background: url(../img/f-icons-ex1.png);
+	background-position: -670px -310px;
+}
+
+.more-juan .quan span {
+	border-top: 1px solid #FF6600;
+	border-bottom: 1px solid #FF6600;
+	line-height: 16px;
+	padding: 0 2px 0 4px;
+	background-color: #FF6600;
+	display: inline-block;
+}
+
+.more-juan .quan .quan-white {
+	padding: 0 4px 0 2px;
+	background: #FFFFFF;
+	color: #FF6600;
+	border-right: 1px solid #FF6600;
+}
+
+.more-juan .a-detail {
+	color: #38d;
+}
+
+.proinfo-deliver {
+	margin: 9px 0 13px;
+	line-height: 28px;
+}
+
+.proinfo-deliver .clearfix .sncity>div {
+	display: inline-block;
+}
+
+.clearfix .sncity div select {
+	border: none;
+}
+
+.proinfo-deliver .supplier-row {
+	display: block;
+	margin-left: 80px;
+	line-height: 20px;
+	color: #999999;
+}
+
+.supplier-row i {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	background: url(../img/header-contact-shop.gif);
+	margin-right: 2px;
+}
+
+.proinfo-main .tzm {
+	margin-top: 20px;
+}
+
+.tzm dl {
+	padding-top: 5px;
+	margin-bottom: 6px;
+	line-height: 30px;
+}
+
+.tzm dl dd li {
+	float: left;
+	margin-right: 5px;
+}
+
+.tzm dl dd li a {
+	display: block;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	padding: 1px 8px 1px 8px;
+	border: 1px solid #ddd;
+	color: #666;
+}
+
+.proinfo-main .mainbtns {
+	padding-left: 80px;
+}
+
+.mainbtns button {
+	height: 40px;
+	outline: none;
+	border: none;
+	border-radius: 3px;
+	font: 16px/40px microsoft yahei;
+	color: #fff;
+	font-weight: 600;
+}
+
+.mainbtns .btn-dark-buy {
+	background: #663200;
+	width: 115px;
+	margin-right: 10px;
+}
+
+.mainbtns .btn-orange-buy {
+	background: #f50;
+	width: 135px;
+}
+
+.proinfo-main .pro-serv-panel {
+	padding-top: 15px;
+	margin-bottom: 7px;
+}
+
+
+.proinfo-serv span {
+	margin-right: 20px;
+	margin-bottom: 4px;
+	white-space: nowrap;
+	position: relative;
+}
+
+.proinfo-serv span a {
+	vertical-align: text-bottom;
+}
+
+.proinfo-serv span a i {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	top: -2px;
+}
+
+.proinfo-serv span .icon {
+	width: 12px;
+	height: 12px;
+	border: 1px solid #a98c81;
+	background: url(../img/f-icons-ex1.png);
+	background-position: -519px -599px;
+	top: -3px;
+}
+
+
+/**/

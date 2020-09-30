@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>苏宁易购综合网上购物商城商品详情</title>
+		<link rel="shortcut icon" href="img/title_logo.ico" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/suning.css" />
+		<link rel="stylesheet" type="text/css" href="css/detail.css" />
+		<link rel="stylesheet" type="text/css" href="awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/magnifier.css">
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/suning.js"></script>
+		<script type="text/javascript" src="js/scrollyData.js"></script>
+		<script type="text/javascript" src="js/scrollyCommon.js"></script>
+		<script type="text/javascript" src="js/magnifier.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript" src="js/search.js"></script>
+		<script type="text/javascript" src="js/a.js"></script>
+	</head>
+
+	<body>
+		<!--注册登录-->
+		<div id="layout_nav">
+			<div id="top_nav">
+				<div class="top_nav_gohome scrollx" style="text-align: center;">
+					<a class="fa fa-home" href="suing.html">返回首页</a>
+				</div>
+				<div class="top_nav_left scrollx">
+					<a href="####">网站导航</a>
+					<span class="xin"></span>
+					<img class="arrow" src="img/arrow2.png" />
+					<div class="wangzhandaohang scrolly">
+						<dl class="wangzhandaohang1"></dl>
+						<dl class="wangzhandaohang2"></dl>
+						<dl class="wangzhandaohang3"></dl>
+						<dl class="wangzhandaohang4"></dl>
+						<dl class="wangzhandaohang5"></dl>
+					</div>
+				</div>
+				<div class="top_nav_left scrollx">
+					<a href="####">商家入驻</a>
+					<span class="xin"></span>
+					<img src="img/arrow2.png" alt="" class="arrow" />
+					<div class="shangjiaruzhu scrolly">
+						<dl>
+							<!--<dd>合作招商</dd>-->
+							<!--<dd>服务市场</dd>-->
+							<!--<dd>金融中心</dd>-->
+							<!--<dd>培训中心</dd>-->
+							<!--<dd>易通天下</dd>-->
+							<!--<dd>规则中心</dd>-->
+							<!--<dd>规则众议院</dd>-->
+						</dl>
+					</div>
+				</div>
+				<div class="top_nav_right">
+					<div class="login">
+						<a href="loginpage.html">请登录</a>
+						<a href="registerpage.html" style="margin-left: 8px;">注册有礼</a>
+					</div>
+					<div class="mydingdan scrollx">
+						<a href="####">我的订单
+							<img class="arrow" src="img/arrow2.png" />
+							<div class="wodedingdan scrolly">
+								<!--<p>待支付</p>-->
+								<!--<p>待收货</p>-->
+								<!--<p>待评价</p>-->
+								<!--<p>修改订单</p>-->
+							</div>
+						</a>
+
+					</div>
+					<div class="myyigou scrollx">
+						<a href="####">我的易购
+							<img class="arrow" src="img/arrow2.png" />
+							<div class="wodeyigou scrolly">
+								<!--<p>我的消息</p>-->
+								<!--<p>我的金融</p>-->
+								<!--<p>我的收藏</p>-->
+								<!--<p>我的优惠券</p>-->
+								<!--<p>打卡赚云钻</p>-->
+								<!--<p>会员联盟</p>-->
+							</div>
+						</a>
+
+					</div>
+
+					<a class="hb" href="####">
+						<em class="ng-iconfont cart">&#xe623;</em>
+						<span>购物车</span>
+						<span class="yuan">
+							<b class="num">0</b>
+						</span>
+					</a>
+					<div class="scrollx myphone">
+						<a href="####" class="shouji">
+							<em class="ng-iconfont mb">&#xe604;</em>手机办宁
+							<img class="arrow" src="img/arrow2.png" />
+						</a>
+						<div class="shoujisuning scrolly">
+							<div class="shoujisuning_left">
+								<p>扫一扫，下载易购客户端</p>
+								<img src="img/small_yigou/code.png" alt="" />
+							</div>
+							<div class="shoujisuning_right">
+								<img src="img/small_yigou/app-ebook.png" />
+								<img src="img/small_yigou/app-sn.png" alt="" />
+								<img src="img/small_yigou/app-pptv.png" />
+								<img src="img/small_yigou/app-suning.png" alt="" />
+								<p>更多应用></p>
+							</div>
+							<p class="green"><img src="img/small_yigou/newreg.png" /></p>
+							<p class="cha"><em class="ng-iconfont">&#xe627;</em></p>
+						</div>
+
+					</div>
+
+					<a class="hb" href="####">易付宝</a>
+					<a class="hb" href="####">政企采购</a>
+					<div class="myserve scrollx">
+						<a href="####">服务中心
+							<img class="arrow" src="img/arrow2.png" />
+							<div class="fuwuzhongxin scrolly">
+								<!--<p>帮助中心</p>-->
+								<!--<p>查找门店</p>-->
+								<!--<p>退换货</p>-->
+								<!--<p>约服务</p>-->
+								<!--<p>投诉</p>-->
+								<!--<p>建议反馈</p>-->
+								<!--<p>在线咨询<i class="fa fa-drupal"></i></p>-->
+							</div>
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--登录导航结束-->
+		<!--搜索-->
+		<div id="search">
+			<a href="index.html" class="logo"></a>
+			<a href="####" class="logogif">
+				<img src="img/154660171408244968.gif" alt="" />
+			</a>
+			<div class="main_search">
+				<div class="ng_search">
+					<i class="ng-iconfont search-icon">&#xe619;</i>
+					<form action="">
+						<div class="search-keyword-box">
+							<input placeholder="定好年货过放心年 定金最高抵扣千元" value="" id="searchKeywords" type="text" class="search-keyword" />
+						</div>
+						<input id="searchSubmit" type="submit" class="search-btn" value="搜本店" style="padding: 0; letter-spacing: 0;text-align: center;" />
+						<div class="hotwords">
+							<a href="####">PPTV互联网电视</a>
+							<a href="####">三星note5</a>
+							<a href="####">奶粉</a>
+							<a href="####">烤箱</a>
+							<a href="####">智能电视</a>
+							<a href="####">面膜</a>
+							<a href="####">奥克斯空调</a>
+							<a href="####">大闸蟹</a>
+							<a href="####" style="color: #FF6600;">香港莎莎</a>
+							<a href="####">佳能70d</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="searchcon"></div>
+		<!--搜索结束-->
+		<!--商品展示部分-->
+		<div class="proinfo-container">
+			<div class="proinfo-left">
+				<div class="imgzoom-main" id="box">
+					<img src="img/1floor/8.jpg" />
+				</div>
+				<!---->
+				<!--<div class="magnifier imgzoom-main" id="magnifier1">-->
+					<!--<div class="magnifier-container">-->
+						<!--<div class="images-cover"></div>-->
+						<!--&lt;!&ndash;当前图片显示容器&ndash;&gt;-->
+						<!--<div class="move-view"></div>-->
+						<!--&lt;!&ndash;跟随鼠标移动的盒子&ndash;&gt;-->
+					<!--</div>-->
+					<!--<div class="magnifier-view"></div>-->
+					<!--&lt;!&ndash;经过放大的图片显示容器&ndash;&gt;-->
+				<!--</div>-->
+				<!---->
+				<div class="imgzoom-memo">
+					<a href=""><i class="fa fa-share-alt"></i> 分享</a>
+					<a href=""><i class="fa fa-star"></i> 关注</a>
+					<a href=""><i class="fa fa-gift"></i> 有奖调查</a>
+				</div>
+			</div>
+			<div class="proinfo-main">
+				<div class="title">
+					<h1 class="displayName">七格格OTHERMIX2018秋新款 网纱拼接弹力修身长袖一字领T恤</h1>
+					<h2 class="displayDesc">领券满199减50 399减150 600减300</h2>
+				</div>
+				<img src="img/131202087421093019661040_04.png" />
+				<div class="proinfo-focus">
+					<div class="price-container">
+						<dl class="price-promo">
+							<dt>
+								<span class="w3">活动价</span>
+							</dt>
+							<dd>
+								<span class="mainprice">
+									<i>￥</i>
+									538.
+									<span>00</span>
+								</span>
+							</dd>
+							<div class="super">
+								<span class="super-vip">______</span>
+								<span class="super-word">加入会员返云钻，下单立返约7.98元</span>
+								<a class="more-equity" href="####">立即开通></a>
+							</div>
+						</dl>
+						<dl class="proinfo-comments">
+							<div style="color: #999999;">累计评价</div>
+							<span>20+</span>
+						</dl>
+					</div>
+					<dl class="proinfo-promo">
+						<dt>
+							<span class="w2">优惠</span>
+						</dt>
+						<dd class="couponTitle">
+							<div class="receive-yxhd">
+								<em></em>
+								<span>参与以下活动，预计可省</span>
+								<i style="color: #FF6600;">200.00元</i>
+							</div>
+							<div class="more-juan">
+								<a class="quan" title="有效期2019-01-10 00:00:00至2019-01-13 23:59:59" href="">
+									<i class="quan-border bl"></i>
+									<span>学生专享</span>
+									<i class="bm"></i>
+									<span class="quan-white">满99用30</span>
+									<i class="quan-border br"></i>
+								</a>
+								<a class="quan" title="有效期2019-01-10 00:00:00至2019-01-13 23:59:59" href="">
+									<i class="quan-border bl"></i>
+									<span>￥20</span>
+									<i class="bm"></i>
+									<span class="quan-white">全额抵用</span>
+									<i class="quan-border br"></i>
+								</a>
+								<a class="a-detail" href="####">共2张优惠券></a>
+							</div>
+							<div class="more-juan">
+								<a class="quan" title="有效期2019-01-10 00:00:00至2019-01-13 23:59:59" href="">
+									<i class="quan-border bl"></i>
+									<span>￥150</span>
+									<i class="bm"></i>
+									<span class="quan-white">满399用150</span>
+									<i class="quan-border br"></i>
+								</a>
+								<a class="quan" title="有效期2019-01-10 00:00:00至2019-01-13 23:59:59" href="">
+									<i class="quan-border bl"></i>
+									<span>￥150</span>
+									<i class="bm"></i>
+									<span class="quan-white">满399用150</span>
+									<i class="quan-border br"></i>
+								</a>
+								<a class="a-detail" href="####">共5张优惠券></a>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="proinfo-deliver">
+					<dl>
+						<dt>
+								<span class="w2">送至</span>
+							</dt>
+						<dd class="clearfix">
+							<div class="sncity">
+								<div class="input-inline">
+									<select>
+										<option>请选择省</option>
+										<option>陕西省</option>
+										<option>江西省</option>
+										<option>福建省</option>
+									</select>
+								</div>
+								<div class="input-inline">
+									<select>
+										<option>请选择市</option>
+										<option>西安</option>
+										<option>宁波</option>
+										<option>温州</option>
+										<option>台州</option>
+										<option>绍兴</option>
+									</select>
+								</div>
+								<div class="input-inline">
+									<select>
+										<option>请选择县/区</option>
+										<option>西湖区</option>
+										<option>余杭区</option>
+										<option>临安市</option>
+									</select>
+								</div>
+							</div>
+							<p>现在下单，预计下周四（1月17日）前送达</p>
+						</dd>
+						<dd class="supplier-row">
+							<sapn class="shopName">
+								由&nbsp;
+								<a href="">千纸鹤官方旗舰店</a>
+								&nbsp;销售和发货，并提供售后服务
+							</sapn>
+							<a href=""><i></i>联系客服</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="divide-line" style="border-top: 1px dotted #ddd;"></div>
+				<div class="tzm">
+					<dl class="proinfo-color-ex">
+						<dt>
+								<span class="w2">颜色</span>
+							</dt>
+						<dd>
+							<ul class="tip-infor">
+								<li class="clr-item">
+									<a href="####"><img src="" alt="" /><span>黑色</span></a>
+								</li>
+								<li class="clr-item">
+									<a href="####"><img src="" alt="" /><span>浅咖啡</span></a>
+								</li>
+								<li class="clr-item">
+									<a href="####"><img src="" alt="" /><span>浅绿</span></a>
+								</li>
+								<li class="clr-item">
+									<a href="####"><img src="" alt="" /><span>深蓝</span></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="proinfo-buytype">
+						<dt>
+								<span class="w2">尺码</span>
+							</dt>
+						<dd>
+							<ul class="tip-infor">
+								<li class="clr-item">
+									<a href="####">S</a>
+								</li>
+								<li class="clr-item">
+									<a href="####">M</a>
+								</li>
+								<li class="clr-item">
+									<a href="####">L</a>
+								</li>
+								<li class="clr-item">
+									<a href="####">XL</a>
+								</li>
+								<li class="clr-item">
+									<a href="####">XXL</a>
+								</li>
+								<li class="clr-item">
+									<a href="####">XXL</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<div class="mainbtns">
+					<button class="btn-dark-buy">立即购买</button>
+					<button class="btn-orange-buy"><i class="fa fa-shopping-cart"></i> 加入购物车</button>
+					<div class="qrcode-panel">
+						<div class="qrc-wrapper"><img src="" alt="" /></div>
+						<div class="q-bottom">
+							<span class="s-img"></span>
+							<div class="q-text">
+								<div class="cli-buy"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="divide-line" style="border-top: 1px dotted #ddd;"></div>
+				<div class="pro-serv-panel">
+					<dl style="margin-top: 10px;">
+						<dt><span class="w2">服务</span></dt>
+					</dl>
+					<dd class="proinfo-serv">
+						<span>
+							<a href="" class="zqcg">
+								<i class="icon"></i>
+								&nbsp; &nbsp; &nbsp;企业采购
+								<!--<span class="s-tooltip">
+									<i style="width: 14px; height: 14px;"></i>
+									针对企业客户采购的专业服务
+								</span>-->
+						</a>
+						</span>
+						<span>
+							<a href="" class="zqcg">
+								<i><img src="img/223356320877597601745700.png"/></i>
+								&nbsp; &nbsp; &nbsp;运费险
+								<!--<span class="s-tooltip">
+									<i></i>
+									卖家赠送，确认收货后15天内退货均可理赔
+								</span>-->
+						</a>
+						</span>
+						<span>
+							<a href="" class="zqcg">
+								<i><img src="img/223356320877597601745700.png"/></i>
+								&nbsp; &nbsp; &nbsp;7天无理由退货
+								<!--<span class="s-tooltip">
+									<i></i>
+									无理由退货，保购物无忧
+								</span>-->
+						</a>
+						</span>
+					</dd>
+				</div>
+
+			</div>
+		</div>
+
+		<!--正品保障帮助中心-->
+		<div id="layout_foot">
+			<div id="serv">
+
+				<div class="ng-ser-box-con">
+					<div class="ng-promise">
+						<dl>
+							<dt class="zheng">正品保障</dt>
+							<dd>
+								<p><strong><a href="####"  >正品保障</a></strong></p>
+								<p>正品保障，提供发票</p>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="jisu">急速物流</dt>
+							<dd>
+								<p><strong><a href="####"  >急速物流</a></strong></p>
+								<p>急速物流，急速送达</p>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="wuyou">无忧售后</dt>
+							<dd>
+								<p><strong><a href="####" >无忧售后</a></strong></p>
+								<p>7天无理由退换货</p>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="te">特色服务</dt>
+							<dd>
+								<p><strong><a href="####"  >特色服务</a></strong></p>
+								<p>私人定制家电套餐</p>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="help">帮助中心</dt>
+							<dd>
+								<p><strong><a href="####"  >帮助中心</a></strong></p>
+								<p>您的购物指南</p>
+							</dd>
+						</dl>
+						<div class="clear"></div>
+					</div>
+					<div class="ng-help-box">
+						<dl>
+							<dt>购物指南</dt>
+							<dd>
+								<a href="####">导购演示</a>
+							</dd>
+							<dd>
+								<a href="####">免费注册</a>
+							</dd>
+							<dd>
+								<a href="####">会员等级</a>
+							</dd>
+							<dd>
+								<a href="####">常见问题</a>
+							</dd>
+							<dd>
+								<a href="####">品牌大全</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>支付方式</dt>
+							<dd>
+								<a href="####">易付宝支付</a>
+							</dd>
+							<dd>
+								<a href="####">网银支付</a>
+							</dd>
+							<dd>
+								<a href="####">快捷支付</a>
+							</dd>
+							<dd>
+								<a href="####">分期付款</a>
+							</dd>
+							<dd>
+								<a href="####">货到付款</a>
+							</dd>
+							<dd>
+								<a href="####">任性付支付</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>物流配送</dt>
+							<dd>
+								<a href="####">免运费政策</a>
+							</dd>
+							<dd>
+								<a href="####">配送服务承诺</a>
+							</dd>
+							<dd>
+								<a href="####">签收验货</a>
+							</dd>
+							<dd>
+								<a href="####">物流查询</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>售后服务</dt>
+							<dd>
+								<a href="####">退换货政策</a>
+							</dd>
+							<dd>
+								<a href="####">退换货流程</a>
+							</dd>
+							<dd>
+								<a href="####">购买延保服务</a>
+							</dd>
+							<dd>
+								<a href="####">退款说明</a>
+							</dd>
+							<dd>
+								<a href="####">退换货申请</a>
+							</dd>
+							<dd>
+								<a href="####">维修/保养</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>商家服务</dt>
+							<dd>
+								<a href="####">商家入驻</a>
+							</dd>
+							<dd>
+								<a href="####">培训中心</a>
+							</dd>
+							<dd>
+								<a href="####">信息公告</a>
+							</dd>
+							<dd>
+								<a href="####">广告服务</a>
+							</dd>
+							<dd>
+								<a href="####">商家帮助</a>
+							</dd>
+							<dd>
+								<a href="####">服务市场</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="ng-app-down">
+						<p>易购客户端</p>
+						<a href="####">
+							<img src="img/bottom-app-down.png" alt="" height="87" width="87" />
+						</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+			<div id="layout_partner">
+				<div id="partner">
+					<div class="ng-new-pro-con">
+						<div class="ng-new-pro-list">
+							<dl>
+								<dt>
+                                    <a href="####"><img src="img/foot1.png" height="80" width="80" /></a>
+                                </dt>
+								<dd>
+									<p class="ng-title">
+										<a href="####">政企采购</a>
+									</p>
+									<p class="ng-intro">
+										<a href="####">为企业用户量身定做的采购平台，优选办宁易购全站商品，为企业采购提供专业化的一站式采购解决方案。</a>
+									</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+								    <a href="####" ><img src="img/foot2.png" height="80" width="80" /></a>
+								</dt>
+								<dd>
+									<p class="ng-title">
+										<a href="####">办宁众包</a>
+									</p>
+									<p class="ng-intro">
+										<a href="####">以办宁全渠道包销为主要特点，整合全社会众包资源，扶持创新企业，推广创新产品。</a>
+									</p>
+								</dd>
+							</dl>
+						</div>
+						<div class="ng-serch-suning">
+							<dl>
+								<dt></dt>
+								<dd>
+									<p class="ng-title">身边办宁</p>
+									<p class="ng-intro">全国300个城市1600家门店3000个服务点为您提供最贴心的服务！</p>
+									<a href="####" class="srh-btn"></a>
+								</dd>
+							</dl>
+						</div>
+						<div class="footer-egg-con"></div>
+					</div>
+				</div>
+				<div class="foot_list">
+					<p class="ng-url-list">
+						<a href="" target="_blank">办宁云商</a><span>|</span>
+						<a href="" target="_blank">办宁互联</a><span>|</span>
+						<a href="" target="_blank">办宁金融</a><span>|</span>
+						<a href="" target="_blank">易付宝</a><span>|</span>
+						<a href="" target="_blank">办宁满座网</a><span>|</span>
+						<a href="" target="_blank">PPTV</a><span>|</span>
+						<a href="" target="_blank">红孩子</a><span>|</span>
+						<a href="" target="_blank">缤购</a><span>|</span>
+						<a href="" target="_blank">乐购仕</a><span>|</span>
+						<a href="" target="_blank">办宁物流</a><span>|</span>
+						<a href="" target="_blank">办宁美国</a><span>|</span>
+						<a href="" target="_blank">办宁香港</a>
+					</p>
+					<p class="ng-url-list">
+						<a href="" target="_blank">关于办宁易购</a><span>|</span>
+						<a href="" target="_blank">联系我们</a><span>|</span>
+						<a href="" target="_blank">诚聘英才</a><span>|</span>
+						<a href="" target="_blank">供应商入驻</a><span>|</span>
+						<a href="" target="_blank">办宁联盟</a><span>|</span>
+						<a href="" target="_blank">办宁招标</a><span>|</span>
+						<a href="" target="_blank">友情链接</a><span>|</span>
+						<a href="" target="_blank">法律申明</a><span>|</span>
+						<a href="" target="_blank">用户体验提升计划</a><span>|</span>
+						<a href="" target="_blank">股东会员认证</a>
+					</p>
+					<p class="ng-copyright">Copyright© 2002-2019 ，电子商务有限公司版权所有 885551号</p>
+				</div>
+			</div>
+
+		</div>
+		<!--正品保障帮助中心-->
+
+		<!--右侧浮动	-->
+		<div id="right_float">
+			<div class="top">
+				<p class="top_top">
+					<a class="geren" href="####"></a>
+				</p>
+				<p class="gwc">
+					<a class="gouwuche" href="####"></a>
+					<span class="tip" href="####">购物车</span>
+					<span class="rows">0</span>
+				</p>
+			</div>
+			<div class="center">
+
+				<p class="yidong">
+					<a class="chongzhi" href="####"></a>
+					<a class="l_r1 l_rw" href="####">充值</a>
+				</p>
+				<p class="yidong">
+					<a class="zuji yidong" href="####"></a>
+					<a class="l_r2 l_rw" href="####">足迹</a>
+				</p>
+			</div>
+			<div class="down">
+				<p class="yidong">
+					<a class="erwei" href="####"></a>
+					<a class="l_r3 l_rw3" href="####"><img src="img/ewm.png" /></a>
+				</p>
+				<p class="yidong">
+					<a class="jiaoliu" href="####"></a>
+					<a class="l_r4 l_rw2" href="####">在线咨询</a>
+				</p>
+				<p class="yidong">
+					<a class="liuyan" href="####"></a>
+					<a class="l_r5 l_rw2" href="####">调查问卷</a>
+				</p>
+				<p class="yidong">
+					<a class="fanhui" href="#"></a>
+					<a class="l_r6 l_rw2" href="#">返回顶部</a>
+				</p>
+			</div>
+		</div>
+		<div id="left_float"></div>
+		<script type="text/javascript">
+			function getDetailByOrder() {
+				var order = location.search.slice(9); //截取商品详情的末尾数
+				//取数据
+				var floorData = localStorage.SNFloorData;
+				var dataArr = JSON.parse(floorData);
+				var goodsArr = dataArr[10].mainCol;
+				if(order < 5) { //如果商品的末尾数小于5就是上边的展示栏，因为我的商品展示栏是上下两部分
+					var objUp = goodsArr[0].sellGoodsUp[order];
+					showWrap(objUp);
+				} else {
+					var d = order - 5; //如果商品详情的末尾数大于5就是下边的展示栏，就减5，我的下变展示栏的下标是从0开始的
+					var objDw = goodsArr[1].sellGoodsDown[d];
+					showWrap(objDw);
+				}
+			}
+			getDetailByOrder();
+			function showWrap(ele) {
+				var bigImg = $('.imgzoom-main img').eq(0)[0];
+				$(bigImg).attr('src', ele.face);
+				var titleName = $('.title').children()[0];
+				$(titleName).html(ele.name);
+				var mainPrice = ($('.mainprice')[0]);
+				$(mainPrice).html('<i>￥</i>	' + ele.price + '.<span>00</span>');
+			}
+		</script>
+	</body>
+
+</html>

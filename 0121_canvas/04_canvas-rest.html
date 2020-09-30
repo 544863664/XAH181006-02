@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px grey;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mc" width="1000" height="600"></canvas>
+    <script>
+        //获取画布
+        var mc = document.getElementById('mc');
+        //获取画笔
+        var ctx = mc.getContext('2d');
+
+        //绘制空心块
+        ctx.beginPath();
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = '10';
+        ctx.strokeRect(100, 100, 200, 200);
+
+        ctx.strokeRect(100, 400, 150, 150);
+
+        //绘制实心块
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(400, 100, 150, 150);
+
+        /*
+        * ctx.strokeRect
+        * ctx.fillRect
+        *
+        * x,y: 要绘制这个矩形的左上角在画布中的位置。
+        *
+        * width和height：要绘制的矩形的宽和高。
+        *
+        * 于线有关的绘制，都是stroke系列
+        * 于填充有关的绘制，都是fill系列
+        * */
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: grey;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="box1"></div>
+			<div class="box2"></div>
+			<div class="box3"></div>
+		</div>
+		<div class="item"></div>
+
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			//删除节点本身
+			//$('.wrap').remove();
+			
+			//在删除的同时过滤，下面这个实例代表从页面中所有的div里删除类名为box1 的元素
+			$('div').remove('.box1');
+			
+			//清空这个元素的所有内容，类似于js原生中的eleinnerHTML = '';
+			$('.wrap').empty();
+		</script>
+	</body>
+
+</html>

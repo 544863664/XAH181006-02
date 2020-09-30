@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>萨贝尔曲线绘制</title>
+    <style>
+        #mc {
+            display: block;
+            box-shadow: 0 0 30px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    var ctx = mc.getContext('2d');
+
+    var startPoint = {
+        x: 300,
+        y: 400,
+        type: 'startPoint'
+    };
+    var endPoint = {
+        x: 300,
+        y: 300,
+        type: 'endPoint'
+    };
+    var controlFirst = {
+        x: 500,
+        y: 500,
+        type: 'controlFirst'
+    };
+    var controlSecond = {
+        x: 700,
+        y: 200,
+        type: 'controlSecond'
+    };
+    var r = 20;
+    //
+    function drawInit() {
+        //绘制四个可拖动的圆
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(startPoint.x, startPoint.y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = '#d43334';
+        ctx.arc(endPoint.x, endPoint.y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = '#45fdee';
+        ctx.arc(controlFirst.x, controlFirst.y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = '#45fdee';
+        ctx.arc(controlSecond.x, controlSecond.y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+    }
+    drawInit();
+    function drawBezier() {
+        ctx.beginPath();
+        ctx.moveTo(startPoint.x, startPoint.y);
+        ctx.bezierCurveTo(controlFirst.x, controlFirst.y, controlSecond.x, controlSecond.y, endPoint.x, endPoint.y);
+        ctx.strokeStyle = '#f00';
+        ctx.stroke();
+    }
+    drawBezier();
+    function drawValue() {
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.font = '20px 雅黑';
+        ctx.fillText('开始点：('+ startPoint.x +', '+ startPoint.y +')', 10, 30);
+
+        ctx.fillStyle = '#d43334';
+        ctx.font = '20px 雅黑';
+        ctx.fillText('结束点：('+ endPoint.x +', '+ endPoint.y +')', 10, 60);
+
+        ctx.fillStyle = '#45fdee';
+        ctx.font = '20px 雅黑';
+        ctx.fillText('控制点：('+ controlFirst.x +', '+ controlFirst.y +')', 10, 90);
+
+        ctx.fillStyle = '#45fdee';
+        ctx.font = '20px 雅黑';
+        ctx.fillText('控制点：('+ controlSecond.x +', '+ controlSecond.y +')', 10, 120);
+
+    }
+    drawValue();
+
+    //为画布绑定拖动事件
+    mc.onmousedown = function (dev) {
+        //按下鼠标瞬间的坐标，判断是否要进行拖动
+        var de = dev || window.event;
+        var mdx = de.offsetX, mdy = de.offsetY;
+        var pointArr = [startPoint, endPoint, controlFirst, controlSecond];
+        var changePoint = null;
+        for (var i = 0; i < pointArr.length; i++) {
+            var p = pointArr[i];
+            //求鼠标按下的 位置和当前循环到的点的距离，小于半径证明在圆上，可进行拖动
+            var dis = Math.sqrt(Math.pow(p.x - mdx, 2) + Math.pow(p.y - mdy, 2));
+            if (dis < r) {
+                //可拖动
+                changePoint = p.type;
+                break;
+            }
+        }
+        //不可托动
+        if (i == pointArr.length) return;
+        mc.onmousemove = function (ev) {
+            //清除画布
+            ctx.clearRect(0, 0, 1000, 600);
+            var e = ev || window.event;
+            //鼠标移动时的坐标
+            var mx = e.offsetX, my = e.offsetY;
+            window[changePoint].x = mx;
+            window[changePoint].y = my;
+            //重新绘制
+            drawInit();
+            drawBezier();
+            drawValue();
+
+        };
+    };
+    mc.onmouseup = function () {
+        mc.onmousemove = null;
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

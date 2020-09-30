@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mc {
+            display: block;
+            box-shadow: 0 0 30px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    //获取画笔
+    var ctx = mc.getContext('2d');
+
+    var smallStyle = 'pink';
+
+    //
+    function drawBig() {
+        ctx.beginPath();
+        ctx.fillStyle = 'orange';
+        ctx.arc(500, 300, 100, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    //为画布绑定鼠标移动事件
+    mc.onmousemove = function (ev) {
+        //清除画布
+        ctx.clearRect(0, 0, 1000, 600);
+        var e = ev || window.event;
+        //获取鼠标的坐标
+        var mx = e.offsetX;
+        var my = e.offsetY;
+
+        drawBig();
+
+        //绘制小球
+        ctx.beginPath();
+        ctx.arc(mx, my, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = smallStyle;
+        ctx.fill();
+
+        //圆心距小于半径之和
+        var dis = Math.sqrt(Math.pow(mx - 500, 2) + Math.pow(my - 300, 2));
+        if  (dis <= 150) {
+            smallStyle = 'red';
+        } else {
+            smallStyle = 'pink';
+        }
+    };
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

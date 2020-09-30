@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型和原型链</title>
+</head>
+<body>
+<script>
+    function Animal() {};
+    Animal.prototype.mouse = 1;
+
+    function Dog() {};
+    Dog.prototype = new Animal();
+    Dog.prototype.constructor = Dog;
+    Dog.prototype.voice = '汪汪汪';
+
+    function Bomei() {};
+    Bomei.prototype = new Dog();
+    Bomei.prototype.constructor = Bomei;
+
+    var bomei = new Bomei();
+    console.log(bomei);
+
+    /*
+    * 原型：
+    * 1.原型是类的构造函数的一个子对象。
+    * 2.包含了当前这个类中所有对象都有且值都一样的属性和方法。
+    * 3.还包含了狗构造函数。
+    * 4.因为prototype本身是一个对象，所以也包含了prototype这个对象自己的prototype。
+    *
+    * 原型链：
+    * 1.我们可以使用原型继承，让代码逻辑上具有父子类关系的若干和类实现一条继承链。
+    * 2.当这样的继承链形成时，从最小的这个类中实例化出的对象的原型会指向从父类中实例化
+    * 出的子类prototype的这个对象，这个对象的原型会继续指向，层层指向形成原型链。
+    * 3.原型链中最大的祖先是Object。
+    * */
+</script>
+</body>
+</html>

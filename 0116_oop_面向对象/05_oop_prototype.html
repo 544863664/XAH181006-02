@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>oop_prototype</title>
+	</head>
+<body>
+		<script type="text/javascript">
+			//声明一个构造函数
+			function GirlFriend(height, age, skin) {
+				//私有属性和私有方法
+				var flag = true;
+				var fn = function () {};
+
+				//为类绑定属性和行为
+				this.height = height;
+				this.age = age;
+				this.skin = skin;
+				this.action = function () {
+					console.log('吃');
+					console.log('喝');
+					console.log('玩');
+					console.log('美');
+				};
+			}
+			//使用prototype为类绑定原型的属性和行为
+			GirlFriend.prototype = {
+				sex: '女',
+				sing: function () {
+					console.log('i can sing');
+				}
+			}
+
+			var g1 = new GirlFriend('175', 25, 'yellow');
+			var g2 = new GirlFriend('160', 20, '#000');
+			var g3 = new GirlFriend('160', 18, '#fff');
+			console.log(g1);
+			console.log(g2);
+			console.log(g3);
+
+			/*
+			 使用var在类的构造函数内部声明的局部变量和方法叫做私有属性和私有方法。
+			 使用this为类声明共有属性和共有方法；
+			 使用prototype为类声明原型属性和原型方法。
+
+			 私有属性和私有方法只能再类的构造函数内部访问，一般情况下，用来做一些代码的计算和控制。
+
+			 共有属性和公有方法和原型属性原型方法的区别：
+			 1.公有属性和公有方法会伴随new实例化对象和这个对象一起写入内存。
+			 2.原型属性和原型方法会被声明在构造函数的prototype这个对象中，
+			 作为公共的数据，可被任何一从这个类中实例化出的数据调用。并不会随着实例化对象写入内存。
+			 注：
+			 	1.一般情况下，从一个类中实例化出的如干对象，属性都相同，但是值几乎都不一样，
+			 	这所有对象都有，但是值都不一样的属性和行为用this声明称公有的属性。
+			 	2.一般情况下，从一个类中实例化出如干对象，方法内的代码一模一样的，那么为了
+			 	提高代码性能，种种所有的对象都有，且值都一模一样的属性和行为用prototype声明是、成原型的
+			 	 * */
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+<!---->

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px grey;
+            background: #0f0f0f;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    //获取画笔
+    var ctx = mc.getContext('2d');
+
+    var ballArr = []; //所有小球的承接数组
+
+    var mx, my; //鼠标的位置
+
+    //随机数函数
+    function rn(max, min) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+
+    /*
+    1.绘制若干个小球
+    2.让每个小球实现碰壁反弹
+    3.当两个小球之间的距离到达指定长度是，在这两个小球之间绘制一条线。
+    */
+    /*由于每个小球碰壁反弹都需要坐标，半径，颜色，速度，等值，且每个
+    小球的这些值都不一样，如果是普通的变量，那就需要大量的代码实现，
+    所以我们可以结合面向对象的编程思想实现这样的效果。*/
+
+    //封装一个小球类
+    function Ball(ox, oy, r, bg, vx, vy) {
+        //添加公有属性
+        this.x = ox;
+        this.y = oy;
+        this.r = r;
+        this.bg = bg;
+        this.vx = vx;
+        this.vy = vy;
+    }
+
+    //为小球类添加原型方法
+    Ball.prototype.move = function () {
+        //改变x，y让小球重新绘制
+        //this指向当前调用move函数的这个对象（从类中实例化的对象才可以调）
+        this.x += this.vx;
+        this.y += this.vy;
+        //绘制
+        ctx.beginPath();
+        ctx.fillStyle = this.bg;
+        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+        ctx.fill();
+        //跟据小球当前的x和y，判断是与否需要反弹（改变vx和vy）
+        if (this.x < this.r || this.x > 1000 - this.r) this.vx *= -1;
+        if (this.y < this.r || this.y > 600 - this.r) this.vy *= -1;
+    };
+
+    //实例化若干个小球对象
+    function getBall() {
+        for (var i = 0; i < 200; i++) {
+            var r = rn(3, 5);
+            var x = rn(r, 1000 - r);
+            var y = rn(r, 600 - r);
+            var vx = rn(3, -8);
+            vx = vx == 0 ? -1 : vx;
+            var vy = rn(2, -8);
+            vy = vy == 0 ? 1 : vy;
+            var bg = 'rgba('+ rn(0, 255) +','+ rn(0, 255) +','+ rn(0, 255) +','+ Math.random() +')';
+            var ball = new Ball(x, y, r, bg, vx, vy);
+            ballArr.push(ball);
+        }
+    }
+    getBall();
+
+    //频率绘制函数
+    function draw() {
+        ctx.clearRect(0, 0, 1000, 600); //清除画布
+        //让所有的小球都移动
+        for (var i in ballArr) {
+            ballArr[i].move();
+        }
+        drawLine(); //跟据鼠标的位置，让满足条件的小球两两画线
+        requestAnimationFrame(draw);
+    }
+    draw();
+    
+    //鼠标再画布上的位置
+    function drawLine() {
+        //承接所有符合条件的小球
+        var disBallArr = [];
+        //获取距离鼠标150px之内的所有小球
+        for (var i in ballArr) {
+            //求每个小球和鼠标的距离，满足条件，添加到disBallArr
+            var dis = Math.sqrt(Math.pow(mx - ballArr[i].x, 2) + Math.pow(my - ballArr[i].y, 2));
+            /*当鼠标未移入canvas画布时，mx和my的值都是undefined，这个值参与了求平方，以及平方根的运算，运算结
+            果时NaN，也就是说，当鼠标未移入画布时，dis的值时NaN，NaN和任何数据做比较运算，拿到的值都是false，
+            也就是下面的if条件false，disBallArr是空数组，就不会画线。*/
+            if (dis <= 150) {
+                disBallArr.push(ballArr[i]);
+            }
+        }
+        // 让这些小球两两连线
+        for (var m = 0; m < disBallArr.length; m++) {
+            for (var n = m + 1; n <disBallArr.length; n++) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba('+ rn(0, 255) +','+ rn(0, 255) +','+ rn(0, 255) +','+ rn(0.2, 1) +')';
+                ctx.moveTo(disBallArr[m].x, disBallArr[m].y);
+                ctx.lineTo(disBallArr[n].x, disBallArr[n].y);
+                ctx.stroke();
+            }
+        }
+    }
+
+    mc.onmousemove = function (ev) {
+        //获取鼠标基于canvas的位置
+        var e = ev || window.event;
+        mx = e.offsetX;
+        my = e.offsetY;
+    };
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

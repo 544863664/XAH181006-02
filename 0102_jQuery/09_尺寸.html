@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: #EEEEEE;
+				padding: 50px;
+				border: 10px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			//width 不包含padding和border
+			console.log($('.wrap').width()); 
+			console.log($('.wrap').height());
+			
+			//width和height可以快速设置元素的宽和高
+			$('.wrap').width(600);
+			
+			//innerwidth和innerheight包含padding
+			console.log($('.wrap').innerWidth());
+			console.log($('.wrap').innerHeight());
+			
+			//outerwidth和outerheight包含padding和border
+			console.log($('.wrap').outerWidth());
+			console.log($('.wrap').outerHeight());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+
+.lgd-wrap {
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    position: absolute;
+    left: calc(50% - 200px);
+    top: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.lgd-title {
+    padding: 8px 16px;
+    background: #EEEEEE;
+}
+.lgd-title button {
+    float: right;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 1px;
+}
+.lgd-content {
+    padding: 16px;
+}
+.lgd-content .lgd-message {
+    text-align: center;
+    padding: 0;
+    margin: 20px 0 60px;
+}
+.lgd-btns {
+    margin-top: 20px;
+    text-align: center;
+}
+.lgd-btns>div {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+}
+.lgd-exit {
+    background: #EEEEEE;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.lgd-OK {
+    background: #CCCCCC;
+    margin-left: 10px;
+    cursor: pointer;
+}

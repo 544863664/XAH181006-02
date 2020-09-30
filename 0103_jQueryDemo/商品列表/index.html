@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表</title>
+		<style type="text/css">
+			.wrap {
+				width: 1200px;
+				margin: 20px auto;
+			}
+			
+			.wrap .box {
+				width: 1000px;
+				margin: 0 auto;
+			}
+			
+			.box>img {
+				width: 100%;
+				height: 500px;
+				border-radius: 5px;
+			}
+			
+			h3>span {
+				font-size: 14px;
+			}
+			
+			.box .list {
+				width: 100%;
+				margin-top: 10px;
+			}
+			
+			.box .list>div {
+				width: 230px;
+				display: inline-block;
+				vertical-align: text-top;
+				margin: 10px;
+				border-radius: 10px;
+				font-size: 12px;
+				cursor: pointer;
+			}
+			.list>div>p {
+				font-size: 17px;
+				margin: 10px 0;
+				padding-left: 5px;
+			}
+			.list>div img {
+				width: 100%;
+				border-radius: 6px;
+			}
+			
+			.list>div mark {
+				background: none;
+				margin-top: 10px;
+				font-size: 14px;
+				color: #666;
+				padding-left: 5px;
+			}
+			
+			.list>div>div {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px 0;
+				border-bottom: 1px dashed grey;
+			}
+			
+			.list>div>div span {
+				padding: 0 8px;
+				border: 1px solid saddlebrown;
+				color: saddlebrown;
+				border-radius: 30px;
+				margin-left: 5px;
+				margin-bottom: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!--<div class="box">
+				<h3>新品<span>/专区</span></h3>
+				<img src="img/big.jpg" alt="" />
+				<div class="list">
+					<div>
+						<img src="img/1.jpg" alt="" />
+						<p>浅草</p>
+						<mark>你过来呀</mark>
+						<div>
+							<span>标签1</span>
+							<span>标签2</span>
+						</div>
+						<span>199</span>
+					</div>
+				</div>-->
+		</div>
+		</div>
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				//取数据
+				var goodList = localStorage.goodList;
+				console.log(goodList);
+				//将取出的字符串转换成数组（方便循环操作）
+				var arr = JSON.parse(goodList);
+				console.log(arr);
+				for(i in arr) {
+					//创建box
+					$('.wrap').append($('<div class="box box' + i + '"></div>'));
+					$('.box' + i).append($('<h3>'+ arr[i].title +'<span>/专区</span></h3>'));
+					$('.box' + i).append($('<img src="'+ arr[i].bigImg +'" />'));
+					$('.box' + i).append($('<div class="list"></div>'));
+					//列表信息
+					var listArr = arr[i].list;
+					for (j in listArr) {
+						//创建一条商品信息
+						var newEle = '<div><img src="'+ listArr[j].imgurl +'"><p>'+ listArr[j].name +'</p><mark>'+ listArr[j].descript +'</mark><div class="label'+ j +'"></div><span>'+ listArr[j].price +'</span></div>'
+						//将商品信息添加到当前box所对应的list中
+						$('.box' + i + ' .list').append($(newEle));
+						//创建当前商品的标签
+						var lableArr = listArr[j].lables;
+						for (label of lableArr) {
+							$('.box' + i +' .list .label' + j).append($('<span>'+ label +'</span>'));
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

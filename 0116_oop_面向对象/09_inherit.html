@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //声明一个动物类
+    function Animal(legs) {
+        this.type = '动物';
+        this.legs = legs;
+        this.eat = function () {};
+    }
+    Animal.prototype.run = function () {
+        console.log('我想回家');
+    }
+    function Dog() {
+        //让Dog继承Animal的属性和行为
+        /*
+        * 以下实例的执行步骤：
+        * 1.让Animal作为一个普通函数被调用。
+        * 2.Animal执行过程中，如果存在this，就将Animal中的this，用当前Dog中的this替换。
+        * 3.为Dog中的this绑定了Animal中的公有属性和公有方法。
+        * */
+        //Animal.call(this, 4);
+        Animal.apply(this, [4]);
+        this.voice = '汪汪汪';
+    }
+    var d1 = new Dog();
+    console.log(d1);
+    /*
+    * 1.call和apply继承只能继承到公有属性和公有方法。
+    * */
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!---->

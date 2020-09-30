@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>苏宁易购后台管理</title>
+		<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+
+		<style type="text/css">
+			.layui-layout-admin .layui-logo {
+				line-height: 15px;
+				font-size: 20px;
+				padding-top: 15px;
+				color: #FF5500;
+			}
+			
+			table tr td:first-child {
+				padding: 0 0;
+				width: 50px;
+				height: 50px;
+			}
+			
+			table tr td:first-child>img {
+				width: 46px;
+				height: 46px;
+				margin-left: 7px;
+			}
+			
+			table tr td:nth-child(2) {
+				width: 330px;
+				height: 48px;
+				padding-left: 10px;
+			}
+			
+			table tr td:nth-child(2)>div {
+				height: 20px;
+				overflow: hidden;
+			}
+			
+			table tr td:last-child {
+				text-align: center;
+			}
+			table tr td:last-child>button {
+				margin: 2px;
+			}
+		</style>
+	</head>
+
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo logo">
+					苏宁易购
+					<p>suning.com</p>
+				</div>
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item">
+						<a href="####">控制台</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="####">商品管理</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="####">用户</a>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							<img src="../img/shequ/25.jpg" class="layui-nav-img"> 贤心
+						</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="####">基本资料</a>
+							</dd>
+							<dd>
+								<a href="####">安全设置</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="">退出</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item layui-nav-itemed">
+							<a class="" href="javascript:;">所有商品</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">列表一</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">列表二</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;">解决方案</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">列表一</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">列表二</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="####">云市场</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="####">发布商品</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<!--商品添加按钮-->
+					<button class="btn btn-warning" data-toggle="modal" data-target="#addModal">
+							<span class="glyphicon glyphicon-plus"></span>
+							商品添加
+					</button>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th rowspan="2" style="text-align: center; width: 60px;">图片</th>
+								<th colspan="5" style="text-align: center;">商品详情</th>
+								<th rowspan="2" style="text-align: center;">备注</th>
+								<th rowspan="2" style="text-align: center;">操作</th>
+							</tr>
+							<tr>
+								<th style="text-align: center;">名称</th>
+								<th style="text-align: center;">价格</th>
+								<th style="text-align: center;">优惠</th>
+								<th style="text-align: center;">颜色</th>
+								<th style="text-align: center;">尺码</th>
+							</tr>
+
+						</thead>
+							<tr>
+								<td>
+									<img src="img/s1/6.jpg" />
+								</td>
+								<td>
+									<div>罗西尼唯美花样璀璨石英女表</div>
+								</td>
+								<td>￥343.00</td>
+								<td>￥0.00</td>
+								<td>黑色，浅咖啡，浅绿，深蓝</td>
+								<td>S,M,L,XL,2XL,3XL</td>
+								<td></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#eitherModal">编辑</button>
+									<button class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/s1/7.jpg" />
+								</td>
+								<td>
+									<div>百年宝诚 S990足银手镯女圆手环镂空银饰甜美时尚瑞丽花丝银镯子 花瓣款</div>
+								</td>
+								<td>￥855.00</td>
+								<td>￥0.00</td>
+								<td>黑色，浅咖啡，浅绿，深蓝</td>
+								<td>S,M,L,XL,2XL,3XL</td>
+								<td></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#eitherModal">编辑</button>
+									<button class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/s1/8.jpg" />
+								</td>
+								<td>
+									<div>鸿星尔克男运动鞋 跑步鞋 男常规跑鞋FD11114203414 青铜灰/金 42码</div>
+								</td>
+								<td>￥433.00</td>
+								<td>￥0.00</td>
+								<td>黑色，浅咖啡，浅绿，深蓝</td>
+								<td>S,M,L,XL,2XL,3XL</td>
+								<td></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#eitherModal">编辑</button>
+									<button class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/s1/9.jpg" />
+								</td>
+								<td>
+									<div>探路者秋冬男式保暖厚实连帽套头卫衣TAUC91565 TAUC91565-G15X深花灰 XL</div>
+								</td>
+								<td>￥325.00</td>
+								<td>￥0.00</td>
+								<td>黑色，浅咖啡，浅绿，深蓝</td>
+								<td>S,M,L,XL,2XL,3XL</td>
+								<td></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#eitherModal">编辑</button>
+									<button class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/s1/10.jpg" />
+								</td>
+								<td>
+									<div>战地吉普男士长袖T恤 2018秋装针织T恤 圆领青年打底衫 天蓝色 L</div>
+								</td>
+								<td>￥234.00</td>
+								<td>￥0.00</td>
+								<td>黑色，浅咖啡，浅绿，深蓝</td>
+								<td>S,M,L,XL,2XL,3XL</td>
+								<td></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#eitherModal">编辑</button>
+									<button class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+						<!---->
+					</table>
+				</div>
+			</div>
+			<!-- 编辑模态框（Modal） -->
+			<div class="modal fade" id="eitherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="eitherModalLabel">编辑商品</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>商品图片：</label>
+								<input type="text" class="form-control eitherImg" />
+							</div>
+							<div class="form-group">
+								<label>商品名称：</label>
+								<input type="text" class="form-control eitherName" />
+							</div>
+							<div class="form-group">
+								<label>商品价格：</label>
+								<input type="text" class="form-control eitherPrice" />
+							</div>
+							<div class="form-group">
+								<label>商品优惠：</label>
+								<input type="text" class="form-control eitherPreferential" />
+							</div>
+							<div class="form-group">
+								<label>商品颜色：</label>
+								<input type="text" class="form-control eitherColor" />
+							</div>
+							<div class="form-group">
+								<label>商品尺码：</label>
+								<input type="text" class="form-control eitherSize" />
+							</div>
+							<div class="form-group">
+								<label>备注：</label>
+								<input type="text" class="form-control eitherNote" />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
+			<!-- 添加模态框（Modal） -->
+			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="addModalLabel">添加商品</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>商品图片：</label>
+								<input type="text" class="form-control addImg" />
+							</div>
+							<div class="form-group">
+								<label>商品名称：</label>
+								<input type="text" class="form-control addName" />
+							</div>
+							<div class="form-group">
+								<label>商品价格：</label>
+								<input type="text" class="form-control addPrice" />
+							</div>
+							<div class="form-group">
+								<label>商品优惠：</label>
+								<input type="text" class="form-control addPreferential" />
+							</div>
+							<div class="form-group">
+								<label>商品颜色：</label>
+								<input type="text" class="form-control addColor" />
+							</div>
+							<div class="form-group">
+								<label>商品尺码：</label>
+								<input type="text" class="form-control addSize" />
+							</div>
+							<div class="form-group">
+								<label>备注：</label>
+								<input type="text" class="form-control addNote" />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary addGoodBtn" data-dismiss="modal">添加</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
+
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				<p class="ng-copyright" style="color: #999999;">
+					Copyright© 2002-2019 ，电子商务有限公司版权所有 885551号
+					<span>|</span> 合字B2-20180025
+					<span>|</span> 合字A1.B1.B2-20180017
+					<span>|</span>
+					<a href="####">苏ICP备10207551号-4</a>
+					<span>|</span>
+					<a href="####">
+						<img src="../img/154529778410088431.png" alt="" /> 苏公网安备 32010202010078号
+					</a>
+				</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+		<script src="../layui-v2.4.5/layui/js/layui.all.js"></script>
+		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="manage.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+
+			});
+			layui.use('table', function() {
+				var table = layui.table;
+
+			});
+		</script>
+
+	</body>
+
+</html>

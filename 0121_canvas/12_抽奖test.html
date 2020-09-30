@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            box-shadow: 0 0 20px grey;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+    <canvas id="mc" width="600" height="600"></canvas>
+    <button id="btn">停止</button>
+    <button id="btn1">开始</button>
+    <script>
+        /*
+        *   1.循环这个数组，取出每一个元素，将其绘制在名称上。
+            2.在绘制当前姓名之前，要随机生成器位置，这个位置的范围跟圆心和即将要绘制的这个球的半径有关，
+            3.绘制，
+            4.利用requestanimationframe函数实现不停的绘制，
+            5.实现3d视觉效果
+                先绘制的文字，字体较小，透明度比较低，
+                后绘制的文字，字体较大，透明度比较高。
+            6.加控制按钮，抽奖：一等奖，二等奖，三等奖
+         */
+
+        //获取画布
+        var mc = document.getElementById('mc');
+        var btn = document.getElementById('btn');
+        var btn1 = document.getElementById('btn1');
+        //获取画笔
+        var ctx = mc.getContext('2d');
+
+        var ballArr = []; //所有小球的承接数组
+        //var prizeArr = ['一等奖','二等奖','三等奖','四等奖','五等奖','六等奖'];
+
+        //随机数函数
+        function rn(max, min) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        /*
+        1.绘制若干个小球
+        2.让每个小球实现碰壁反弹
+        3.当两个小球之间的距离到达指定长度是，在这两个小球之间绘制一条线。
+        */
+        /*由于每个小球碰壁反弹都需要坐标，半径，颜色，速度，等值，且每个
+        小球的这些值都不一样，如果是普通的变量，那就需要大量的代码实现，
+        所以我们可以结合面向对象的编程思想实现这样的效果。*/
+
+
+        //封装一个小球类
+        function Ball(ox, oy, r, bg, vx, vy) {
+            //添加公有属性
+            this.x = ox;
+            this.y = oy;
+            this.r = r;
+            this.bg = bg;
+            this.vx = vx;
+            this.vy = vy;
+        }
+
+        //为小球类添加原型方法
+        Ball.prototype.move = function () {
+            //改变x，y让小球重新绘制
+            //this指向当前调用move函数的这个对象（从类中实例化的对象才可以调）
+            this.x += this.vx;
+            this.y += this.vy;
+            //绘制
+            ctx.beginPath();
+            ctx.fillStyle = this.bg;
+            ctx.font = '20px Airal';
+            ctx.fillText(this.r + '等奖', this.x, this.y);
+            ctx.fill();
+
+            //跟据小球当前的x和y，判断是与否需要反弹（改变vx和vy）
+            var dis = Math.sqrt(Math.pow(this.x - 300, 2) + Math.pow(this.y - 300, 2));
+            //console.log(dis);
+            if (dis > 250) {
+                this.vx *= -1;
+                this.vy *= -1;
+            }
+        };
+
+        //实例化若干个小球对象
+        function getBall() {
+            for (var i = 0; i < 50; i++) {
+                var r = rn(1, 6);
+                var x = rn(110, 480);
+                var y = rn(110, 480);
+                var vx = rn(10, -5);
+                vx = vx == 0 ? 1 : vx;
+                var vy = rn(10, -5);
+                vy = vy == 0 ? 1 : vy;
+                var bg = 'rgba('+ rn(0, 255) +','+ rn(0, 255) +','+ rn(0, 255) +','+ Math.random() +')';
+                var ball = new Ball(x, y, r, bg, vx, vy);
+                ballArr.push(ball);
+            }
+        }
+        getBall();
+
+        //频率绘制函数
+        var globalID;
+        function draw() {
+            cancelAnimationFrame(globalID);
+            ctx.clearRect(0, 0, 600, 600); //清除画布
+            ctx.beginPath();
+            ctx.strokeStyle = '#000';
+            ctx.arc(300, 300, 300, 0, 2 * Math.PI);
+            ctx.stroke();
+            //让所有的小球都移动
+            for (var i in ballArr) {
+                ballArr[i].move();
+            }
+            globalID = requestAnimationFrame(draw);
+        }
+        var over = false;
+        btn1.onclick = function () {
+            draw();
+            over = true;
+        };
+        btn.onclick = function () {
+            if (over == true) {
+                cancelAnimationFrame(globalID);
+                ctx.beginPath();
+                ctx.fillStyle = 'red';
+                ctx.font = '40px Airal';
+                ctx.fillText(rn(1, 6) + '等奖', rn(200, 400), rn(200, 400));
+                ctx.fill();
+            }
+
+        };
+
+
+
+
+    </script>
+</body>
+</html>

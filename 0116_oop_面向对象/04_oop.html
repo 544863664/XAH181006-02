@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>oop</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 构造函数：js实现面向对象思想的最直接的方式
+			 * */
+			
+			//声明一个类（创建一个构造函数）
+			function Author(name, mj) {
+				//通过this对象，实现类的属性和行为的声明
+				this.name = name;
+				this.mj = mj;
+				this.sing = function () {
+					console.log(this.name + '的名句是' + this.mj);
+				};
+			}
+			//从类中实例化一个对象（通过new关键词，调用构造函数，拿到的返回值，这个返回值就是实例化成功之后的那个对象）。
+			var obj = new Author('白居易', '天长地久有时尽，此恨绵绵无绝期');
+			console.log(obj);
+			
+			function People() {
+				this.eyes = 2;
+				this.run = function () {};
+				console.log('text');
+			}
+			People();
+			//因为将people作为一个普通函数调用的时候，people中的this就会指向当前调用这个函数的上下文环境，
+			//一下势力中指向的就是window，所以eyes就会变成一个全局变量，run会变成一个全局的函数。
+			//在研发过程中，不建议这样调用一个类的构造函数。
+			console.log(eyes);
+			run();
+			
+			function Man() {
+				this.ifSmoke = true;
+				this.run = function () {};
+				return 100;
+			}
+			var m1 = new Man();
+			console.log(m1);
+			
+			
+			/*
+			 当使用new关键词调用函数（从一个类的构造中，实例化的一个对象）时，new关键词的作用：
+			 	（1）将函数中的this变成一个空对象；
+			 	（2）执行为this绑定属性和行为的代码；
+			 	（3）将this这个对象作为当前new关键词调用这个构造函数的返回值。
+			 注：
+			 	（1）在实例化对象的这个过程中，特殊的并不是构造函数，而是new关键词对于函数的调用过程。
+			 	（2）如果代码有需要，可以将这个构造函数作为一个普通的函数去使用。
+			 	（3）this的置空和返回并不是我们操作的，是代码自动形成的。
+			 	（4）new关键词的目的，是从一个构造函数中，拿到一个对象。如果我们通过代码为一个构造函数
+			 	设置了一个返回值时，new关键词在实例化对象时，会对我们添加的这个返回值做一个判断，如果其
+			 	类型是对象，那就拿到我们手动返回的这个对象，如果器其型不是对象，那还是返回this。
+			 * */
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

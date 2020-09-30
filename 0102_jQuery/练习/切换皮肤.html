@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>切换皮肤</title>
+		<style type="text/css">
+			.checkBox {
+				border: 1px solid #DDDDDD;
+				width: 300px;
+				padding: 7px;
+			}
+			.checkBox>div {
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				margin-right: 8px;
+				background-image: url(img/1.gif);
+			}
+			.checkBox>div:nth-child(1) {
+				background-position: 0 100%;
+			}
+			.checkBox>div:nth-child(2) {
+				background-position-x: 20%;
+			}
+			.checkBox>div:nth-child(3) {
+				background-position-x: 40%;
+			}
+			.checkBox>div:nth-child(4) {
+				background-position-x: 60%;
+			}
+			.checkBox>div:nth-child(5) {
+				background-position-x: 80%;
+			}
+			.checkBox>div:nth-child(6) {
+				background-position-x: 100%;
+			}
+			.show div {
+				display: inline-block;
+				background: #898989;
+				width: 130px;
+				height: 50px;
+				margin-left: 10px;
+				margin-top: 10px;
+				color: #EEEEEE;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="checkBox">
+			<div data-bg="#898989"></div>
+			<div data-bg="#AFD302"></div>
+			<div data-bg="#FBA90D"></div>
+			<div data-bg="#17BFCF"></div>
+			<div data-bg="#E11556"></div>
+			<div data-bg="#BE46D8"></div>
+		</div>
+		<div class="show">
+			<div>今日头条</div>
+			<div>哈哈哈哈</div>
+		</div>
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			/*
+			var list = document.querySelectorAll('.checkBox div');
+			//js原生获取或者设置元素的自定义属性
+			var res = list[0].getAttribute('data-bg');
+			console.log(res);
+			//js原生设置
+			list[0].setAttribute('data-bg', '#000');
+			*/
+			
+			//jq获取或设置元素的自定义属性
+			$('.checkBox').on('click', 'div', function () {
+				//将所有的checkbox恢复初始状态
+				$('.checkBox div').css('background-position-y', '0%');
+				$(this).css('background-position-y', '100%');
+				//获取当前的div的自定义属性data-bg的值
+				//attr函数可以设置或获取标签原本就有的属性，也可以设置或获取自定义属性
+				var bg = $(this).attr('data-bg');
+				//将获取到的颜色设置成皮肤
+				$('.show div').css('background', bg);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px grey;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.getElementById('mc');
+    //获取画笔
+    var ctx = mc.getContext('2d');
+   //绘制弧度
+    ctx.beginPath();
+    ctx.strokeStyle = '#0f0';
+    //      ox   oy   r startdeg ed
+    //PI
+    ctx.arc(500, 300, 200, 0, Math.PI / 2, true);
+    ctx.stroke();
+    /*
+    * ctx.arc(ox,oy,r,startdeg,endDeg,direction);
+    * ox,oy:要绘制的弧度的圆心，在画布上的位置。
+    * r：要绘制的弧对应的半径。
+    * startdeg,endDeg：弧开始和结束的圆心角（0deg是水平方向，角度正值是顺时针旋转方向的值）。
+    * direction:默认false，顺时针绘制弧，true代表逆时针绘制。
+    * */
+
+    ctx.beginPath();
+    ctx.fillStyle = '#0f0';
+    ctx.arc(300, 300, 50, 0, Math.PI * 2);
+    ctx.fill();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

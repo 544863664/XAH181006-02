@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>oop</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var author1 = {
+				name: '李白',
+				article: ['静夜思', '将进酒', '霓裳羽衣曲'],
+				mj: '千金散发还发来',
+				write: function () {}
+			};
+			var author2 = {
+				name: '元稹',
+				article: ['柳枝', ],
+				mj: '曾经沧海难为水，除却巫山不是云',
+				write: function () {}
+			};
+			var author3 = {
+				name: '屈原',
+				article: ['离骚', ],
+				mj: '路漫漫兮其修远，吾将上下而求索',
+				write: function () {}
+			};
+			var author4 = {
+				name: '李商隐',
+				article: ['离思', ],
+				mj: '相见时难别亦难，东风无力百花残，春蚕到死丝方尽蜡炬成灰泪始干',
+				write: function () {}
+			};
+			
+			function getAuthor(name, article, mj, write) {
+				return {
+					name: name,
+					article: article,
+					mj: mj,
+					write: write
+				}
+			}
+			var author5 = getAuthor('杜甫', [], '', function () {
+				console.log('我是杜甫，我爱李白');
+			});
+			console.log(author5);
+			author5.write();
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

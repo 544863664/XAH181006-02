@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas画板</title>
+	<script src="../jquery-3.3.1.js"></script>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		div {
+			width:1000px;
+			height:650px;
+			border-radius: 5px;
+			box-shadow: 0 0 20px grey;
+			margin: 20px auto;
+		}
+		canvas {
+			border-bottom:2px solid red;
+		}
+		#btn {
+			margin-left:30px;
+		}
+		span {
+			margin-left:30px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<canvas id="cont" width="1000" height="600"></canvas>
+		<input type="button" name="" id="btn" value="清空画板">
+		<span>线条宽度</span>
+		<select id="sel">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+		<span>颜色</span>
+		<input type="color" id="col">
+	</div>
+
+	<script>
+		var myCanvas = document.getElementById("cont");
+		var txt = myCanvas.getContext("2d");
+		var btn = document.getElementById("btn");
+		var sel = document.getElementById("sel");
+		myCanvas.onmousedown = function(event) {
+			var eve = window.event || event;
+			x = eve.offsetX;
+			y = eve.offsetY;
+			txt.beginPath();
+			txt.moveTo(x, y);
+			txt.lineWidth = sel.value;
+
+			myCanvas.onmousemove = function(event) {
+				var eve = window.event || event;
+				mx = eve.offsetX;
+				my = eve.offsetY;
+				txt.lineTo(mx, my);
+				txt.strokeStyle = $(col).val();
+				txt.stroke();
+			}
+		};
+		myCanvas.onmouseup = function() {
+			myCanvas.onmousemove = null;
+		};
+		btn.onclick = function() {
+			txt.clearRect(0, 0, 1000, 600);
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>后台管理页面</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-4.2.1-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<style type="text/css">
+			body {
+				padding: 30px;
+			}
+			
+			.loopM,
+			.userM {
+				display: none;
+			}
+			
+			.Btn {
+				margin-left: 5px;
+			}
+			
+			tr td:last-child {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<!--左边 菜单列表-->
+				<div class="col-md-2 btns">
+					<button data-flag="goodM" class="btn btn-default btn-block">商品管理</button>
+					<button data-flag="loopM" class="btn btn-default btn-block">轮播图管理</button>
+					<button data-flag="userM" class="btn btn-default btn-block">用户管理</button>
+				</div>
+				<!--管理区域，对应左边的菜单-->
+				<div class="col-md-10" style="border: 1px solid #95999C; border-radius: 5px;">
+					<div class="man goodM">
+						<button class="btn btn-warning" data-toggle="modal" data-target="#addGood" style="margin: 5px 0;">
+							<span class="glyphicon glyphicon-plus"></span>
+							添加商品
+						</button>
+						<table class="table">
+							<tr class="tabTh">
+								<td>图片</td>
+								<td>名称</td>
+								<td>描述</td>
+								<td>标签</td>
+								<td>价格</td>
+								<td class="work">操作</td>
+							</tr>
+
+						</table>
+					</div>
+					<div class="man loopM">轮播图管理区域</div>
+					<div class="man userM">用户管理区域</div>
+				</div>
+			</div>
+		</div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">修改商品信息</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -12px;">&times;</button>
+					</div>
+					<div class="modal-body">
+						<!--商品可修改的内容-->
+						<div class="form-group">
+							<label>图片：</label>
+							<input type="text" class="form-control gImg" />
+						</div>
+						<div class="form-group">
+							<label>名称：</label>
+							<input type="text" class="form-control gName" />
+						</div>
+						<div class="form-group">
+							<label>描述：</label>
+							<input type="text" class="form-control gDesc" />
+						</div>
+						<div class="form-group">
+							<label>标签：</label>
+							<input type="text" class="form-control gLable" />
+						</div>
+						<div class="form-group">
+							<label>价格：</label>
+							<input type="text" class="form-control gPrice" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary changeMessage" data-id="" data-dismiss="modal">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		<!--添加商品模态框-->
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="addGood" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="addGoodLabel">添加新商品</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -12px;">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>图片：</label>
+							<input type="text" class="form-control aImg" />
+						</div>
+						<div class="form-group">
+							<label>名称：</label>
+							<input type="text" class="form-control aName" />
+						</div>
+						<div class="form-group">
+							<label>描述：</label>
+							<input type="text" class="form-control aDesc" />
+						</div>
+						<div class="form-group">
+							<label>标签：</label>
+							<input type="text" class="form-control aLable" />
+						</div>
+						<div class="form-group">
+							<label>价格：</label>
+							<input type="text" class="form-control aPrice" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-success addGoodBtn" data-dismiss="modal">添加</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="data.js"></script>
+		<script type="text/javascript">
+			//展示商品列表
+			var goodList = localStorage.goodList;
+			console.log(goodList);
+			//解析数据
+			var goodArr = JSON.parse(goodList);
+			console.log(goodArr);
+			//修改按钮的点击事件
+			function changeClick(a) {
+				//获取当前按钮对应的商品信息，展示在模态框中
+				$('.gImg').val($(a).parent().parent().children().eq(0).text());
+				$('.gName').val($(a).parent().parent().children().eq(1).text());
+				$('.gDesc').val($(a).parent().parent().children().eq(2).text());
+				$('.gLable').val($(a).parent().parent().children().eq(3).text());
+				$('.gPrice').val($(a).parent().parent().children().eq(4).text());
+				//获取当前商品信息的id
+				$('.changeMessage').attr('data-id', $(a).attr('id'));
+			}
+
+			//删除按钮的点击事件
+			function delGood(b) {
+				var delId = $(b).attr('id');
+				for(var i = 0; i < goodArr[0].list.length; i++) {
+					if(goodArr[0].list[i].id == delId) {
+						//从数组中删除这个数据
+						goodArr[0].list.splice(i, 1);
+						//将新的数据存入localStorage中
+						localStorage.goodList = JSON.stringify(goodArr);
+						//删除当前数据页面中的节点
+						$(b).parent().parent().remove();
+						break;
+					}
+				}
+			}
+
+			$(function() {
+
+				var listArr = goodArr[0].list; //新品商品列表
+				for(item of listArr) {
+					//新的商品
+					var newGood = '<tr><td>' + item.imgurl + '</td><td>' + item.name + '</td><td>' + item.descript + '</td><td>' + item.lables + '</td><td>'+ item.price + '</td><td><button class="btn btn-info Btn" id="' + item.id + '" data-toggle="modal" data-target="#myModal" onclick="changeClick(this)">修改</button><button class="btn btn-danger Btn" onclick="delGood(this)" id="' + item.id + '">删除</button></td></tr>';
+					$('.table').append($(newGood));
+				}
+
+				//按钮点击事件
+				$('.btns').on('click', '.btn', function() {
+					//改变当前按钮颜色
+					$('.btn').removeClass('btn-success');
+					$(this).addClass('btn-success');
+					//展示对应的管理区域
+					var showClass = $(this).attr('data-flag');
+					$('.man').hide();
+					$('.' + showClass).show();
+				})
+
+				//提交按钮点击事件
+				$('.changeMessage').click(function() {
+					//获取当前修改商品的id
+					var id = $(this).attr('data-id');
+					console.log(id);
+					for(var i = 0; i < goodArr[0].list.length; i++) {
+						if(goodArr[0].list[i].id == id) {
+							//找到当前id所对应的商品，修改信息
+							goodArr[0].list[i].imgurl = $('.gImg').val();
+							goodArr[0].list[i].name = $('.gName').val();
+							goodArr[0].list[i].descript = $('.gDesc').val();
+							goodArr[0].list[i].lables = $('.gLable').val().split(',');
+							goodArr[0].list[i].price = $('.gPrice').val();
+							//修改当前商品信息所在的DOM节点
+							var changeTr = $('.table tr').not('.tabTh').eq(i);
+							changeTr.children().eq(0).text($('.gImg').val());
+							changeTr.children().eq(1).text($('.gName').val());
+							changeTr.children().eq(2).text($('.gDesc').val());
+							changeTr.children().eq(3).text($('.gLable').val().split(','));
+							changeTr.children().eq(4).text($('.gPrice').val());
+							//修改localstorage
+							localStorage.goodList = JSON.stringify(goodArr);
+							break;
+						}
+					}
+				})
+				//添加按钮
+				$('.addGoodBtn').click(function() {
+					//获取所有添加输入框中的数据
+					//将这些数据整合成一个对象
+					var listArr = goodArr[0].list; //计算当前新数据的id
+					var newObj = {
+						id: listArr[listArr.length - 1].id + 1,
+						imgurl: $('.aImg').val(),
+						name: $('.aName').val(),
+						descript: $('.aDesc').val(),
+						lables: $('.aLable').val().split('，'),
+						price: $('.aPrice').val(),
+					};
+					var newId = Number(listArr[listArr.length - 1].id + 1);
+					console.log(newId);
+					//将这个新的对象push到新品对应的list中
+					goodArr[0].list.push(newObj);
+					//goodArr --> 字符串 --> 存入localStorage
+					localStorage.goodList = JSON.stringify(goodArr);
+					//将当前新添加的商品信息展示在页面上
+					var newTr = '<tr><td>' + $('.aImg').val() + '</td><td>' + $('.aName').val() + '</td><td>' + $('.aDesc').val() + '</td><td>' + $('.aLable').val() + '</td><td>'+ $('.aPrice').val() + '</td><td><button class="btn btn-info Btn" onclick="changeClick(this)" data-toggle="modal" data-target="#myModal" id="' + newId + '">修改</button><button id="' + newId + '" class="btn btn-danger Btn"  onclick="delGood(this)">删除</button></td></tr>';
+					$('table').append($(newTr));
+					//清除掉添加框里所有的内容
+					$('#addGood .form-control').val('');
+				})
+			})
+		</script>
+	</body>
+
+</html>

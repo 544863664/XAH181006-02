@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//构造函数
+			function Author(name, mj) {
+				//绑定公有的属性
+				this.name = name;
+				this.mj = mj;
+			}
+			//声明原型方法
+			Author.prototype.sing = function () {
+				//在prototype中可以使用this访问到当前实例化出来的这个对象的其他属性和行为（公有，原型）
+				console.log(this.name + '说他的名句是' + this.mj);
+			}
+			var a1 = new Author('李商隐', '身无彩凤双飞翼，心有灵犀一点通');
+			a1.sing();
+		</script>
+	</body>
+</html>

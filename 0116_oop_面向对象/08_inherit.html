@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * js类的继承
+			 * 1.我们在封装类的时候，发现对于B类的封装和C类的封装由相同的代码块（例如Array和String），
+			 * 为了精练代码，可以吧B和C都有的封装提炼成一个类A，为了让这种提炼在名分上合理化，我们就说
+			 * A是B和C的父类，B和C继承了A。
+			 * 2.子类继承父类，会具有父类允许继承的属性和行为，子类也可以有自己独特的属性和行为。
+			 * 
+			 * js继承的方法：
+			 * 1.call和apply继承；
+			 * 2.拷贝继承；
+			 * 3.原型继承；*****
+			 * */
+			var obj = {
+			    num: 100,
+				arr: [],
+				str: '',
+			};
+			var num = 400;
+			function fn(n, x) {
+				console.log((this.num + n) * x);
+            }
+            //通过call函数改变fn函数这次调用时内部的this指向
+			/*
+			* 以下实例的执行步骤：
+			* 1.调用fn这个函数；
+			* 2.如果fn在执行过程中，出现this，那么this指obj。
+			* */
+			fn.call(obj, 4, 2);
+			var obj2 = {
+			    str: '锦瑟无端五十弦，一弦一柱思华年',
+			};
+			function fn2(s1, s2, s3) {
+				console.log(this.str + s1 + s2 + s3);
+            }
+            //fn2();
+			/*
+			* 以下实例的执行步骤：
+			* 1.调用fn2；
+			* 2.如果fn2调用过程中，存在this，那么this指obj2；
+			* */
+			fn2.apply(obj2, ['，庄生晓梦迷蝴蝶，望帝春心托杜鹃', '沧海月明珠有泪，蓝田日暖玉生烟。', '此情可待成追忆']);
+			/*
+			* call和apply的作用都是改变函数执行时内部代码中this的指向。
+			* fn.call（newObj，param1，param2...）；
+			* 调用fn，并且将fn中的this用newObj替换。
+			* param1~paramn指fn调用时的参数。
+			*
+			* fn.apply(newObj,[param1，param2...])；
+			* 调用fn，并且将fn中的this用newObj替换。
+			* param1~paramn指fn调用时的参数。
+			* */
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

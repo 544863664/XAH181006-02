@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas draw</title>
+</head>
+
+<body>
+<canvas id='myCanvas' width='1000' height='600'>
+    your browser does not support canvas
+</canvas>
+<script type="text/javascript">
+    var c = document.getElementById('myCanvas');
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, 1000, 600);
+    var onoff = false;
+    var oldx = -10;
+    var oldy = -10;
+    var lineColor = 'white';
+    var linw = 4;
+    c.addEventListener('mousemove', draw, true);
+    c.addEventListener('mousedown', down, false);
+    c.addEventListener('mouseup', up, false);
+
+    function down(event) {
+        onoff = true;
+        oldx = event.pageX - 10;
+        oldy = event.pageY - 10;
+    }
+
+    function up() {
+        onoff = false;
+    }
+
+    function draw(event) {
+        if (onoff == true) {
+            var newx = event.pageX - 10;
+            var newy = event.pageY - 10;
+            ctx.beginPath();
+            ctx.moveTo(oldx, oldy);
+            ctx.lineTo(newx, newy);
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = linw;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            oldx = newx;
+            oldy = newy;
+        }
+    }
+</script>
+</body>
+
+</html>

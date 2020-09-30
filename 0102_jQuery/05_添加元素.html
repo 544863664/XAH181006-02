@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: grey;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+		</div>
+
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			/*
+			 append
+			 prepend
+			 after
+			 before
+			 * */
+			$('.wrap').append('<h1>赤壁赋</h1>');
+			$('.wrap').prepend('<h1>遥想公瑾当年</h1>');
+			$('.wrap').after('<h1>小乔出嫁了</h1>');
+			$('.wrap').before('<h1>雄姿英发，羽扇纶巾</h1>');
+			/*
+			1.可以使用这四个函数添加一个，也可以传多个参数，添加多个。
+			2.这四个函数的类型，可以是一个js节点对象，也可以是一个字符串。也可以添加jq创建的节点对象。
+			* */
+			var newEle = document.createElement('div');
+			$('.wrap').append(newEle, '<h1>赤壁赋</h1>');
+			
+			//使用jq方式创建一个jq节点
+			var newEle2 = $('<div></div>');
+			$('.wrap').append(newEle2);
+		</script>
+	</body>
+
+</html>

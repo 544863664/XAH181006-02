@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 200px;
+				margin: 100px auto;
+				text-align: center;
+				background: cyan;
+			}
+			.box {
+				width: 100%;
+				line-height: 30px;
+				border-bottom: 1px solid gray;
+			}
+			.detail1,.detail2,.detail3 {
+				/*height: 30px;*/
+				display: none;
+				background: lightskyblue;
+				cursor: pointer;
+				border: 1px solid #ffffff;
+			}
+			._detail {
+				height: 30px;
+				display: block;
+				line-height: 30px;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="box box1">
+				衬衫</div>
+				<div class="box1_detail">
+					<div class="detail detail1">短袖衬衫</div>
+					<div class="detail detail1">长袖衬衫</div>
+					<div class="detail detail1">短袖T恤</div>
+					<div class="detail detail1">长袖T恤</div>
+				</div>
+			
+			<div class="box box2">
+				卫衣</div>
+				<div class="box2_detail">
+					<div class="detail detail2">短袖衬衫</div>
+					<div class="detail detail2">长袖衬衫</div>
+					<div class="detail detail2">短袖T恤</div>
+					<div class="detail detail2">长袖T恤</div>
+				</div>
+			
+			<div class="box box3">
+				裤子</div>
+				<div class="box3_detail">
+					<div class="detail detail3">短袖衬衫</div>
+					<div class="detail detail3">长袖衬衫</div>
+					<div class="detail detail3">短袖T恤</div>
+					<div class="detail detail3">长袖T恤</div>
+				</div>
+			
+		</div>
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			$('.box1').click(function () {
+				$('.box1_detail').slideToggle();
+				$('.detail1').addClass('_detail');
+			})
+			$('.box2').click(function () {
+				$('.box2_detail').slideToggle();
+				$('.detail2').addClass('_detail');
+			})
+			$('.box3').click(function () {
+				$('.box3_detail').slideToggle();
+				$('.detail3').addClass('_detail');
+			})
+			$('.detail').hover(function () {
+				$('.detail').css('background', 'lightskyblue')
+				$(this).css('background', 'dodgerblue');
+			})
+		</script>
+	</body>
+
+</html>

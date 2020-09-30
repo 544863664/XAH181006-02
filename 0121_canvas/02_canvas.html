@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        canvas {
+            display: block;
+            box-shadow: 0 0 20px grey;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<!--
+    注：
+        不能使用css样式设置的width和height，为canvas标签设置宽和高，会导致绘制效果混乱。
+        要是用width和height属性。
+-->
+<canvas id="myCanvas" width="1000" height="600"></canvas>
+<script>
+    /*
+    获取canvas
+    获取到的必须是一个js原生的节点对象。
+    */
+    var mc = document.getElementById('myCanvas');
+    //获取画笔
+    var pen = mc.getContext('2d');
+
+    /*
+    * 1.再canvas这个画布上，有坐标系的概念。
+    * 2.canvas标签的左上角，就是坐标系的（0,0）点。
+    * 3.从（0,0）点开始，往右时x的正方向，往下是y的正方向。
+    * */
+
+    //绘制线条
+    pen.lineWidth = 1; //画笔粗细
+    pen.strokeStyle = '#000'; // 绘制的颜色
+    pen.beginPath();
+    pen.moveTo(0, 0); //起点的坐标
+    pen.lineTo(1000, 600); //终点的坐标
+    pen.lineTo(500, 500); //可以继续lineTo
+    pen.closePath();
+    pen.stroke();
+    /*
+    *   每一次beginPath时，如果不对画笔和画笔颜色等进行设置，那么就会沿用
+    * 上一次的绘制效果（如果上次没有绘制，那么这次绘制就会无效反馈）。
+    * */
+    pen.beginPath();
+    pen.moveTo(100, 100);
+    pen.lineTo(800, 100);
+    pen.stroke();
+    pen.closePath();
+
+    pen.moveTo(0, 300); //moveTo函数会默认重新开始一条新的路径
+    pen.lineTo(900, 300);
+    pen.stroke();
+
+    pen.beginPath();
+    pen.strokeStyle = 'red';
+    pen.lineWidth = 10;
+    pen.moveTo(50, 300);
+    pen.lineTo(50, 400);
+    pen.moveTo(100, 300); //碰到一个moveTo，都会重新开始一条路径
+    pen.lineTo(100, 400);
+    pen.closePath();
+    pen.stroke();
+
+    //结合循环成批量的绘制线条
+    var y = 200;
+    pen.beginPath();
+    pen.strokeStyle = 'blue';
+    for (var i = 0; i < 5; i++) {
+        pen.moveTo(400, y);
+        pen.lineTo(600, y);
+        y += 50;
+    }
+    pen.closePath();
+    pen.stroke();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

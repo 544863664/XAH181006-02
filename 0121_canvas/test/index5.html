@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            background: #171a1d;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mc" width="1000" height="650"></canvas>
+    <script>
+        //获取画布
+        var mc = document.getElementById('mc');
+        var ctx = mc.getContext('2d');
+        var grd=ctx.createLinearGradient(0,0,170,0);
+        var grd2=ctx.createLinearGradient(0,0,170,0);
+        grd.addColorStop(0.2,"#755ed2");
+        grd.addColorStop(0.5,"#06dff5");
+        grd.addColorStop(1,"#06daaa");
+        grd2.addColorStop(0.2,"#b58070");
+        grd2.addColorStop(0.5,"#bb3006");
+        grd2.addColorStop(1,"#2966a2");
+        ctx.translate(500, 300);
+
+        function circle1() {
+            ctx.beginPath();
+            ctx.fillStyle = grd;
+            ctx.rotate(Math.PI / 360);
+            ctx.arc(70, 70, 45, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        function circle2() {
+            ctx.beginPath();
+            ctx.fillStyle = grd2;
+            ctx.rotate(Math.PI / 360);
+            ctx.arc(150, 150, 50, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        function draw() {
+            ctx.clearRect(-500, -300, 1000, 600);
+            ctx.beginPath();
+            ctx.strokeStyle = '#fee';
+            ctx.arc(0, 0, 115, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.strokeStyle = '#fee';
+            ctx.arc(0, 0, 220, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.fillStyle = '#3dffff';
+            ctx.arc(0, 0, 20, 0, 2 * Math.PI);
+            ctx.fill();
+            circle1();
+            circle2();
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+    </script>
+</body>
+</html>

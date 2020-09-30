@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px grey;
+            background: #0C0C0C;
+        }
+    </style>
+</head>
+<body>
+<canvas id="mc" width="1000" height="600"></canvas>
+<script>
+
+        //获取画布
+        var mc = document.getElementById('mc');
+        //获取画笔
+        var ctx = mc.getContext('2d');
+
+        var ballArr = []; //所有小球的承接数组
+
+        //随机数函数
+        function rn(max, min) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        //封装一个小球类
+        function Ball(x, y, r, vx, vy, bg) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.vx = vx;
+            this.vy = vy;
+            this.bg = bg;
+        }
+
+        Ball.prototype.move = function () {
+            //改变圆心的位置
+            this.x += this.vx;
+            this.y += this.vy;
+
+            //绘制
+            ctx.beginPath();
+            ctx.fillStyle = this.bg;
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fill();
+            //跟据x和y判断碰壁反弹
+            if (this.x < this.r || this.x > 1000 - this.r) this.vx *= -1;
+            if (this.y < this.r || this.y > 600 - this.r) this.vy *= -1;
+        };
+
+        //批量生成小球
+        function getball() {
+            for (var i = 0; i < 200; i++) {
+                var r = rn(3, 6); //半径
+                var x = rn(r, 1000 - r);
+                var y = rn(r, 600 - r);
+                var vx = rn(-3, 3);
+                vx = vx == 0 ? -1 : vx; //规避vx为0 的情况
+                var vy = rn(-3, 3);
+                vy = vy == 0 ? 1 : vy; //规避vy为0 的情况
+                var bg = 'rgba(' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ',' + Math.random() + ')';
+                var ball = new Ball(x, y, r, vx, vy, bg);
+                ballArr.push(ball);
+            }
+        }
+
+        getball();
+
+        //获取鼠标的位置
+        var mouseX, mouseY;
+        mc.onmousemove = function (ev) {
+            var e = ev || window.event;
+            mouseX = e.offsetX;
+            mouseY = e.offsetY;
+        };
+            //小球的圆心距满足指定条件，画线
+            function drawLine() {
+                for (var i = 0; i < ballArr.length; i++) {
+                    for (var j = i + 1; j < ballArr.length; j++) {
+                        //判断ballArr【i】和ballArr【j】
+                        var a = ballArr[i], b = ballArr[j];
+                        //圆心距
+                        var distance = Math.sqrt(Math.pow(a.x - mouseX, 2) + Math.pow(a.y - mouseY, 2));
+                        //圆心距小于指范围，画线
+                        if (distance <= 100) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'rgba(' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ',' + Math.random() + ')';
+                            ctx.moveTo(a.x, a.y);
+                            ctx.lineTo(mouseX, mouseY);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+
+            //不停绘制
+            function draw() {
+                ctx.clearRect(0, 0, 1000, 600); //清除画布
+                //调用所有小球move函数
+                for (var i in ballArr) {
+                    ballArr[i].move();
+                }
+                drawLine();
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

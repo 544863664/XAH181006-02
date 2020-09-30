@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞机大战</title>
+    <style>
+        canvas {
+            display: block;
+            background: #0C0C0C;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mc" width="1000" height="600"></canvas>
+<script>
+    //获取画布
+    var mc = document.querySelector('#mc');
+    //获取画笔
+    var ctx = mc.getContext('2d');
+    //获取mc的宽高
+    var mcW = mc.width, mcH = mc.height;
+
+    //全局变量
+    //我方飞机的宽高
+    var planeSize = 50;
+    //子弹的宽高
+    var bulletSize = 8;
+    //子弹的移动速度
+    var bulletV = 4;
+    //承接所有子弹的数组
+    var bulletArr = [];
+    //鼠标在画布上移动的坐标
+    var mouseX = mcW / 2;
+    //承接掉落快的数组
+    var enemyArr = [];
+    //随机函数
+    function rn(max, min) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+    //封装白块
+    function plane() {
+        ctx.beginPath();
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(mouseX - planeSize / 2, mcH - planeSize - 20, planeSize, planeSize);
+    }
+    //封装子弹类
+    function Bullet() {
+        this.x = mouseX - bulletSize / 2;
+        this.y = mcH - planeSize - 20;
+    }
+    Bullet.prototype.move = function () {
+        this.y -= bulletV;
+        //判断子弹移出画布将删除
+
+    };
+
+
+
+
+    var hz = 0;
+    //游戏绘制函数
+    function draw() {
+        hz++;
+        //清除画布
+        ctx.clearRect(0, 0, 1000, 600);
+        //绘制我方飞机
+        plane();
+        requestAnimationFrame(draw);
+    }
+    draw();
+
+
+    //
+    mc.onmousemove = function (ev) {
+        var e = ev || window.event;
+        mouseX = e.offsetX;
+        //限制我方白块 的区域
+        if (e.offsetX < planeSize / 2) {
+            mouseX = planeSize / 2;
+        } else if (e.offsetX > mcW - planeSize / 2) {
+            mouseX = mcW - planeSize / 2;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**/
+</script>
+</body>
+</html>

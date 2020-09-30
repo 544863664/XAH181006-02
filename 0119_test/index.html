@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #00CED1;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <button class="btn">切换</button>
+    <button class="btn">哈哈</button>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+<script src="my-jQuery.js"></script>
+<script>
+    //$('.box').hide();
+    //$('.box').show();
+
+    $('.btn').click(function () {
+        $('.box').toggle();
+    });
+
+    $('.box').css('background', 'orange');
+    $('.box').css({
+        borderRadius: '50%',
+        width: '400px',
+        boxShow: '0 0 10px red'
+    });
+    //一个参数
+    // $('.box').on({
+    //     click: function () {
+    //         console.log('点击');
+    //     },
+    //     mouseover: function () {
+    //         console.log('鼠标移入');
+    //     },
+    //     mouseout: function () {
+    //         console.log('鼠标移出');
+    //     }
+    // });
+    //两个参数
+    // $('.box').on('click', function () {
+    //     console.log('去甲方委派解放区分为');
+    // })
+    //三个参数
+    $('.wrap').on('click', '.box', function () {
+        console.log('哈哈哈哈哈哈哈');
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

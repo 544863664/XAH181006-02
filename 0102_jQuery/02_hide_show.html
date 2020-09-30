@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jq显示和隐藏</title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 400px;
+				background: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="btn1">按钮一</button>
+		<button class="btn2">按钮二</button>
+		<button class="btn3">切换</button>
+		<div class="wrap"></div>
+
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			$('.btn1').click(function () {
+				//$('.wrap').hide(300);
+				
+				//淡出
+				//$('.wrap').fadeOut();
+				
+				//收齐
+				$('.wrap').slideUp();
+			});
+			$('.btn2').click(function () {
+				//$('.wrap').show(3000, function () {
+					//这个函数在3秒wrap完全展示成功之后调用
+				//	alert('callback');
+				//});
+				
+				//淡入
+				//$('.wrap').fadeIn();
+				
+				//展开
+				$('.wrap').slideDown();
+			});
+			$('.btn3').click(function () {
+				//$('.wrap').toggle(2000);
+				
+				//淡入淡出切换
+				//$('.wrap').fadeToggle();
+				
+				//淡入淡出到指定的透明度
+				//$('.wrap').fadeTo(3000, .5);
+				
+				//掉落和展开切换
+				$('.wrap').slideToggle();
+			});
+		</script>
+	</body>
+
+</html>
