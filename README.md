@@ -1,8 +1,8 @@
 # XAH181006-02
 
-## XAH181006-02
+## 201811_html初级阶段
 ```
-npm install
+201811_html初级阶段
 ```
 
 ### Compiles and hot-reloads for development
