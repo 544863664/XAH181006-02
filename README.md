@@ -1,21 +1,7 @@
 # XAH181006-02
 
-### 文件分支所含知识点
+### 201904_ruby_less_typescript_react
 ```
-	HTML
-	
-	JavaScript
-	
-	jQuery
-	
-	PHP
-	
-	ES6
-	
-	Vue
-	
-	课程PPT
-	
-	......
+201904_ruby_less_typescript_react
 ```
 
