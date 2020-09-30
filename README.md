@@ -5,8 +5,20 @@
 201902_PHP全栈开发阶段
 ```
 
-### Compiles and hot-reloads for development
+### 目录
 ```
-npm run serve
+0219_AJAX
+dome
+each
+PHP01
+PHP02
+PHP03
+PHP04
+PHP04-1
+PHP05
+PHP06
+PHP07
+test
+项目（*学习仿写*）：小米数据库、小米商城
 ```
 

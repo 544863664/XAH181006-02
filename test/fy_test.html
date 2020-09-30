@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+</head>
+<body>
+<table class="layui-table">
+    <thead>
+    <td>ID</td>
+    <td>username</td>
+    <td>password</td>
+    </thead>
+    <tbody></tbody>
+</table>
+<div id="page"></div>
+<script src="../jquery-3.3.1.js"></script>
+<script src="layui-v2.4.5/layui/js/layui.all.js"></script>
+<script>
+    //将其页面的数据渲染到页面
+    function renderData(data) {
+        //创建的数据前，先将之前的数据清空
+        $('.layui-table tbody').html('');
+        for (var i = 0; i < data.length; i++) {
+            var newEle = '<tr><td>'+ data[i].ID +'</td><td>'+ data[i].username +'</td><td>'+ data[i].password +'</td></tr>';
+            $('.layui-table tbody').append(newEle);
+        }
+    }
+    //分页的第一次ajax请求，要获取数据到第一页的数据，及总条目数，展示第一页数据并展示
+    $.ajax({
+        url: 'fy_test.php',
+        data: {
+            currentPage: 1,
+            numRows: 4,
+        },
+        success: function (res) {
+            console.log(res);
+            var resData = JSON.parse(res);
+            //跟据第一次请求的结果创建的页码数
+            layui.use('laypage', function () {
+                //获取框架的分页对象
+                var laypage = layui.laypage;
+                //渲染分页
+                laypage.render({
+                    elem: 'page', //分页父级标签的选择器
+                    count: resData.total, //数据总条目数
+                    curr: 1, //当前页码
+                    limit: 2, //每页条目数
+                    jump: function (obj, isFirst) {
+                        //每当页面发生改变，次函数会自动调用一次
+                        //跟据obj当中含有的当前页码，再次发送ajax请求，获取当前页码的对应数据
+                        //如果在调用接口时使用page.....这种风湿传参都会被PHP的$_GET接受
+                        $.get('fy_test.php?currentPage='+obj.curr+'&numRows='+obj.limit, function (res1) {
+                            var resData1 = JSON.parse(res1);
+                            renderData(resData1.data);
+                        })
+                    }
+                });
+            });
+            renderData(resData.data); //展示数据
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../jquery-3.3.1.js"></script>
+<script>
+    $.ajax({
+        async: true, //同步或异步，默认true
+        type: 'get', //请求类型
+        url: 'http://jsonplaceholder.typicode.com/posts', //请求路径
+        data: {
+            //这次请求要携带到后台的数据
+        },
+        complete: function (res) {
+            //请求完成（无论成功或失败都会调用这个函数）
+            console.log('complete----', res);
+        },
+        success: function (res) {
+            //请求成功是调用
+            console.log('success----', res);
+        },
+        error: function (res) {
+            //请求失败时调用
+        }
+    });
+    $.get('http://jsonplaceholder.typicode.com/posts', function (res) {
+        //
+        console.log(res);
+    });
+</script>
+</body>
+</html>

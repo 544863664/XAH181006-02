@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dome</title>
+</head>
+<body>
+<button class="sheng">升序</button>
+<button class="jiang">降序</button>
+<button class="btn">切换</button>
+<div class="table">
+    <table>
+        <tbody></tbody>
+    </table>
+</div>
+<script src="../jquery-3.3.1.js"></script>
+<script>
+    var n = 1;
+    $('.btn').click(function () {
+        if (n == 1) {
+            n = 2;
+            sheng();
+        } else {
+            n = 1;
+            jiang();
+        }
+    });
+    $('.sheng').click(function () {
+        n = 2;
+        sheng();
+    });
+    $('.jiang').click(function () {
+        n = 1;
+        jiang();
+    });
+
+    //绑定点击事件
+    function sheng() {
+        //发送ajax请求
+        $.ajax({
+            type: 'get',
+            url: 'dome.php',
+            data: {
+                type: 'litre',
+            },
+            success: function (res) {
+                var data = JSON.parse(res);
+                //每次显示清空页面
+                $('.table table tbody').html('');
+                //渲染在页面上
+                for (var i = 0; i < data.length; i++) {
+                    var newEle = '<tr><td>'+ data[i].ID +'</td><td>'+data[i].username+'</td></tr>';
+                    $('.table table tbody').append(newEle);
+                }
+            },
+            error: function (res) {}
+        })
+    }
+    function jiang() {
+        //发送ajax请求
+        $.ajax({
+            type: 'get',
+            url: 'dome.php',
+            data: {
+                type: 'fall',
+            },
+            success: function (res) {
+                var data = JSON.parse(res);
+                //每次显示清空页面
+                $('.table table tbody').html('');
+                for (var i = 0; i < data.length; i++) {
+                    var newEle = '<tr><td>'+ data[i].ID +'</td><td>'+data[i].username+'</td></tr>';
+                    $('.table table tbody').append(newEle);
+                }
+            },
+            error: function (res) {}
+        })
+    }
+</script>
+</body>
+</html>

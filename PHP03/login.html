@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+username:<input class="user" type="text" >
+password:<input class="pass" type="password" >
+<button class="btn">登录</button>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $('.btn').click(function () {
+        //1.获取用户名和密码
+        var username =  $('.user').val();
+        var password =  $('.pass').val();
+        //发送ajax请求
+        $.ajax({
+            type:"POST",
+            url:"login.php",
+            data:{
+                uname:username,
+                pswd:password,
+            },
+            success:function (res) {
+                //请求成功后的回调函数;
+                console.log(res);
+                //将后台返回的json格式的字符串转换成json格式的数据，方便处理
+                var resData = JSON.parse(res);
+                alert('状态码：'+resData.status+'信息：'+resData.message);
+            }
+        })
+    })
+</script>
+</body>
+</html>

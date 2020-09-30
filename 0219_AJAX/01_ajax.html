@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * AJAx:Asynchronous JavaScript and XML。
+    * 异步的网络请求。
+    *
+    * 功能：
+    *   与后台数据交互，监听数据更新，实现数据在HTML文件的动态渲染。
+    * 特点：
+    *   在不刷新整个页面的额情况下，对页面中的动态数据进行局部的更新。
+    * JSON：
+    *   在整个网站的开发中，前端负责向后台获取数据，并将其展示在页面上，后
+    *  台负责解析前端的HTTP请求，所以理论上而言是无法进行直接交流的。
+    *  互相也不能识别，只有json格式的数据，是两者都可以操作并识别的数据。
+    *
+    * 前后端通过AJAX，使用json数据，进行数据交互。
+    * */
+
+    //创建一个ajax请求对象
+    if (window.XMLHttpRequest) {
+        var ajax = new XMLHttpRequest();
+    } else {
+        var ajax = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    //开始发送HTTP请求
+    //调用ajax对象的原型函数open，并传参
+    /*open函数：
+        ajax.open(method， url， async)；
+        method：
+            GET：信息可暴露的请求。
+            post：信息需要保护的请求。
+        url：请求数据的额路径。
+        async：同步或异步请求（true或false）。
+            同步操作：这个动作没有完成，后面的步骤无法执行。
+            异步操作：这个动作单独的自己去执行，后面的步骤按循序依旧执行。
+            同步操作会影响其后面的代码执行效率，异步不影响。
+            *js本身的执行过程是同步的。
+            *常见的异步：图片加载，计时器，异步ajax。
+            *在开发中，为了不让ajax影响页面的正常显示，非特殊情况，我们都会讲ajax设置成异步。
+     */
+    ajax.open('GET', 'http://jsonplaceholder.typicode.com/posts');
+    ajax.send();
+
+    //监听HTTP请求状态值的变化
+    ajax.onreadystatechange = function () {
+        //请求完全成功
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            //接受本次请求的返回值
+            var data = ajax.responseText;
+            //接受到的返回值是一个json串，一般情况下，我们都会将其处理成可是用的json格式
+            var users = JSON.parse(data);
+            console.log(users);
+        }
+    };
+    console.log('李叔同');
+
+</script>
+</body>
+</html>

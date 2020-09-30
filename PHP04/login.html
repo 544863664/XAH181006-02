@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .register-module {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<button class="to-login">登录</button>
+<button class="to-register">注册</button>
+<!--登录模块-->
+<div class="login-module">
+    用户名：<input type="text" class="uname"/><br>
+    密&nbsp;&nbsp;&nbsp;码：<input type="password" class="pswd"/><br>
+    <button class="login-btn">登录</button>
+</div>
+<!--注册模块-->
+<div class="register-module">
+    注册用户名：<input type="text" class="r-uname"/><br>
+    注册密码：&nbsp;&nbsp;&nbsp;<input type="password" class="r-pswd"/><br>
+    <button class="register-btn">注册</button>
+</div>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    //注册功能
+    $('.register-btn').click(function () {
+        //获取用户输入的注册信息
+        var uname = $('.r-uname').val();
+        var pswd = $('.r-pswd').val();
+        //发送ajax请求
+        $.ajax({
+            type:'post',
+            url:'login_register.php',
+            data:{
+                type:'register',
+                uname:uname,
+                pswd:pswd
+            },
+            success: function (res) {
+                console.log(res);
+                var data = JSON.parse(res);
+                if (data.status == 1) {
+                    alert('注册成功，点击确定去登录');
+                    $('.login-module').show();
+                    $('.register-module').hide();
+                } else if (data.status == 2) {
+                    alert('此用户已存在');
+                    $('.login-module').show();
+                    $('.register-module').hide();
+                } else if (data.status == 0) {
+                    alert('注册失败');
+                    $('.login-module').hide();
+                    $('.register-module').show();
+                }
+            },
+            error: function (res) {}
+        })
+        //接受responseText
+    });
+    //登录功能
+    $('.login-btn').click(function () {
+        //获取用户输入的登录用户名和m密码
+        var uname = $('.uname').val();
+        var pswd = $('.pswd').val();
+        //发送ajax请求到后台
+        $.ajax({
+            type:'post',
+            url: 'login_register.php',
+            data: {
+                type:'login',
+                uname: uname,
+                pswd:pswd
+            },
+            success:function (res) {
+                console.log(res);
+                //接受ajax.responseText
+                var data = JSON.parse(res);
+                // console.log(res);
+                if (data.status == 0) {
+                    alert('用户不存在，请注册');
+                } else if (data.status == 1) {
+                    alert('您的密码输入有误');
+                } else if (data.status == 2) {
+                    alert('登录成功');
+                    //将用户可暴露的信息存在的本地
+                    //切换到指定页面
+                }
+            },
+            error:function (res) {
+                
+            }
+        })
+
+    });
+
+    //登录注册切换
+    $('.to-login').click(function () {
+        $('.login-module').show();
+        $('.register-module').hide();
+    });
+    $('.to-register').click(function () {
+        $('.login-module').hide();
+        $('.register-module').show();
+    })
+
+</script>
+</body>
+</html>

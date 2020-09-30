@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模糊查询</title>
+</head>
+<body>
+<h1>php模糊查询</h1>
+<input type="text" name="keywords" value="" class="inp">
+<button class="btn">提交查询</button>
+<div class="table">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>username</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script src="../jquery-3.3.1.js"></script>
+<script>
+    //绑定提交按钮
+    $('.btn').click(function () {
+        //获取输入框中的内容
+        var val = $('.inp').val();
+        //发送ajax请求
+        $.ajax({
+            type: 'get',
+            url: 'mhcx_test.php',
+            data: {
+                val:val
+            },
+            success: function (res) {
+                console.log(res);
+                var data = JSON.parse(res);
+                $('.table table tbody').html('');
+                //将数组中的数据取出渲染在页面中
+                for (var i = 0; i < data.length; i++) {
+                    var newEle = '<tr><td>'+ data[i].ID +'</td><td>'+ data[i].username +'</td></tr>';
+                    $('.table table tbody').append(newEle);
+                }
+            },
+            error: function (res) {}
+        })
+    })
+</script>
+</body>
+</html>
