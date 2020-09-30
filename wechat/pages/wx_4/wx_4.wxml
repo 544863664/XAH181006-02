@@ -1,0 +1,7 @@
+<!--pages/wx_4/wx_4.wxml-->
+<view></view>
+<view></view>
+<import src="../../common/wxml/common.wxml" />
+<template is="user-list" data="{{list}}" />
+<template is="list" />
+<template is="list2" />

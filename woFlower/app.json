@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shopcar/index",
+    "pages/myolder/index",
+    "pages/list/index",
+    "pages/detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#f7f7f7",
+    "navigationBarTitleText": "窝的鲜花",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#ff5603",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/file_5c2ec4596e402.png",
+        "selectedIconPath": "images/file_5c2ec45c436e6.png"
+      },
+      {
+        "pagePath": "pages/shopcar/index",
+        "text": "购物车",
+        "iconPath": "images/file_5c2ec458b9789.png",
+        "selectedIconPath": "images/file_5c2ec45b99149.png"
+      },
+      {
+        "pagePath": "pages/myolder/index",
+        "text": "我的订单",
+        "iconPath": "images/file_5c2ec45820657.png",
+        "selectedIconPath": "images/file_5c2ec4576650c.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

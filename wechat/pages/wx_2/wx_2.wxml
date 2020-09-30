@@ -1,0 +1,47 @@
+<!--pages/wx_2/wx_2.wxml-->
+<!-- 事件
+  1.事件的绑定方式
+    (1)bind：绑定事件并支持事件冒泡
+    (2)catch：绑定事件并组织事件冒泡
+    (3)capture-bind：绑定事件并支持事件捕获
+    (4)capture-catch：绑定事件并支持事件捕获且阻止事件捕
+    获向内传递，点击任何一个子元素都只触发最外层的父级元素事件
+  2.事件种类
+  3.事件触发时的事件对象
+  4.触发这个事件绑定的函数时，参数应该如何传递
+ -->
+ <view bind:tap="fn1">
+  点我
+ </view>
+
+ <view 
+  wx:for="{{list}}" 
+  wx:key="{{index}}">
+  <text>{{item.name}}</text>
+  <text 
+    bind:tap="addToCar" 
+    data-id="{{item.id}}"
+    data-name="{{item.name}}">+</text>
+ </view>
+
+ <view
+  bind:tap="fn2"
+  data-id="{{1}}"
+  data-name="tom"
+  data-sex="女"
+  data-age="{{18}}"
+  > 
+  较为简单的接受参数的方式
+ </view>
+
+<view capture-bind:tap="fn3" data-i="1">view1
+  <view capture-bind:tap="fn3" data-i="2">view2
+    <view capture-bind:tap="fn3" data-i="3">view3</view>
+  </view>
+</view>
+
+<view 
+  style="width:100%;height:300px;background:#e4e4e4;text-align:center;"
+  bind:touchstart="fn4">
+  测试
+</view>

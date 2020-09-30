@@ -1,0 +1,10 @@
+<!--pages/wx_6/wx_6.wxml-->
+<view bind:tap="changeMenu">
+  <view
+    wx:for="{{4}}"
+    wx:key="{{item}}" 
+    data-i="{{item}}" 
+    class="{{currentMenu==item ? 'active' : ''}}"
+    >菜单{{item+1}}</view>
+  
+</view>

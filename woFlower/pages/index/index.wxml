@@ -1,0 +1,162 @@
+<!--pages/index/index.wxml-->
+<!-- 顶部轮播图 -->
+<scroll-view 
+  scroll-y="true" 
+  bindscroll="scroll" 
+  scroll-top="{{scrollTop}}" 
+  bindscrolltolower="getMore" 
+  style="position:absolute; top:0; left:0; right:0; bottom:0;">
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    class="swiperH">
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 轮播图结束 -->
+  <!-- 商品分类 -->
+  <view class='navImgWrap'>
+    <view 
+      wx:for="{{navImgArr}}" 
+      wx:key="index"
+      bind:tap="jump"
+      data-title="{{item.title}}">
+      <image 
+        src="{{item.src}}" 
+        mode='aspectFit'
+        class='navImg'
+        ></image>
+        <view>{{item.title}}</view>
+    </view>
+  </view>
+  <!-- 分类结束 -->
+  <!-- 商品分区 -->
+  <view>
+    <!-- 闪购 -->
+    <view class='partition'>
+      <view class='title'>
+        <text>{{salesTitle[0]}}</text>
+        <text class='_title'> / {{salesTitle[1]}}</text>
+      </view>
+      <swiper class="salesSwiper">
+        <block wx:for="{{sales}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item.src}}"  />
+            <view class='salesTitle'>{{item.name}}</view>
+            <view class='salesMess'>{{item.mess}}</view>
+            <view class='salesPrice'>{{item.price}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 新品 -->
+    <view class='partition'>
+      <view class='title'>
+        <text>{{newProductTitle[0]}}</text>
+        <text class='_title'> / {{newProductTitle[1]}}</text>
+      </view>
+      <view class='newProductWrap'>
+        <image src='{{newProductTitle[2]}}'></image>
+        <!--  -->
+        <!-- <template is="shop-list" /> -->
+        <view class='list'>
+          <view wx:for="{{newProduct}}" wx:key="index" class='list-box'>
+            <image src='{{item.src}}' class='list-img'></image>
+            <view class='list-name'>{{item.name}}</view>
+            <view class='list-mess'>{{item.mess}}</view>
+            <view class='list-price'>
+              {{item.price}}
+              <text class='list-smallTitle'>{{item.smallTitle}}</text>
+            </view>
+          </view>
+        </view>
+        <!--  -->
+      </view>
+    </view>
+    <!--  -->
+    <!-- 分区轮播图开始 -->
+    <swiper
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}">
+      <block>
+        <swiper-item>
+          <image src="{{swiperImg[0]}}" />
+        </swiper-item>
+        <swiper-item>
+          <image src="{{swiperImg[1]}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 分区轮播图结束 -->
+    <!-- 限时 -->
+    <view class='partition'>
+      <view class='title'>
+        <text>{{timeLimitTitle[0]}}</text>
+        <text class='_title'> / {{timeLimitTitle[1]}}</text>
+      </view>
+      <view class='timeLimitWrap'>
+        <view class='list'>
+          <view wx:for="{{timeLimit}}" wx:key="index" class='list-box'>
+            <image src='{{item.src}}' class='list-img'></image>
+            <view class='list-name'>{{item.name}}</view>
+            <view class='list-mess'>{{item.mess}}</view>
+            <view class='list-price'>
+              {{item.price}}
+              <text class='list-smallTitle'>{{item.smallTitle}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 热卖 -->
+    <view class='partition'>
+      <view class='title'>
+        <text>{{sellingTitle[0]}}</text>
+        <text class='_title'> / {{sellingTitle[1]}}</text>
+      </view>
+      <view class='sellingWrap'>
+        <image src='{{sellingTitle[2]}}'></image>
+        <view class='list'>
+          <view wx:for="{{selling}}" wx:key="index" class='list-box'>
+            <image src='{{item.src}}' class='list-img'></image>
+            <view class='list-name'>{{item.name}}</view>
+            <view class='list-mess'>{{item.mess}}</view>
+            <view class='list-price'>
+              {{item.price}}
+              <text class='list-smallTitle'>{{item.smallTitle}}</text>
+            </view>
+          </view>
+          <view class='list-box seeMore'>
+            <view style='margin-top: 120rpx;'>
+              <view class='see-more'>查看更多</view>
+              <view class='bord'></view>
+              <view class='see--more'>See More</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--  -->
+  </view>
+  <!-- 分区结束 -->
+  <view class='footer'>
+    <view class='foot-bord'>
+      <text class='foot-text'>店铺信息</text>
+    </view>
+    <view class='foot-yz'>有赞</view>
+    <text class='foottext'>有赞提供技术支持</text>
+  </view>
+</scroll-view>
+<view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+  <view class="gotop-wrap">
+    <view class="icon icon-top"></view> <view>顶部</view>
+  </view>
+</view>
+

@@ -1,0 +1,9 @@
+<!--pages/wx_1_1/wx_1_1.wxml-->
+<view class='box' hover-class='a1'>d立刻发老师就三十辅导</view>
+<view class='box' hover-class='a2'>ds手动返回的地方扔</view>
+<view class='box' hover-class='a3'>你好过</view>
+<view hover-class='a1' hover-stop-propagation>view1
+  <view hover-class='a2' hover-stop-propagation hover-start-time="3000" hover-stay-time="3000">view2
+    <view hover-class='a3' hover-stop-propagation>view3</view>
+  </view>
+</view>

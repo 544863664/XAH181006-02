@@ -1,0 +1,4 @@
+/* pages/wx_6/wx_6.wxss */
+.active {
+  background: #45645e;
+}

@@ -1,0 +1,66 @@
+<!--pages/detail/index.wxml-->
+<view>
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay=true
+    interval="3000"
+    duration="1000"
+    class="swiperH">
+    <block>
+      <swiper-item>
+        <image src="../../images/mmexport1554456452388.jpg" class="slide-image" />
+      </swiper-item>
+    </block>
+    <block>
+      <swiper-item>
+        <image src="../../images/mmexport1554456466958.jpg" class="slide-image" />
+      </swiper-item>
+    </block>
+    <block>
+      <swiper-item>
+        <image src="../../images/mmexport1554456476799.jpg" class="slide-image" />
+      </swiper-item>
+    </block>
+    <block>
+      <swiper-item>
+        <image src="../../images/mmexport1554456486743.jpg" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='detail-body'>
+    <view class='detail-name'>{{detailList.name}}【付款后7日内发货】</view>
+    <view class='detail-price'>
+      <text class='price-left'>￥</text>
+      <text class='price'>{{detailList.d_price}}</text>
+      <text class='price-right'>.00</text>
+      <view class='passPrice'>{{detailList.d_passPrice}}</view>
+    </view>
+    <view class='freight'>
+      运费
+      <text>免运费</text>
+    </view>
+  </view>
+</view>
+<view class='detail-bottom'>
+  <view class='btm1'>
+    <view>
+      <image src='../../images/car.png' class='smallImg'></image>
+    </view>
+    <text>首页</text>
+  </view>
+  <view class='btm1'>
+    <view>
+      <image src='../../images/car.png' class='smallImg'></image>
+    </view>
+    <text>客服</text>
+  </view>
+  <view class='btm1'>
+    <view>
+      <image src='../../images/car.png' class='smallImg'></image>
+    </view>
+    <text>购物车</text>
+  </view>
+  <view class='btm2 addcar'>加入购物车</view>
+  <view class='btm2 newbuy'>立即购买</view>
+</view>
+<image src='../../images/Screenshot_2019-04-08-20-04-04-957_com.tencent.mm.png' style='height:5210rpx;'></image>

@@ -1,0 +1,17 @@
+<!--pages/shopcar/index.wxml-->
+<view class='shopcar'>
+  <view class='nullShopcar'>
+    <view class='null1'>购物车块饿瘪了 T.T</view>
+    <view class='null2'>快给我挑点宝贝</view>
+    <view class='null3'>去逛逛</view>
+  </view>
+
+
+
+  
+</view>
+<view class='footer'>
+  <view class='foot-yz'>有赞</view>
+  <text class='foottext'>有赞提供技术支持</text>
+</view>
+

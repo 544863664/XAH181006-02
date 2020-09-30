@@ -1,0 +1,55 @@
+<!--pages/wx_1_2/wx_1_2.wxml-->
+<!-- 
+如果要在标签内部直接渲染wxml，那就{{}}直接渲染。
+如果要在某个属性的值内，获取data中的数据或者写表达式，只需要在对应
+位置加{{}}即可。 
+-->
+<view class='default {{classN}}'>{{str}}</view>
+<view class="{{bol ? classN : 'default'}}">{{str}}</view>
+<!-- 如果某个属性值是非字符串类型，要要用{{}}渲染 -->
+<checkbox checked="{{false}}"></checkbox>
+<!-- 
+  数据渲染2：列表渲染
+  wx:for="{{arrname}}"
+  (1)wx:for绑定给要被循环穿件的元素
+  （2）一个元素绑定了wx:for，那么他必须设置一个在当前循环中唯一的值wx:key
+  (3)绑定了wx:for之后，在标签内部会自动生成两个变量，index，item
+  （4）可以被循环的数据有 number，string，object，array
+  (5)如果出现循环嵌套，那么父子循环的临时变量item和index的命名会发生冲突，
+  可以使用wx:for-item和wx:for-index指令为当前循环的item和index重新命名。
+ -->
+<view wx:for="{{arr}}" wx:key="{{index}}">
+  <text>{{item.name}}</text>
+  <text>{{item.tel}}</text>
+  <text>{{item.email}}</text>
+  <text 
+    wx:for="{{item.a}}" 
+    wx:for-item="it" 
+    wx:for-index="i" 
+    wx:key="i"
+    >{{it}}</text>
+</view>
+<!-- <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+    <view wx:if="{{i <= j}}">
+      {{i}} * {{j}} = {{i * j}}
+    </view>
+  </view>
+</view> -->
+          
+<view wx:for="{{9}}" wx:key="{{index}}">
+  <text wx:for="{{index+1}}" wx:for-item="i" wx:for-key="{{i}}">
+    {{(i+1) + 'x' + (item+1) + '='+ (i+1) * (item+1)}}
+  </text>
+</view>
+
+<!-- 渲染方式3：条件渲染
+  条件渲染wx:if和hidden
+  wx:if值为true创建，false不创建
+  hidden值为true隐藏，false显示
+ -->
+<view wx:if="{{num < 10}}">您的购物车空的</view>
+<view wx:elif="{{num > 10}}">哈哈哈</view>
+<view wx:else>hhh</view>
+
+<view hidden="{{false}}">{{num1}}</view>

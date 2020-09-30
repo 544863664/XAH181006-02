@@ -1,0 +1,5 @@
+/* pages/wx_1/wx_1.wxss */
+view {
+  height: 200px;
+  border: 1px solid #000;
+}

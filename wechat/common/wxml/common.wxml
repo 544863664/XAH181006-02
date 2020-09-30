@@ -1,0 +1,15 @@
+<template name="user-list">
+  <view wx:for="{{list}}" wx:key="{{index}}">
+    <text>{{item.name}}</text>
+    <text>{{item.tel}}</text>
+    <text>{{item.email}}</text>
+    <button bind:tap="templateFn" data-obj="{{item}}">+</button>
+  </view>
+</template>
+<template name="list">
+  <view>common</view>
+</template>
+
+<template name="list2">
+  <view>list2</view>  
+</template>

@@ -1,0 +1,5 @@
+<!--pages/wx_3/wx_3.wxml-->
+<view bind:tap="jump">
+  跳转到新的页面
+</view>
+<view>{{num}}</view>

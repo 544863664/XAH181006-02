@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/wx_7/wx_7",
+    "pages/wx_5/wx_5",
+    "pages/wx_4/wx_4",
+    "pages/wx_3/wx_3",
+    "pages/wx_2/wx_2",
+    "pages/wx_1/wx_1",
+    "pages/wx_1_1/wx_1_1",
+    "pages/wx_1_2/wx_1_2"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#000",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的小程序",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 400
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#ff5603",
+    "backgroundColor": "#eef",
+    "borderStyle":"white",
+    "list": [{
+      "pagePath": "pages/wx_5/wx_5",
+      "text": "首页",
+      "iconPath": "images/file_5c2de5f8c4ab5.png",
+      "selectedIconPath": "images/file_5c2de5da05534.png"
+    },{
+      "pagePath": "pages/wx_7/wx_7",
+      "text": "购物",
+      "iconPath": "images/file_5c2de5d74258d.png",
+      "selectedIconPath": "images/file_5c2de5d80b201.png"
+    },{
+      "pagePath": "pages/wx_1_2/wx_1_2",
+      "text": "个人中心",
+      "iconPath": "images/file_5c2de5d696bef.png",
+      "selectedIconPath": "images/file_5c2de5d91c403.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json"
+}

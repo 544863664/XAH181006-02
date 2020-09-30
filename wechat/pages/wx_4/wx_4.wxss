@@ -1,0 +1,2 @@
+/* pages/wx_4/wx_4.wxss */
+@import '../../common/wxss/common.wxss';

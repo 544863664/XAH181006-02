@@ -1,0 +1,123 @@
+<!--pages/myolder/index.wxml-->
+<view class='login-wrap'>
+  <!-- 头部 -->
+  <view class='head'>
+    <view>点击显示微信头像</view>
+  </view>
+  <!-- 头部结束 -->
+  <!-- 登录 -->
+  <view class='tel'>
+    <view class='row'>
+      <text>登录手机号，同步全渠道订单和优惠券</text>
+      <text class=' tel-right right'>登录</text>
+    </view>
+    <view></view>
+  </view>
+  <!-- 登录结束 -->
+  <!-- 余额 -->
+  <view class='balance'>
+    <view>
+      <view class='number'>0.00</view>
+      <text>余额</text>
+    </view>
+    <view>
+      <view class='number'>0</view>
+      <text>积分</text>
+    </view>
+    <view>
+      <view class='number'>0</view>
+      <text>卡</text>
+    </view>
+    <view>
+      <view class='number'>0</view>
+      <text>劵</text>
+    </view>
+  </view>
+  <!-- 余额结束 -->
+  <!-- 订单 -->
+  <view class='order'>
+    <view class='row'>
+      <text>我的订单</text>
+      <text class='right'>查看全部订单 ></text>
+    </view>
+    <view class='order-box'>
+      <view>
+        <view>
+          <image src='../../images/daifukuan.png' class='orderImg'></image>
+        </view>
+        <text>待付款</text>
+      </view>
+      <view>
+        <view>
+          <image src='../../images/daifahuo.png' class='orderImg'></image>
+        </view>
+        <text>待发货</text>
+      </view>
+      <view>
+        <view>
+          <image src='../../images/daishouhuo.png' class='orderImg'></image>
+        </view>
+        <text>待收货</text>
+      </view>
+      <view>
+        <view>
+          <image src='../../images/daipingjia.png' class='orderImg'></image>
+        </view>
+        <text>待评价</text>
+      </view>
+      <view>
+        <view>
+          <image src='../../images/tuikuan.png' class='orderImg'></image>
+        </view>
+        <text>退款维权</text>
+      </view>
+    </view>
+  </view>
+  <!-- 订单结束 -->
+  <!-- 优 购 返 赠 -->
+  <view class='preferential'>
+    <view class='prefer row'>
+      <image src='../../images/youhui.png' class='smallImg'></image>
+      <text>优惠码</text>
+      <text class='right'>></text>
+    </view>
+    <view class='prefer row'>
+      <image src='../../images/car.png' class='smallImg'></image>
+      <text>购物车</text>
+      <text class='right'>></text>
+    </view>
+    <view class='prefer row'>
+      <image src='../../images/fanxian.png' class='smallImg'></image>
+      <text>返现</text>
+      <text class='right'>></text>
+    </view>
+    <view class='row'>
+      <image src='' class='smallImg'></image>
+      <text>赠品</text>
+      <text class='right'>></text>
+    </view>
+  </view>
+  <!-- 结束 -->
+  <!-- 收货地址 -->
+  <view class='addres'>
+    <view class='row'>
+      <image src='../../images/address.png' class='smallImg'></image>
+      <text>收货地址</text>
+      <text class='right'>></text>
+    </view>
+  </view>
+  <!-- 收货结束 -->
+  <!-- 个人设置 -->
+  <view class='settings'>
+    <view class='row'>
+      <image src='../../images/file_5c2ec45820657.png' class='smallImg'></image>
+      <text>个人设置</text>
+      <text class='right'>></text>
+    </view>
+  </view>
+  <!-- 个人设置结束 -->
+  <view class='footer'>
+    <view class='foot-yz'>有赞</view>
+    <text class='foottext'>有赞提供技术支持</text>
+  </view>
+</view>

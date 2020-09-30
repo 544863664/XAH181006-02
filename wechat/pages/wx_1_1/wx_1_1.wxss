@@ -1,0 +1,10 @@
+/* pages/wx_1_1/wx_1_1.wxss */
+.a1 {
+  background: red;
+}
+.a2 {
+  background: yellow;
+}
+.a3 {
+  background: greenyellow;
+}

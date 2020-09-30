@@ -1,0 +1,61 @@
+/* pages/detail/index.wxss */
+image {
+  width: 100%;
+  height: 100%;
+}
+.swiperH {
+  height: 700rpx;
+}
+.detail-body {
+  padding: 20rpx;
+}
+.detail-name {
+  font-weight: bold;
+}
+.detail-price {
+  color: #ff2600;
+  font-weight: bold;
+}
+.price-left, .price-right, .passPrice, .freight {
+  font-size: 30rpx;
+}
+.passPrice {
+  color: #aaa;
+  text-decoration: line-through;
+}
+.freight {
+  padding-top: 15rpx;
+  border-top: 1px solid #eee;
+  color: #aaa;
+}
+.detail-bottom {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+}
+.btm1 {
+  width: 100rpx;
+  font-size: 21rpx;
+  background: #fff;
+}
+.btm2 {
+  width: 230rpx;
+  font-size: 26rpx;
+  color: #fff;
+  line-height: 80rpx;
+}
+.addcar {
+  background: #ff5500;
+}
+.newbuy {
+  background: #ff2600;
+}
+.smallImg {
+  width: 45rpx;
+  height: 40rpx;
+  margin: 3rpx auto;
+}

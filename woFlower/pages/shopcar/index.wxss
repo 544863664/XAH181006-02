@@ -1,0 +1,33 @@
+/* pages/shopcar/index.wxss */
+.shopCar {
+  margin: 23rpx;
+}
+.nullShopcar {
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 90rpx;
+}
+.null1 {
+  font-size: 36rpx;
+}
+.null2, .null3 {
+  font-size: 30rpx;
+}
+.null3 {
+  border: 1px solid #fa0830;
+  width: 180rpx;
+  border-radius: 15rpx;
+  margin: 0 auto;
+}
+
+
+
+
+.footer {
+  text-align: center;
+  padding: 35rpx 30rpx;
+  color: #c0bebeea;
+}
+.foottext {
+  font-size: 25rpx;
+}

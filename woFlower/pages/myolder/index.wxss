@@ -1,0 +1,72 @@
+/* pages/myolder/index.wxss */
+.login-wrap {
+  background: #f9f9f9;
+  font-size: 25rpx;
+}
+.head {
+  text-align: center;
+  height: 230rpx;
+  line-height: 230rpx;
+  font-size: 35rpx;
+}
+.tel, .balance, .order, .preferential, .addres, .settings {
+  background: #fff;
+  margin-top: 15rpx;
+  padding: 0 25rpx;
+}
+.row {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.prefer {
+  border-bottom: 1px solid #f9f9f9;
+}
+.smallImg {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 15rpx;
+}
+.right {
+  float: right;
+  color: rgb(187, 187, 187);
+}
+.tel-right {
+  width:75rpx;
+  height:40rpx;
+  text-align:center;
+  background:rgb(247, 54, 54);
+  color: #fff;
+  margin-top: 10rpx;
+  line-height: 40rpx;
+} 
+.balance {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 30rpx 0;
+  text-align: center;
+}
+.number {
+  color: red;
+  margin-bottom: 20rpx;
+}
+.order-box {
+  text-align: center;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #f9f9f9;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.orderImg {
+  width: 50rpx;
+  height: 50rpx;
+}
+.footer {
+  text-align: center;
+  padding: 35rpx 30rpx;
+  color: #c0bebeea;
+}
+.foot-yz {
+  font-size: 35rpx;
+}

@@ -1,0 +1,22 @@
+<!--pages/list/index.wxml-->
+<view class="headerImg">
+  <image src="{{list.src}}"></image>
+</view>
+<view class="body">
+  <view class="title">
+    <text>{{list.title}}</text>
+  </view>
+  <view class="list-wrap">
+    <view class="list" wx:for="{{list.list}}" wx:key="index" bind:tap="toDetail" data-id="{{index}}">
+      <image src="{{item.img}}" class="listImg"></image>
+      <view class="listName">{{item.name}}</view>
+      <view class="passPrice">
+        <text>{{item.passPrice}}</text>
+      </view>
+      <view class="listPrice">
+        {{item.price}}
+        <text class="listMess">{{item.mess}}</text>
+      </view>
+    </view>
+  </view>
+</view>

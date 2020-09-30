@@ -1,0 +1,14 @@
+/* pages/wx_7/wx_7.wxss */
+text {
+  margin: 20rpx;
+}
+.default {
+  width: 20rpx;
+  height: 20rpx;
+  border: 1px solid;
+  display: inline-block;
+}
+.active {
+  background: none;
+  background: red;
+}

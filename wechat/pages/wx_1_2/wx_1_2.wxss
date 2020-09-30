@@ -1,0 +1,4 @@
+/* pages/wx_1_2/wx_1_2.wxss */
+text {
+  display: inline-block;
+}

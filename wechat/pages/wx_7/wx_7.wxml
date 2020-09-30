@@ -1,0 +1,18 @@
+<!--pages/wx_7/wx_7.wxml-->
+<view wx:for="{{list}}" wx:key="{{index}}">
+  <text class="default {{item.statu ? 'active': ''}}" bind:tap="changeStaus" data-statu="{{item.statu}}" data-i="{{index}}"></text>
+  <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{210}}">
+    <view slot="content">
+      <text>{{item.name}}</text>
+      <text>{{item.price}}</text>
+      <text bind:tap="changeCount" data-type="sub" data-i="{{index}}">-</text>
+      <text>{{item.count}}</text>
+      <text bind:tap="changeCount" data-type="add" data-i="{{index}}">+</text>
+    </view>
+    <view slot="button" class="i-swipeout-demo-button-group">
+      <view class="i-swipeout-demo-button">删除</view>
+    </view>
+  </i-swipeout>
+</view>
+<view>{{sum}}</view>
+<!-- 底部提示信息 -->
