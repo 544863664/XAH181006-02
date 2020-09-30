@@ -1,0 +1,31 @@
+//.box {
+//  font: {
+//    size: 50px;
+//    weight: bold;
+//  };
+//  width: 200px;
+//  height: 200px;
+//  background: blue;
+//  &:hover {
+//    background: aquamarine;
+//  }
+//  h1 {
+//    color: #ff5555;
+//    &:hover {
+//      color: #000;
+//      &:hover { text-decoration: underline; }
+//      body.firefox & { font-weight: normal; }
+//    }
+//  }
+//}
+$width: 500px;
+$height: 500px;
+$background: red;
+$border: yellow;
+
+.box {
+  width: $width;
+  height: $height;
+  background: $background;
+  border: 3px solid $border;
+}

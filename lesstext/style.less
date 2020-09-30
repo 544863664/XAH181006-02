@@ -1,0 +1,42 @@
+@background: red;
+.app {
+  background: @background;
+}
+@ly_width:100px;
+@ly_height:@ly_width + 200px;
+@ly_color:green;
+//.border(@border_width, @border_color) {
+//  border:@border_width solid @border_color;
+//}
+//定义上,下,左,右边框的样式
+.border(top;@border_width:5px;@border_color:red){
+  border-top:@border_width solid @border_color;
+}
+.border(bottom;@border_width:5px;@border_color:red){
+  border-bottom:@border_width solid @border_color;
+}
+.border(left;@border_width:5px;@border_color:red){
+  border-left:@border_width solid @border_color;
+}
+.border(right;@border_width:5px;@border_color:red){
+  border-right:@border_width solid @border_color;
+}
+//如果想写通用的样式 可以在下面的代码中写 格式是固定的
+.border(@_;@border_width:5px;@border_color:red){
+  border-color:yellow;
+}
+.border_use1 {
+  //选择和if差不多 如果是left就调用上面对应的`
+  .border(left);
+}
+.border_use2 {
+  //选择和if差不多 如果是right就调用上面对应的
+  .border(right);
+}
+.one {
+  width:@ly_width;
+  height:@ly_height;
+  background-color:@ly_color;
+  .border(right)
+}
+/*efwef*/

@@ -1,0 +1,20 @@
+.app {
+  background: red;
+}
+.border_use1 {
+  border-left: 5px solid red;
+  border-color: yellow;
+}
+.border_use2 {
+  border-right: 5px solid red;
+  border-color: yellow;
+}
+.one {
+  width: 100px;
+  height: 300px;
+  background-color: green;
+  border-right: 5px solid red;
+  border-color: yellow;
+}
+/*efwef*/
+/*# sourceMappingURL=style.css.map */
