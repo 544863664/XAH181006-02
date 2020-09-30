@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>5个随机不重复</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			for (var i = 0; i < 5; i++) {
+				var num = Math.round(Math.random() * 68) + 20;
+				if (arr.indexOf(num) >= 0) {
+					i--;
+					continue;
+				}
+				arr.push(num);
+			}
+			console.log(arr);
+			/*
+			 var test = [4,5,6,4];
+			 console.log(test.indexOf(test[4]));
+			 	arr.indexOf(data);只能获取到data在数组中第一次出现的位置。
+			 * */
+			var arr1 = [];
+			for (var j = 0; j < 5; j++) {
+				arr1[j] = Math.round(Math.random() * 68) + 20;
+				if (arr1.indexOf(arr1[j]) < j) {
+					j--;
+				}
+			}
+			console.log(arr1);
+		</script>
+	</body>
+</html>

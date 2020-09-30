@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流1</title>
+		<style type="text/css">
+			.list {
+				list-style: none;
+				width: 700px;
+				display: flex;
+				margin: 10px auto;
+				border: 10px solid;
+				padding: 20px;
+				justify-content: space-around;
+			}
+			
+			.list li {
+				width: 220px;
+			}
+			
+			.list li div {
+				margin-bottom: 20px;
+				font-size: 60px;
+				text-align: center;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="list">
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script type="text/javascript">
+			//获取元素
+			var liArr = document.querySelectorAll('.list li');
+			//承接三个列的高度
+			var heightArr = [0,0,0];
+			function getMinIndex () {
+				//求出heightArr中的最小值
+				var min = Math.min(heightArr[0],heightArr[1],heightArr[2]);
+				//获取min在heightArr中的index
+				return heightArr.indexOf(min);
+			}
+			//随机函数
+			function rn (max,min) {
+				return Math.round(Math.random() * (max - min)) + min;
+			}
+			//创建背景
+			function createItem () {
+				//循环创建10个item
+				for (var i = 0; i < 10; i++) {
+					var newEle = document.createElement('div');
+					newEle.innerHTML = i;
+					//设置随机背景色
+					newEle.style.background = '#' + String(Math.random()).substr(2, 6);
+					var nowHeight = rn(200, 80);
+					newEle.style.height = nowHeight + 'px';
+					newEle.style.lineHeight = nowHeight + 'px';
+					//拿到最矮的li的index
+					var minIndex = getMinIndex();
+					//将newEle添加到最矮的一列
+					liArr[minIndex].appendChild(newEle);
+					//更新heightArr数组
+					heightArr[minIndex] += nowHeight + 20;
+				}
+			}
+			createItem();
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setTimeout</title>
+		<style type="text/css">
+			#page {
+				width: 400px;
+				height: 400px;
+				background: chartreuse;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page">广告页</div>
+		<script type="text/javascript">
+			//获取广告页
+			var page = document.getElementById('page');
+			//页面打开三秒之后让其消失
+			var res = setTimeout( function() {
+				page.style.display = 'none';
+			}, 3000);
+			console.log(res);
+			/*
+			setTimeout(fn timing);
+				这个函数会在函数调用的timing时间之后，执行fn中的代码块。
+				timimg:number,单位是毫秒ms  (1s = 1000ms)
+				setTimeout的返回值：返回当前这个计时器在浏览器运行中的编号。
+			*/
+		</script>
+	</body>
+</html>

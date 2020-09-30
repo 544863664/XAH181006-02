@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>成绩查询</title>
+	</head>
+	<body>
+		<input type="number" name="" id="num" value="" />
+		<button id="btn">判断</button>
+		<span id="res"></span>
+		<script type="text/javascript">
+			var num = document.getElementById('num');
+			var btn = document.getElementById('btn');
+			var res = document.getElementById('res');
+			btn.onclick = function() {
+				var val = num.value;
+				if(val >= 0 && val <= 59) {
+					res.innerHTML = '不及格';
+				} else if(val >= 60 && val <= 79) {
+					res.innerHTML = '及格';
+				} else if(val >= 80 && val <= 100) {
+					res.innerHTML = '优';
+				} else {
+					res.innerHTML = ' ';
+				}
+			};
+		</script>
+	</body>
+</html>

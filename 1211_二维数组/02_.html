@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>开关灯</title>
+		<style type="text/css">
+			#wrap {
+				width: 500px;
+				margin: 50px auto;
+				display: flex;
+				flex-wrap: wrap;
+				border: 1px solid #000000;
+			}
+			#wrap>div {
+				width: 50px;
+				height: 50px;
+				background: #000000;
+				border-radius: 50px;
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			/*
+			 1.创建元素并将其添加到wrap中
+			 2.为这些元素设置样式
+			 3.为每一个元素绑定点击事件，点击时根据当前的背景色，切换新的背景色
+			 4.找到这个元素上下左右的元素，为它们切换背景色
+			 */
+			var wrap = document.getElementById('wrap'); //获取wrap
+			var eleArr = []; //声明一个数组，承接所有div，让js代码和HTML标签建立联系，准确的找到标签，并对其操作
+			for (var i = 0; i < 100; i++) { //添加100个元素
+				var newEle = document.createElement('div'); //创建js元素
+				newEle.innerHTML = i; //为当前的div添加内容
+				wrap.appendChild(newEle); //将其添加到wrap中
+				eleArr.push(newEle); //将当前的元素添加到eleArr中
+			}
+			for (var j = 0; j < eleArr.length; j++) { //循环eleArr，找到每一个div，为其绑定点击事件
+				eleArr[j].onclick = function () { //为每一个div绑定点击事件
+					/*在这个点击事件中，不可以使用eleArr[j]代表当前点击的这个元素，因为只有在点击当前元素时，
+					这段代码才会执行，而当这段代码执行时，for循环已经结束了，for循环的结束意味着j的值已经从0变
+					成了100，eleArr[j]实际上是eleArr[100]，并不是当前点击的元素。*/
+					var bg = getComputedStyle(this).backgroundColor; //切换当前元素的背景色
+					if (bg == 'rgb(0, 0, 0)') { //当前是黑色
+						this.style.background = 'yellow';
+					} else {
+						this.style.background = '#000';
+					}
+					//获取当前点击的div在数组中的位置,跟据这个位置计算出其上下左右在eleArr中的位置，跟据这些位置获取到这些元素，对其做操作
+					var index = eleArr.indexOf(this); 
+					console.log(index);
+					//设置上面的元素（不是第一行，就可以找到上面的元素）
+					if (index > 9) {
+						//非第一行
+						var upper = eleArr[index - 10];
+						var upperBg = getComputedStyle(upper).backgroundColor;
+						//判断
+						if (upperBg == 'rgb(0, 0, 0)') {
+							upper.style.background = 'yellow';
+						} else {
+							upper.style.background = '#000';
+						}
+					}
+					//找到当前元素的下面的元素（非最后一行）
+					if (index < 90) {
+						var down = eleArr[index + 10]; 
+						var downBg = getComputedStyle(down).backgroundColor;
+						//判断
+						if (downBg == 'rgb(0, 0, 0)') {
+							down.style.background = 'yellow';
+						} else {
+							down.style.background = '#000';
+						}
+					}
+					//找到左边的元素（非最左边的一列）
+					if (index % 10 != 0) {
+						var left = eleArr[index - 1];
+						var leftBg = getComputedStyle(left).backgroundColor;
+						//判断
+						if (leftBg == 'rgb(0, 0, 0)') {
+							left.style.background = 'yellow';
+						} else {
+							left.style.background = '#000';
+						}
+					}
+					//找到右边的元素（非最右边的一列）
+					if (index % 10 != 9) {
+						var right = eleArr[index + 1];
+						var rightBg = getComputedStyle(right).backgroundColor;
+						//判断
+						if (rightBg == 'rgb(0, 0, 0)') {
+							right.style.background = 'yellow';
+						} else {
+							right.style.background = '#000';
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>圆形碰撞</title>
+		<style type="text/css">
+			.box1,.box2 {
+				position: absolute;
+			}
+			.box1 {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background: linear-gradient(to bottom, yellow, red);
+				box-shadow: 0 0 5px rgba(255,0,0,.25);
+			}
+			.box2 {
+				width: 200px;
+				height: 200px;
+				background: linear-gradient(to bottom, skyblue, blue);
+				border-radius: 50%;
+				left: 600px;
+				top: 300px;
+				box-shadow: 0 0 5px rgba(255,0,0,.25);
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<script type="text/javascript">
+			//获取元素
+			var box1 = document.querySelector('.box1');
+			var box2 = document.querySelector('.box2');
+			//拖box1
+			box1.onmousedown = function (dev) {
+				//获取相对位置
+				var de = dev || window.event;
+				var l = de.offsetX,t = de.offsetY;
+				document.onmousemove = function (mev) {
+					var me = mev || window.event;
+					box1.style.left = me.clientX - l + 'px';
+					box1.style.top = me.clientY - t + 'px';
+					
+					//碰撞检测
+					//求圆心距
+					var r1 = box1.offsetWidth / 2;
+					var r2 = box2.offsetWidth / 2;
+					var a = box1.offsetLeft + r1 - (box2.offsetLeft + r2);
+					var b = box1.offsetTop + r1 - (box2.offsetTop + r2);
+					//math.pow(a, 2);
+					var c = Math.sqrt(a * a + b * b);
+					//圆心距和半径作比较
+					if (c <= r1 + r2) {
+						box2.style.background = 'linear-gradient(to bottom, yellow, red)';
+					} else {
+						box2.style.background = 'linear-gradient(to bottom,skyblue,blue)';
+					}
+				}
+			}
+			box1.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

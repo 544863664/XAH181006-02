@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标拖动元素</title>
+		<style type="text/css">
+			.wrap {
+				width: 200px;
+				height: 200px;
+				background: #8FBC8F;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			/*
+			 鼠标在wrap上按下，然后鼠标在document上移动时，盒子要跟着动
+			 鼠标在wrap上抬起，鼠标的移动不能再控制盒子
+			 * */
+			wrap.onmousedown = function (downEv) {
+				//获取鼠标和盒子的相对位置
+				var downE = downEv || window.event;
+				var offsetX = downE.offsetX;
+				var offsetY = downE.offsetY;
+				document.onmousemove = function (ev) {
+					//获取事件对象
+					var e = ev || window;
+					//设置盒子的left和top
+					wrap.style.left = e.clientX - offsetX + 'px';
+					wrap.style.top = e.clientY - offsetY + 'px';
+				}
+			}
+			//鼠标抬起mousemove事件失效
+			wrap.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

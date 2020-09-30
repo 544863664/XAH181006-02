@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<title>锅打灰太狼</title>
+		<style>
+			#wrap {
+				width: 320px;
+				height: 480px;
+				margin: 50px auto;
+				background: url('images/game_bg.jpg');
+				position: relative;
+			}
+			
+			#scoreDiv {
+				font-size: 1.7rem;
+				color: #fff;
+				font-weight: bold;
+				position: absolute;
+				left: 60px;
+				top: 3px;
+			}
+			
+			#timeDiv {
+				width: 180px;
+				height: 16px;
+				border-radius: 30px;
+				background: orangered;
+				position: absolute;
+				left: 63px;
+				top: 66px;
+			}
+			
+			#wolves {
+				position: absolute;
+			}
+			
+			#wolves img {
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 环境 -->
+		<div id="wrap">
+			<!-- 分数 -->
+			<div id="scoreDiv">0</div>
+			
+			<!-- 倒计时 -->
+			<div id="timeDiv"></div>
+			
+			<!-- 狼 -->
+			<div id="wolves"></div>
+			
+			<!-- 开始模块 -->
+			<div id="startM"></div>
+			
+			<!-- 结束模块 -->
+			<div id="overM"></div>
+		</div>
+		
+		<!--<script src="wolf.js"></script>-->	
+		<script src="test.js" type="text/javascript"></script>
+	</body>
+</html>

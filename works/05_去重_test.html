@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//声明一个数字，数组中有若干个数，去重
+			var arr = [34,64,65,76,34,7,76,4,64];
+			var res = []; //去重的结果数组
+			//循环取出arr中的每个元素
+			for (var i = 0; i < arr.length; i++) {
+				//判断当前取出的这个元素在res中是否存在
+				if (res.indexOf(arr[i]) < 0) {
+					//不存在(存在时不会进入if判断，也就不反馈),将arr[i]添加到res中
+					res.push(arr[i]);
+				}
+			}
+			//res就是arr去重之后的结果
+			console.log(res);
+		</script>
+	</body>
+</html>

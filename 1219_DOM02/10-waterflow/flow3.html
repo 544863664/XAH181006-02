@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流03</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.wrap {
+				position: relative;
+				margin: 30px auto;
+			}
+			.wrap img {
+				width: 200px;
+				position: absolute;
+				transition: 0.8s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!-- 图片列表 -->
+		</div>
+		<script>
+		// 获取元素
+		var wrap = document.getElementsByClassName('wrap')[0];
+		
+		// 全局变量
+		// 用来保存逻辑列的高度(设置图片的left和top)
+		var heightArr = [];
+		var num = 50;
+		
+		// 先创建图片
+		function createImg() {
+			console.log('createImg');
+			for(var i = 0; i < num; i++) {
+				var newImg = document.createElement('img');
+				newImg.src = 'images/' + i + '.jpg';
+				wrap.appendChild(newImg);
+			}
+		}
+		createImg();
+		
+		// 计算逻辑列的数量并为高度数组设置初始值
+		function getCol() {
+			// 获取浏览器可视窗口的宽度(滚动条会占一部分可视窗口的宽，为了保证不出现误差，要减去滚动条的宽度)
+			var wW = document.documentElement.clientWidth - 16;
+			// 计算数量
+			var colNum = Math.floor(wW / 220);
+			// 根据列的数量设置wrap的宽度
+			wrap.style.width = colNum * 220 + 'px';
+			// 为heightArr设置初始值
+			for(var i = 0; i < colNum; i++) {
+				heightArr.push(0);
+			}
+		}
+		getCol();
+		
+		// 获取heightArr中最小的数值所对应的下标
+		function getMinIndex() {
+			var min = heightArr[0];
+			for(var i = 1; i < heightArr.length; i++) {
+				min = heightArr[i] < min ? heightArr[i] : min;
+			}
+			return heightArr.indexOf(min);
+		}
+		
+		// 设置图片的定为值
+		function setPosition() {
+			// 获取所有图片
+			var imgs = document.querySelectorAll('.wrap img');
+			// 循环为元素设置left和top值
+			for(var i = 0; i < imgs.length; i++) {
+				// 获取heightArr的最小值及其index
+				var minIndex = getMinIndex();
+				var minHeight = heightArr[minIndex];
+				// 最小值：top  index: left
+				imgs[i].style.top = minHeight + 'px';
+				imgs[i].style.left = 10 + 220 * minIndex + 'px';
+				// 获取当前设置的这张图片的高度
+				var nowHeight = imgs[i].offsetHeight;
+				// 改变heightArr的数值 上下间隙 + 30
+				heightArr[minIndex] += nowHeight + 30;
+			}
+		}
+		/* 当页面内容加载完成之后执行 
+		   图片加载是一个异步的过程(图片加载之后的代码会在图片加载完成之前执行)。
+		 * */
+		// 加载完成之后设置样式
+		window.onload = setPosition;
+		window.onresize = function() {
+			// 清空数组
+			heightArr = [];
+			getCol(); // 窗口变化重新计算列
+			setPosition(); // 重新设置位置
+		}
+		
+		window.onscroll = function() {
+			//文档流的高度
+			var domH = document.documentElement.scrollHeight;
+			// 可视窗口高度
+			var wH = document.documentElement.clientHeight;
+			// 滚动偏移量
+			var sT = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+			if(wH + sT == domH) {
+				// 页面元素超过一定数量，不再添加
+				if(wrap.children.length > 150) {
+					return;
+				}
+				createImg();
+				heightArr = [];
+				getCol();
+				setPosition();	
+			}		
+		};
+		</script>
+	</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

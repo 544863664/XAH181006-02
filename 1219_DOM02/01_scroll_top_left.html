@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background: #8FBC8F;
+				margin-bottom: 5px;
+			}
+			
+			.to-top {
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<button class="to-top">回到顶部</button>
+		<script type="text/javascript">
+			//获取元素
+			var toTop = document.querySelector('.to-top');
+			//为按钮绑定点击事件
+			toTop.onclick = function() {
+				//获取当前的scrollTop
+				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+				var timer = setInterval(function() {
+					//让其在计时器累减
+					scrollTop -= 3;
+					//将减过的值设置成新的scrollTop
+					//检测当前浏览器支持哪一种滚动值
+					if(document.body.scrollTop) {
+						document.body.scrollTop = scrollTop;
+					} else if(document.documentElement.scrollTop) {
+						document.documentElement.scrollTop = scrollTop;
+					} else {
+						window.pageYOffset = scrollTop;
+					}
+					//scrollTop减为0时，清除计时器
+					if(scrollTop < 0) {
+						clearInterval(timer);
+					}
+				}, 30)
+			}
+			//鼠标滚轮事件
+			document.onscroll = function() {
+				//获取Y轴方向的偏移量
+				/*
+				 * document.body.scrollTop: safari
+				   document.documentElement.scrollTop: chrome firefox ie(部分) safari不支持
+				 * */
+
+				//var c = document.body.scrollTop;
+				//var scrollTop = document.documentElement.scrollTop;
+				//var scrollTop = window.pageXOffset;
+				//兼容
+				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+				console.log(scrollTop);
+			}
+		</script>
+	</body>
+
+</html>

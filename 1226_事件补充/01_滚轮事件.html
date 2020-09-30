@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滚轮事件</title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			//为文档流绑定滚轮事件:当文档流一任何形式被滚动式，都会触发这个事件
+//			document.onscroll = function (ev) {
+//				//兼容所有浏览器的事件对象
+//				var e = ev || window.event;
+//				//获取scrollTop
+//				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+//				console.log(scrollTop);
+//			}
+			
+			document.onmousewheel = function (ev) {
+				var e = ev || window.event;
+				//e.wheelDelta: 负值  滚轮向下
+				//e.wheelDelta: 正值  滚轮向上
+				if (e.wheelDelta < 0) {
+					console.log('滚动条向下走，文档流向上走');
+				} else if (e.wheelDelta > 0) {
+					console.log('滚动条向上走，文档流向下走');
+				}
+			}
+			//火狐浏览器的鼠标滚轮事件  无效
+//			document.onDOMMouseScroll = function (ev) {
+//				var e = ev || window.event;
+//				console.log(e);
+//			}
+
+			document.addEventListener('DOMMouseScroll', function (ev) {
+				//获取兼容的事件对象
+				var e = ev || window.event;
+				console.log(e);
+				//正值 滚轮向下  负值  滚轮向上
+			})
+		</script>
+	</body>
+</html>

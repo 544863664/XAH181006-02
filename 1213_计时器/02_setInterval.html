@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setInterval</title>
+	</head>
+	<body>
+		<div id="wrap">10s</div>
+		<script type="text/javascript">
+			//获取wrap
+			var wrap = document.getElementById('wrap');
+			var timing = 10;
+			//用计时器控制累减
+			var index = setInterval ( function () {
+				//累减
+				timing--;
+				//减完之后设置给wrap
+				wrap.innerHTML = timing + 's';
+				//当时间累积到一定条件时，不在执行计时器
+				if (timing == 0) {
+					//阻止setInterval的执行
+					clearInterval(index);
+				}
+			}, 1000);
+			/*
+			setInterval(fn,timing);
+				每隔timing时间间隔就会执行一次fn
+				函数的返回值是这个计时器在浏览器中的编号。
+				
+			clearInterval(index); 阻止setInterval()的调用
+			clearTimeout(index); 阻止setTimeout()的调用
+			*/
+		</script>
+	</body>
+</html>

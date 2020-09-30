@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品首页</title>
+	</head>
+	<style type="text/css">
+		.wrap {
+			width: 1200px;
+			margin: 100px auto;
+			display: flex;
+			justify-content: space-around;
+		}
+		.wrap .box {
+			width: 24%;
+		}
+		.box img {
+			width: 100%;
+			border-radius: 5px;
+		}
+		.box p {
+			font-size: 20px;
+			color: #999999;
+			margin: 10px 0;
+		}
+		.box span {
+			color: #565656;
+			font-size: 13px;
+		}
+		.box .labels {
+			width: 100%;
+			padding: 8px 0;
+			border-bottom: 1px dashed grey;
+			margin-bottom: 10px;
+		}
+		.box .labels span {
+			display: inline-block;
+			border-radius: 10px;
+			border: 1px solid #F3FF67;
+			color: borwn;
+			font-size: 12px;
+			padding: 0 10px;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		.box mark {
+			width: 100%;
+			background: none;
+			margin-top: 10px;
+			font-size: 14px;
+		}
+		
+	</style>
+
+	<body>
+		<div class="wrap">
+			<!--<div class="box">
+				<img src="img/1.jpg" />
+				<p>我是标题</p>
+				<span>我是副标题</span>
+				<div class="labels">
+					<span>标签1</span>
+					<span>标签2</span>
+				</div>
+				<mark>￥1990</mark>
+			</div>
+			-->
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			//声明数据
+			var list = [{
+				img: 'img/1.jpg',
+				title: '草莓奶油蛋糕',
+				mess: '甜润奶油，与草莓的自然甜度搭配',
+				labels: ['情侣>', '人气>'],
+				price: '￥228.00/2.0磅',
+			}, {
+				img: 'img/2.jpg',
+				title: '黑森林',
+				mess: '樱桃酒味，从巧克力卷的缝隙飘出',
+				labels: ['情侣>', '人气>'],
+				price: '￥398.00/2.0磅',
+			}, {
+				img: 'img/3.jpg',
+				title: '平安夜',
+				mess: '一层新雪下，啊看见对方很骄傲',
+				labels: ['情侣>', '人气>', '生日>'],
+				price: '￥328.00/2.0磅',
+			}, {
+				img: 'img/4.jpg',
+				title: '小重组',
+				mess: '均一，青褐的千层酥',
+				labels: ['情侣>', '人气>', '生日>'],
+				price: '￥298.00/160g',
+			}];
+			
+			//处理数据将其展示到页面上
+			function createData() {
+				//循环数据
+				for (var i in list) {
+					var obj = list[i];
+					//创建box
+					var box = document.createElement('div');
+					box.className = 'box';
+					//为当前的box设置对应的内容
+					box.innerHTML = '<a href="02_detail.html?break_detail_num='+ i +'"><img src=" '+ obj.img +' " /></a><p>'+ obj.title +'</p><span>'+ obj.mess +'</span><div class="labels"></div><mark>'+ obj.price +'</mark>';
+					
+					
+					//循环创建当前box的labels
+					var labels = obj.labels;
+					var tempStr = ''; //当前box的所有labels构成的字符串
+					for (var j in obj.labels) {
+						tempStr += '<span>'+ labels[j] +'</span>'
+					}
+					//将tempstr放入当前box的labels标签
+					box.children[3].innerHTML = tempStr;
+					
+					wrap.appendChild(box);
+				}
+			}
+			createData();
+		</script>
+	</body>
+
+</html>

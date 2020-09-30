@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>location_search</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//获取参数列表
+			
+			//?bread_detail_num=23&type=456&price=100
+			var list = location.search;
+			//过滤 '?'
+			var str = list.slice(1);
+			console.log(list);
+			console.log(str);
+			
+			function getVal(key) {
+				//从search根据具体的键获取相对应的值
+				var res = str.split('&'); //拆分
+				console.log(res);
+				for (var i in res) {
+					var keyVal = res[i].split('='); //截取
+					if (key == keyVal[0]) {
+						return keyVal[1];
+					}
+				}
+			}
+			var val = getVal('price');
+			console.log(val);
+		</script>
+	</body>
+</html>

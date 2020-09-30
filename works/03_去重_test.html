@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [34,324,24,235,5,43,22,56,66,22,16,62,2,54,642,2,5,453,6,54]; //声明一个数组有20个随机数
+			var res = []; //声明一个空数组
+			for (var i = 0; i < arr.length; i++) {
+				if (res.indexOf(arr[i]) < 0 ) { //在arr里面找出和res里面下标小于0的数
+					res.push(arr[i]); //符合上一条件向res里面添加下标小于0的数组
+				}
+			}
+			console.log(res); //输出不重复的数组
+		</script>
+	</body>
+</html>

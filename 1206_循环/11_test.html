@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="ipt1" type="number" />
+		<input id="ipt2" type="number" />
+		<input id="ipt3" type="number" />
+		<button id="btn1">最大</button>
+		<button id="btn2">最小</button>
+		<script type="text/javascript">
+			/*
+			  两个字符串作比较时，直接拿字符串的第一个字符的ASCII码作比较，
+			 如果产生结果，那么这个结果就是两个字符串比较的结果，如果第一个
+			 字符的ASCII码相等，就比较就第二个，以此类推。
+			 * */
+			var ipt1 = document.getElementById('ipt1');
+			var ipt2 = document.getElementById('ipt2');
+			var ipt3 = document.getElementById('ipt3');
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			btn1.onclick = function() {
+				var p1 = Number(ipt1.value);
+				var p2 = Number(ipt2.value);
+				var p3 = Number(ipt3.value);
+				var max = p1 > p2 ? p1 > p3 ? p1 : p3 : p2 > p3 ? p2 : p3;
+				console.log(max);
+				alert('最大值：'+max);
+			}
+			btn2.onclick = function () {
+				var p1 = Number(ipt1.value);
+				var p2 = Number(ipt2.value);
+				var p3 = Number(ipt3.value);
+				var min = p1 < p2 ? p1 < p3 ? p1 : p3 : p2 < p3 ? p2 : p3;
+				console.log(min);
+				alert('最小值：'+min);
+			}
+		</script>
+	</body>
+</html>

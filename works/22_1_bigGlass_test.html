@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#box {
+				width: 400px;
+				height: 340px;
+				margin: 100px 300px;
+				position: relative;
+				/*这里使用相对定位，好让其他的元素能依靠这个元素定位*/
+				background: url(../1222/img/13581594-e06bcdb7c95b9a4a.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#move {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				box-shadow: 0 0 40px #00CED1 inset;
+				display: none;
+				/*先让他隐藏，用js使其显示*/
+				border-radius: 100%;
+			}
+			
+			#bimg {
+				width: 400px;
+				height: 400px;
+				overflow: hidden;
+				position: absolute;
+				top: 0px;
+				left: 450px;
+				display: none;
+				/*先让他隐藏，用js使其显示*/
+			}
+			
+			#bimg img {
+				width: 700px;
+				height: 640px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="move"></div>
+			<div id="bimg">
+				<img id="b_bimg" src="../1222/img/13581594-e06bcdb7c95b9a4a.jpg" alt="#">
+			</div>
+		</div>
+		<script type="text/javascript">
+			function bigImg() {
+				//获取元素
+				var bbox = document.getElementById('box');
+				var bmove = document.getElementById('move');
+				var bbimg = document.getElementById('bimg');
+				var b_bimg = document.getElementById('b_bimg');
+				//鼠标移动到box上显示大图片和选框
+				bbox.onmouseover = function() {
+					bbimg.style.display = 'block';
+					bmove.style.display = 'block';
+				}
+				//鼠标移开box不显示大图片和选框
+				bbox.onmouseout = function() {
+					bbimg.style.display = 'none';
+					bmove.style.display = 'none';
+				}
+				//获取鼠标位置
+				bbox.onmousemove = function(e) {
+					//鼠标位于可视窗口的位置
+					var x = e.clientX;
+					var y = e.clientY;
+					//box位于可视窗口的位置
+					var t = bbox.offsetTop;
+					var l = bbox.offsetLeft;
+					//计算move的位置
+					var moveLeft = x - l - bmove.offsetWidth / 2;
+					var moveTop = y - t - bmove.offsetHeight / 2;
+
+					if(moveTop <= 0) { //box顶部
+						moveTop = 0;
+					} else if(moveTop >= bbox.offsetHeight - bmove.offsetHeight) { //box底部
+						moveTop = bbox.offsetHeight - bmove.offsetHeight;
+					}
+					if(moveLeft <= 0) { //box左边
+						moveLeft = 0;
+					} else if(moveLeft >= bbox.offsetWidth - bmove.offsetWidth) { //box右边
+						moveLeft = bbox.offsetWidth - bmove.offsetWidth;
+					}
+					console.log(moveLeft);
+					console.log(moveTop);
+					//设置move的位置
+					bmove.style.top = moveTop + 'px';
+					bmove.style.left = moveLeft + 'px';
+					//计算移动的比例
+					var w = moveLeft / (bbox.offsetWidth - bmove.offsetWidth);
+					var h = moveTop / (bbox.offsetHeight - bmove.offsetHeight);
+					//计算大图的位置
+					var b_bimgTop = (b_bimg.offsetHeight - bbimg.offsetHeight) * h;
+					var b_bimgLeft = (b_bimg.offsetWidth - bbimg.offsetWidth) * w;
+					//设置大图的位置
+					b_bimg.style.top = -b_bimgTop + 'px';
+					b_bimg.style.left = -b_bimgLeft + 'px';
+				}
+			}
+			bigImg();
+		</script>
+	</body>
+
+</html>

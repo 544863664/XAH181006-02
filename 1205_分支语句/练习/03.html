@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>年份</title>
+	</head>
+	<body>
+		<input type="number" name="" id="years" value="" />
+		<button id="btn">判断</button>
+		<script type="text/javascript">
+			var years = document.getElementById('years');
+			var btn = document.getElementById('btn');
+			btn.onclick = function() {
+				var y = years.value;
+				if(y % 4 == 0) {
+					alert(y + '是闰年');
+				} else {
+					alert(y + '是平年');
+				}
+			};
+		</script>
+	</body>
+</html>

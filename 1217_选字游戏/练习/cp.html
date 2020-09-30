@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>彩票的随机生成</title>
+		<style>
+			.wrap {
+				display: flex;
+				align-content: center;
+				margin: 100px auto;
+				width: 840px;
+			}
+			
+			.ball {
+				width: 100px;
+				height: 100px;
+				background: linear-gradient(yellow, red);
+				border-radius: 50%;
+				margin: 0 10px;
+				box-shadow: 0 0 5px rgba(255, 0, 0, .25);
+				font-size: 50px;
+				font-weight: bolder;
+				text-align: center;
+				line-height: 100px;
+				color: #fff;
+				text-shadow: 0 0 5px #eee;
+			}
+			
+			.item {
+				background: linear-gradient(deepskyblue, blue);
+				box-shadow: 0 0 5px rgba(0, 0, 255, .25);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!-- 红色盒子 -->
+			<div class="ball box"></div>
+			<div class="ball box"></div>
+			<div class="ball box"></div>
+			<div class="ball box"></div>
+			<div class="ball box"></div>
+			<div class="ball box"></div>
+			<!-- 蓝色盒子 -->
+			<div class="ball item"></div>
+		</div>
+
+		<script>
+			// 获取元素
+			var ballList = document.querySelectorAll('.ball');
+
+			/* 所有红色小球已经生成的数字都要添加在这个数组中，新生成数字的时候要查看这个数字是否已
+			经在这个数组中，如果在，就要重新生成新的数组(蓝色小球只有一个，不需要判断)*/
+			var numArr = [];
+
+			// 当前正在随机数字的小球在ballList中的index，默认是0
+			var index = 0;
+
+			// 声明随机数函数
+			function rn(min, max) {
+				return Math.round(Math.random() * (max - min)) + min;
+			}
+
+			// 生成一个数字，且不能是numArr中的数字
+			function getNum() {
+				// 如果当前是红色小球，index值<=5
+				if(index <= 5) {
+					var num = rn(1, 33);
+				} else {
+					// 蓝色小球
+					var num = rn(1, 16);
+				}
+				return num;
+			}
+
+			// 这个i值在timer没执行一次function代码时+1，可以用它来计算当前的计时器执行了多长时间，从而控制index值得变化
+			/* 计时器每30毫秒调用一次function，意味着i值每30毫秒累加一次，那么当i累加到100时，
+			说明function已经被调用了3秒，累加到200时，function被调用了6秒*/
+			var i = 0;
+			// 控制小球切换内容的计时器，没10毫秒切换一次小球内的数字
+			// 3秒之后换下一个小球
+			// 切换下一个小球时，上一个小球内的数字被确定
+			var timer = setInterval(function() {
+				i++;
+
+				// 生成一个数字
+				var num = getNum();
+				// 如果是红色小球的内容在切换时，要判断这个数字在不在numArr中
+				if(index <= 5) {
+					// 如果这个数字已经存在于numArr中，那么要重新生成一个num
+					while(numArr.indexOf(num) >= 0) {
+						num = getNum();
+					}
+				}
+				// 经过上面的一系列操作，num最终会产生一个正确值，将这个值设置成当前被切换的ball的innerHTML
+				// num<=9时，要展示0~，比如09，08，01等
+				ballList[index].innerHTML = num < 10 ? '0' + num : num;
+
+				 /* 每隔3秒切换一次index值(第一个3秒内，上一行代码中的ballList[index]指的是第一个红色小球，
+				那么前3秒不断切换数字的小球就是第一个红色小球)*/
+				// 3秒之后index+1，那么ballList[index]就是第二个小球
+				/* 当前一个小球切换后一个小球的一瞬间，一个彩票数就确定了，比如前3秒第一个小球内的数不停的闪烁，
+				3秒后第二个小球开始闪烁，那么第二个小球开始闪烁的那一瞬间，第一个小球内的彩票数就被确定，不能再重
+				复出现，要将其添加到numArr中，用于后面的去重判断*/
+				if(i % 100 == 0) { // 每次到达3秒(3000ms)的倍数时，就让index累加一次
+					index++;
+					/* 如果能进来这个if，代表该切换下一个小球了，那么这次的这个num就是上一个小球上最后出现并且不
+					再切换的num，它就是那个被确定的彩票数，不能再重复出现了*/
+					numArr.push(num);
+				}
+
+				console.log(i);
+				// 当7个小球全部生成完毕，要清除计时器，
+				if(i == 700) {
+					clearInterval(timer);
+				}
+			}, 30);
+		</script>
+	</body>
+
+</html>
+
+<!---->

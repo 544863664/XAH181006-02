@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选字游戏</title>
+		<style type="text/css">
+			#wrap {
+				width: 380px;
+				height: 490px;
+				box-shadow: 0 0 10px #7FFF00;
+				margin: 0 auto;
+			}
+			#top {
+				width: 100%;
+				overflow: hidden;
+			}
+			#timing {
+				float: left;
+				margin: 10px;
+			}
+			#score {
+				float: right;
+				margin: 10px;
+			}
+			#bigText {
+				text-align: center;
+				margin-top: 50px;
+				font-size: 160px;
+			}
+			p {
+				text-align: center;
+				font-size: 20px;
+				padding: 0 15px;
+			}
+			#smallText {
+				text-align: center;
+			}
+			#smallText span {
+				font-size: 60px;
+				margin: 0 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top">
+				<div id="timing">倒计时：5s</div>
+				<div id="score">得分：0</div>
+			</div>
+			<div id="bigText">蓝</div>
+			<p>根据上面的字的颜色从下面选择正确的字，选择正确自动开始</p>
+			<div id="smallText">
+				<span>粉</span>
+				<span>绿</span>
+				<span>黄</span>
+				<span>蓝</span>
+				<span>红</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 1.页面初始化时，随机生成大字小字及他们的颜色
+			 2.点击小字时，找到大字和小字之间的关系
+			 3.关系正确加分，在第一次大字和小字关系匹配成功时，开始倒计时
+			 4.每次匹配成功，都要重新生成大字和小字及颜色
+			 5.当倒计时结束，不能再点击小字
+			*/
+			//获取元素
+			var timeWrap = document.getElementById('timing');//倒计时容器
+			var scoreWrap = document.getElementById('score');//分数容器
+			var bigText = document.getElementById('bigText'); //大字
+			/*document.querySelectorAll(selector)
+			 找到符合一批符合条件的元素
+			 selector：css选择器
+			 返回值：一个节点列表，长得像数组，但是不可以将其当做数组去使用。可以循环他，也可以根据【index】的方式从中取值
+			*/
+			var smallTexts = document.querySelectorAll('#smallText span');//小字
+			//声明数据源
+			var colorArr = ['pink','blue','yellow','green','red'];
+			var textArr = ['粉','蓝','黄','绿','红'];
+			//全局变量
+			var score = 0;
+			var timing = 5; //时间
+			var flag = true; //开启计时器的开关（计时器只能在第一次点击成功时开启，之后不能重复开启，不然会造成计时器叠加问题）
+			//生成随机数
+			function rn (min,max) {
+				var num = Math.round(Math.random() * (max - min)) + min;
+				return num;
+			}
+			//生成随机的下标数组
+			function randomIndexArr () {
+				var arr = [];
+				while (arr.length < 5){
+					var num = rn(0,4); //随机数
+					//是否存在与arr
+					if (arr.indexOf(num) < 0) {
+						arr.push(num);
+					}
+				}
+				return arr; //返回arr
+			}
+			//生成大字小字
+			function createData () {
+				//大字
+				var bigTextColorIndex = rn(0, 4); //颜色下标
+				var bigTextIndex = rn(0,4);  //文本下标
+				//根据随机下标从colorArr和textArr中取出随机的颜色和字，设置给大字
+				bigText.style.color = colorArr[bigTextColorIndex];
+				bigText.innerHTML = textArr[bigTextIndex];
+				//创建小字
+//				var arr = [4,2,0,3,1];//颜色下标
+				var arr = randomIndexArr(); //颜色下标数组
+//				var arr2 = [3,1,0,2,4]; //文字下标
+				var arr2 = randomIndexArr(); //文字下标数组
+				/*
+				 i:0  arr[i]:4  colorArr[arr[i]]:red  span1
+				 i:1  arr[i]:2  colorArr[arr[i]]:yellow  span2*/
+				for (var i = 0; i < arr.length; i++) {
+					smallTexts[i].style.color = colorArr[arr[i]];
+					smallTexts[i].innerHTML = textArr[arr2[i]];
+				}
+			}
+			createData();
+			//为所有的小字绑定点击事件
+			function eleClick () {
+				//循环小字
+				for (var i = 0; i < smallTexts.length; i++) {
+					//为每一个小字绑定点击事件
+					smallTexts[i].onclick = function () {
+						//this：当前点击的这个元素
+						clickOne(this);
+					}
+				}
+			}
+			eleClick();
+			//点击一个小字
+			function clickOne (ele) {
+				//获取大字的颜色在colorArr中的位置
+				var bigColor = bigText.style.color;
+				var bigColorIndex = colorArr.indexOf(bigColor);
+				//获取当前点击的字在textArr中的位置
+				var smallText = ele.innerHTML;
+				var smallTextIndex = textArr.indexOf(smallText);
+				//判断两者是否相等
+				if (bigColorIndex == smallTextIndex) {
+					//重创大字小字
+					createData();
+					scoreWrap.innerHTML = '得分：' + ++score;
+					if (flag) {
+						//第一次点击成功时，开启倒计时
+						var timer = setInterval( function () {
+							//timing累减
+							timeWrap.innerHTML = '倒计时：' + --timing + 's';
+							//当时间减到0 时，停止
+							if (timing == -1) {
+								/*停止计时器的调用
+								 清除计时器指不在进行下一次的代码调用，但是这次的调用会执行结束*/
+								clearInterval(timer);
+								//弹出提示框
+								alert('游戏结束，您的分数是：' + score + ' 点击确定重新开始游戏');
+								//分数清零
+								score = 0;
+								scoreWrap.innerHTML = '得分：0';
+								//倒计时恢复初值
+								timing = 5;
+								timeWrap.innerHTML = '倒计时：5s';
+								//第一次点击成功开始倒计时
+								flag = true;
+							}
+						},1000)
+						//关闭开关
+						flag = false;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

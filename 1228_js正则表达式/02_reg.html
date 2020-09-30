@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>reg</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 正则中的量词：
+			 	？：没有或一次。
+			 	*：没有或多次。
+			 	+：一次或多次。
+			 	{n}：必须是n次
+			 	{n,}：最少nci，最多不限制
+			 	{n，m}：n~m次
+			 * */
+			
+			var reg1 = /[0-9]?/;  //0次或一次
+			var str1 = '12hello';
+			var res1 = reg1.exec(str1);
+			console.log(res1);  //["1", index: 0, input: "12hello", groups: undefined]
+			
+			var reg2 = /[0-9]*/;  //0次或多次
+			var str2 = '11324郭嘉';
+			var res2 = reg2.exec(str2);
+			console.log(res2);  //["11324", index: 0, input: "11324郭嘉", groups: undefined]
+			
+			var reg3 = /[0-9]+/;  //一次或多次
+			var str3 = '曹操';
+			var res3 = reg3.exec(str3);
+			console.log(res3);  //null
+			
+			var reg4 = /[0-9]{3}/;  //指定为数（{3}当前只可以出现三位）
+			var str4 = '1234周瑜';
+			var res4 = reg4.exec(str4);
+			console.log(res4);  //["123", index: 0, input: "1234周瑜", groups: undefined]
+			
+			var reg5 = /[0-9]{3,6}/;  //限制范围（{3,6}最多6位，最少3位）
+			var str5 = '1234567贾诩';
+			var res5 = reg5.exec(str5);
+			console.log(res5);  //["123456", index: 0, input: "1234567贾诩", groups: undefined]
+			
+			var reg6 = /[0-9]{4,}/;  //最少四次，最多不限制
+			var str6 = '1234567刘备';
+			var res6 = reg6.exec(str6);
+			console.log(res6);  //["1234567", index: 0, input: "1234567刘备1", groups: undefined]
+			
+		</script>
+	</body>
+</html>

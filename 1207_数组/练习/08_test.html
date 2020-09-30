@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			var arr1 = [];
+			for (var i = 0; i < 5; i++) {
+				arr[i] = Math.round(Math.random() * 68) + 20;
+				for (var j = 0; j < i; j++) {
+					if (arr[i] == arr1[i]) {
+						i--;
+						break;
+					}
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

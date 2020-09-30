@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>div排列</title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			div {
+				width: 40px;
+				height: 40px;
+				background: #FF0000;
+				display: inline-block;
+				margin: 0 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			for (var i = 0; i < 11; i++) {
+				for (var j = 0; j < i; j++) {
+					if(i % 2 ==0) {
+						continue;
+					}
+					document.write('<div></div>');
+				}
+				document.write('<br>');
+			}
+			for (var i = 0; i < 14; i++) {
+				for (var j = 11; j > i; j--) {
+					if(i % 2 ==1) {
+						continue;
+					}
+					document.write('<div></div>');
+				}
+				document.write('<br>');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   1.对象和数组一样，都是用来存储大量的数据的，只不过数组是为其中的每一个数据编了编号（下标），
+			 对象是为每一个数据命名了名称（键）。
+			   2.当我们要存储大量类型相同且操作类似的数据时，一般选用数组。如果要存储一个个体的所有信息时，会
+			 选用对象。因为对象可以根据键准确的知道当前值和这个个体的作用。
+			   3.js中所有的数据格式都可以通过对象和数组的嵌套综合到一起，形成的这种复杂的数据，叫做json。
+			   4.json格式的数据，常用于前端和后台之间的交互。
+			   5.数组是对象的另外一种形式。存储数据时，没有明确的限制，某些数据必须存储成那一种类型，
+			 两种数据可以互相转换。具体根据代码需求自定。
+			 * */
+			
+			
+			//声明一个对象格式的数据
+			var obj = {}; //[]
+			console.log(obj);
+			console.log(typeof(obj)); //typeof obj
+			
+			//声明一个对象时，同时添加一些对象
+			var person = {
+				name: '张三',
+				sex: '男',
+				job: 'programmer',
+				children: [{
+					name: '张思',
+					sex: '女',
+				}, {
+					name: '张五',
+					sex: '男',
+				}],
+				girlfriend: {
+					name: '李四',
+					sex: '女',
+					job: 'model',
+				},
+			}
+			
+			//向对象中添加数据
+			person.ifSw = true;
+			person['ifSmoke'] = true;
+			console.log(person);
+			
+			
+			//覆盖对象中原来的值
+			person.ifSw = false;
+			console.log(person);
+			
+			//从对象中取出一个值
+			console.log(person.name);  //方式一
+			console.log(person['sex']);  //方式二
+		</script>
+	</body>
+</html>

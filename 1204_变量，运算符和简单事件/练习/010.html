@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" id="num1" />
+		+
+		<input type="number" id="num2" />
+		<button id="btn">=</button>
+		<span id="res"></span>
+		<script type="text/javascript">
+			var num1 = document.getElementById('num1');
+			var num2 = document.getElementById('num2');
+			var btn = document.getElementById('btn');
+			var res = document.getElementById('res');
+			btn.onclick = function () {
+				var a = Number(num1.value);
+				var b = Number(num2.value);
+				var c = a + b;
+				res.innerHTML = c;
+			};
+		</script>
+	</body>
+</html>

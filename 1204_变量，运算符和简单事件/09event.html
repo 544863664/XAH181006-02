@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			#show {
+				width: 800px;
+				height: 600px;
+				border: 2px solid red;
+				margin: 100px auto 20px;
+				position: relative;
+				overflow: hidden;
+			}
+			#wrap {
+				width: 2400px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				transition: 0.8s;
+			}
+			#wrap div {
+				display: inline-block;
+				width: 800px;
+				height: 600px;
+				text-align: center;
+				line-height: 600px;
+				font-size: 80px;
+				background: darkseagreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="show">
+			<div id="wrap">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+			</div>
+		</div>
+		<button id="btn1">按钮1</button>
+		<button id="btn2">按钮2</button>
+		<button id="btn3">按钮3</button>
+		<script type="text/javascript">
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var btn3 = document.getElementById('btn3');
+			var wrap = document.getElementById('wrap');
+			btn1.onclick = function () {
+//				wrap.style.transform = 'translateX(0)';
+				wrap.style.left = '0';
+			}
+			btn2.onclick = function () {
+//				wrap.style.transform = 'translateX(-800px)';
+				wrap.style.left = '-800px';
+				
+			}
+			btn3.onclick = function () {
+//				wrap.style.transform = 'translateX(-1600px)';
+				wrap.style.left = '-1600px';
+			}
+		</script>
+	</body>
+</html>

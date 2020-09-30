@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				background: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box'); //获取box
+			box.onclick = function () { //绑定点击事件
+				var bg = getComputedStyle(box).backgroundColor; //获取元素计算后的样式
+				console.log(bg);
+				//判断当前的背景色，根据判断的结果设置新的背景色
+				if (bg == 'rgb(0, 0, 0)') { //当前的黑色
+					box.style.background = 'yellow';
+				} else { //当前是黄色
+					box.style.background = '#000000';
+				}
+			}
+		</script>
+	</body>
+</html>

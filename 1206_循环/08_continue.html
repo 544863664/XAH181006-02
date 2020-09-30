@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 在代码有需求的地方，跳出循环：
+			 continue：结束当次循环，让循环直接遇到continue的位置跳到下一次
+			  ，continue之后的循环体代码不在执行。
+			 break：强制结束当前循环，执行循环之后的代码。
+			 * */
+			for (var i = 0; i < 10; i++) {
+				if(i == 4) {
+					continue;
+//					break;
+				}
+				document.write('<h1>'+i+'</h1>');
+			}
+		</script>
+	</body>
+</html>

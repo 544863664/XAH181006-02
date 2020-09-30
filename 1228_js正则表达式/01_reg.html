@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>reg</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 1.正则表达式的声明方式：
+			 	（1）字面量声明：如/a/;
+			 	（2）实例化对象：new RegExp('a');
+			 2.正则表达式的作用：
+			 	（1）检测字符串中是否符合规则的字符（如敏感字符）。
+			 	（2）限制用户输入的信息，必须要在某个规则之内。（网站用户名注册，密码长度字符类型限制等）。
+			 	（3）检测当前的字符串是否在规则之内（电话号码，邮箱检测等）。
+			 	（4）结合字符串的一些函数总字符串替换、裁剪等操作。
+			 3.正则提供的规则匹配函数：
+			 	（1)test.	reg.test(str);
+			 		返回值：Boolean值，str中存在reg规则的字符串返回true，不存在返回false。
+			 	（2)exec.	reg.exec(str);
+			 		返回值：数组。
+			 		0：正则表达式规定的字符串
+			 		index：这个符合规则的字符串在str中的位置
+			 		input：str
+			 		没有匹配成功返回null
+			 	注：如果是非全局匹配模式，那就匹配第一个，如果是全局匹配模式，就匹配第二个测试。
+			 * */
+			
+			//声明一个正则表达式，并用变量承接它
+			var reg1 = /a/g;
+			var str = '刘备a 孙权a 曹操a';
+			
+			var res1 = reg1.test(str);
+			console.log(res1);
+			
+			var res2 = reg1.exec(str);
+			console.log(res2);
+			console.log(res2[0]); //a
+			console.log(res2.index); //2
+			//exec函数的参数
+			console.log(res2.input); //刘备a 孙权b 曹操c
+			
+			
+			var reg2 = /尼玛/, reg3 = /垃圾/, reg4 = /fuck/;
+			var str2 = '猴子尼玛，垃圾猴子，会不会玩，fuck';
+			var res3 = reg2.exec(str2);
+			console.log(res3);
+			//依次匹配三个正则和str
+			if (reg2.test(str2)) {
+				var tempStr = str2;
+				for (var i in res3[0]) {
+					tempStr = tempStr.replace(res3[0][i], '*');
+				}
+				console.log(tempStr);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>留言板</title>
+		<style type="text/css">
+			.wrap {
+				width: 1000px;
+				margin: 50px auto;
+				border: 10px solid;
+				padding: 20px;
+			}
+			
+			.wrap textarea {
+				resize: none;
+				width: 100%;
+				height: 200px;
+				box-sizing: border-box;
+			}
+			
+			.send {
+				display: inline-block;
+				background: #000000;
+				border-radius: 8px;
+				padding: 8px 15px;
+				color: #FFFFFF;
+				margin-top: 20px;
+			}
+			
+			.send:hover {
+				cursor: pointer;
+			}
+			.list {
+				margin: 30px 0;
+			}
+			.item {
+				background: #000000;
+				color: #FFFFFF;
+				padding: 20px;
+				border-radius: 8px;
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+			.item span:nth-child(1) {
+				float: right;
+			}
+			.item span:nth-child(1):hover {
+				cursor: pointer;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<div class="wrap">
+			<!--输入框-->
+			<textarea name="" rows="" cols=""></textarea>
+			<div class="send">发表留言</div>
+			<!--留言列表-->
+			<div class="list">
+				<!--<div class="item">
+					<span>这是留言内容</span>
+					<span>X</span>
+				</div>
+				<div class="item">
+					<span>这是留言内容</span>
+					<span>X</span>
+				</div>-->
+			</div>
+			<!---->
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var textArea = document.querySelector('.wrap textarea');
+			var send = document.getElementsByClassName('send')[0];
+			var list = document.getElementsByClassName('list')[0];
+			//点击send按钮时，获取textarea的value值，创建新的留言，添加到list中
+			send.onclick = function () {
+				//获取留言
+				var message = textArea.value;
+				//如果留言为空，直接结束代码的执行
+				if (message == '') {
+					return;
+					/*函数体内的return不仅代表着返回值，还代表停止代码执行（在一个函数体内
+				，如果碰到一个return，那么这个函数体内return之后的代码就不会再执行，直接
+				执行函数体外的后面的代码）。*/
+				}
+				//message不为''
+				//创建新元素
+				var newEle = document.createElement('div');
+				newEle.className = 'item'; //添加类名
+				//删除按钮
+				var del = document.createElement('span');
+				del.innerHTML = 'X';
+				newEle.appendChild(del);
+				//为del绑定点击事件
+				del.onclick = function () {
+					//删除当前del所在的item
+					this.parentNode.remove();
+				}
+				//item中的留言内容
+				var mess = document.createElement('span');
+				mess.innerHTML = message;
+				newEle.appendChild(mess);
+				//将当前新创建的这个留言展示在留言列表list中
+				/*prepend：将元素添加到元素的最前方*/
+				list.prepend(newEle);
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>周考题</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//在不使用第三个变量的情况下，交换a和b的值
+			var a = 3,
+				b = 5;
+			//和
+			a = a + b; //a:8 b:5
+			b = a - b; //a:8 b:3
+			a = a - b; //a:5 b:3
+			//差
+			a = b - a; //a:2 b:5
+			b = b - a; //a:2 b:3
+			a = a + b; //a:5 b:3
+			//异或
+			a = a ^ b;
+			b = a ^ b;
+			a = a ^ b;
+			/*
+			 a:0011
+			 b:0101
+			 
+			 a:0110
+			 b:0101
+			 
+			 b:0011
+			 a:0110
+			 
+			 a:0101  b:0011
+			 * */
+			console.log(a, b);
+
+			//awitch判断的数据和case对应的值，在做匹配时，做的是'==='的匹配
+			var num = 1;
+			switch(num) {
+				case '1':
+					num += 1;
+				case '2':
+					num += 2;
+				case '3':
+					num += 3;
+			}
+			console.log(num); //1
+
+			//一个未声明变量，如果在第一次被赋值时，未加关键词修饰，那么js认为它是一个全局变量
+			function test() {
+				var a = b = 1;
+			}
+			test();
+			console.log(a, b);
+		</script>
+	</body>
+
+</html>

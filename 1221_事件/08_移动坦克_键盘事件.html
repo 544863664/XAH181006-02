@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>移动坦克</title>
+		<style type="text/css">
+			.tank {
+				position: absolute;
+				left: 100px;
+				bottom: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/r.gif" class="tank"/>
+		<script type="text/javascript">
+			//获取元素
+			var tank = document.querySelector('.tank');
+			//按下键盘的键时
+			//判断按下的时那个键
+			//根据这个键操作tank
+			document.onkeydown = function (ev) {
+				//获取事件对象
+				var e = ev || window.event;
+				//获取keycode
+				//switch...case..被判断的条件和case后的条件，时全等于的判断
+				switch (e.keyCode) {
+					case 37:
+						tank.src = 'img/l.gif';
+						tank.style.left = tank.offsetLeft - 30 + 'px';
+						break;
+					case 38:
+						tank.src = 'img/u.gif';
+						tank.style.top = tank.offsetTop - 30 + 'px';
+						break;
+					case 39:
+						tank.src = 'img/r.gif';
+						tank.style.left = tank.offsetLeft + 30 + 'px';
+						break;
+					case 40:
+						tank.src = 'img/d.gif';
+						tank.style.top = tank.offsetTop + 30 + 'px';
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

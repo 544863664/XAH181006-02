@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/*
+		 do{
+		 	code
+		 }while（condition）；
+		 	执行步骤：
+		 		先执行do中的code（循环体），在判断循环条件（condition），
+		 		 true接着执行循环体代码，false循环结束，执行循环之后的代码。
+		 		do...while..和while...的区别：
+		 		 （1）前者先执行循环体，在判断条件，后者先判断条件，在执行循环体。
+		 		 （2）如果循环条件为假，do...while..循环会执行一次，while
+		 		 循环一次也不会执行（条件为真且条件相同时，二者没区别）。
+		 * */
+			var i = 0;
+			do{
+				document.write('<h1>' + i + '</h1>');
+				i++;
+			}while (i <10);
+		</script>
+	</body>
+</html>

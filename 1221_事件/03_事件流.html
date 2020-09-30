@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件流</title>
+		<style type="text/css">
+			.box {
+				border: 10px solid;
+				padding: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box box1">
+			<div class="box box2">
+				<div class="box box3">
+					<div class="box box4">
+						<div class="box box5">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 事件流：
+			 	当点击（也可以是其他操作）某一个元素时，同时点击了其父级标签，也点击了父级标签的父级，也就是说这个操作会
+			    从当前这个具体的元素传递到Window。这个事件传递的过程就是事件流。
+			 	注：事件流是由，HTML标记语言的层层包含的树形结构特点造成的一种现象。
+			 	
+			 事件流的传递方向：事件冒泡，事件捕获
+			 	事件冒泡：
+			 		当操作一个元素时，代码的触发顺序，是从这个具体的元素，一只到Window对象
+			 	事件捕获：
+			 		当操作一个元素时，代码的触发顺序，先从Window对象开始，一直到这个具体元素。
+			 	注：如果一个事件流的流向中同时存在冒泡和捕获，那么会先有外向里的顺序触发所有的捕获，
+			 	再由里向外按顺序触发所有的冒泡。
+			 * */
+			//获取元素
+			var boxes = document.querySelectorAll('.box');
+			//挨个绑定点击事件
+			boxes[0].addEventListener('click',function () {
+				console.log(1);
+			},false);
+			boxes[1].addEventListener('click',function () {
+				console.log(2);
+			},true);
+			boxes[2].addEventListener('click',function () {
+				console.log(3);
+			},false);
+			boxes[3].addEventListener('click',function () {
+				console.log(4);
+			},true);
+			boxes[4].addEventListener('click',function () {
+				console.log(5);
+			},false);
+			
+			
+//			boxes[0].onclick = function () {
+//				console.log(1);
+//			};
+//			boxes[1].onclick = function () {
+//				console.log(2);
+//			};
+//			boxes[2].onclick = function () {
+//				console.log(3);
+//			};
+//			boxes[3].onclick = function () {
+//				console.log(4);
+//			};
+//			boxes[4].onclick = function () {
+//				console.log(5);
+//			};
+		</script>
+	</body>
+</html>

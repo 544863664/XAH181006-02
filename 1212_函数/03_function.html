@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数的返回值</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 1.函数的参数数量可以确定，也可以不定。
+			 2.过程性的函数封装：（执行一个过程）
+			 	一段代码被不断地使用，只需要从第一行执行到最后一行即可。
+			 3.结果性的函数封装：（拿到一个数据）
+			 	一段代码执行完之后产生了一个结果，我们需要使用这个结果。
+			 
+			*/
+//			Math.pow(2, 3);
+			function rn (min,max) {
+				var num = Math.round(Math.random() * (max - min)) + min;
+				return num; //为函数设置一个返回值
+			}
+			var res = rn(40, 83);
+			console.log(res);
+		</script>
+	</body>
+</html>

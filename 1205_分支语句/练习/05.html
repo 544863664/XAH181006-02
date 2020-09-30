@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工资税率</title>
+	</head>
+	<body>
+		<input type="number" name="" id="num" value="" />
+		<button id="btn">判断</button>
+		<script type="text/javascript">
+			var num = document.getElementById('num');
+			var btn = document.getElementById('btn');
+			btn.onclick = function() {
+				var m = num.value;
+				if(m >= 1 && m <= 5000) {
+					var a = (m - 5000) * 0;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 5001 && m <= 8000) {
+					var a = (m - 5000) * 0.03;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 8001 && m <= 17000) {
+					var a = (m - 5000) * 0.1;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 17001 && m <= 30000) {
+					var a = (m - 5000) * 0.2;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 30001 && m <= 40000) {
+					var a = (m - 5000) * 0.25;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 40001 && m <= 60000) {
+					var a = (m - 5000) * 0.3;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m >= 60001 && m <= 85000) {
+					var a = (m - 5000) * 0.35;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m > 85000) {
+					var a = (m - 5000) * 0.45;
+					var b = m - a;
+					alert('税前工资：' + m + '\n' + '税收：' + a + '\n' + '税后工资：' + b);
+				} else if(m < 0) {
+					alert('输入有误，请重新输入！');
+				}
+			};
+		</script>
+	</body>
+</html>

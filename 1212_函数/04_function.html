@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>变量的作用域</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			变量的作用域：
+				全局变量：
+					在所有函数体外，声明的变量，可以被随意访问、设置。
+				局部变量：
+					在函数内声明的变量，只能在这个函数内进行访问、设置。
+			*/
+			//声明一个全局变量
+			var a = 1;
+			//声明一个函数
+			function fn() {
+				var b = 2;
+				console.log(b);
+			};
+			fn();
+			console.log(a);
+			
+		</script>
+	</body>
+</html>

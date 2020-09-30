@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件对象</title>
+		<style type="text/css">
+			.wrap {
+				width: 400px;
+				height: 20000px;
+				background: #00CED1;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="wrap"></div>
+			
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			//为期绑定点击事件
+			wrap.onclick = function (ev) {
+				var e = ev || window.event;
+				//* 当前鼠标点击的位置距离可视窗口左上角（（0,0）点）水平垂直的距离
+				console.log('x:',e.clientX);
+				console.log('y:',e.clientY);
+				
+				//当前点击的位置和文档流左上角的位置关系
+				console.log('x:',e.pageX);
+				console.log('y:',e.pageY);
+				
+				//点击当前位置和屏幕可视窗口的位置关系
+				console.log('x:',e.screenX);
+				console.log('y:',e.screenY);
+				
+				//点击当前位置和当前被点击的元素的位置关系
+				console.log('x:',e.offsetX);
+				console.log('y:',e.offsetY);
+			};
+			/*
+						 事件对象：
+						 	1.是js提供的一个对象，当事件触发时，自动创建。
+						 	2.事件对象是一个临时性的对象（事件触发被创建，触发结束，这个对象会
+						    被销毁，下次触发事件时，创建的是另外一个事件对象）。
+						    3.事件对象中，含有当前触发事件时，产生的一系列的可能会被使用的数据（
+						    是否按下alt，距离可视窗口，屏幕，文档流等的位置关系）。
+						 * */
+		</script>
+	</body>
+</html>

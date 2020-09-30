@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function m(max,min) { //指定区间形参
+				var arr = [];
+				for (var i = 0; i < 5; i++) {
+					var res = Math.round(Math.random() * (max - min)) + min;
+					if (arr.indexOf(res) >= 0) {
+						i--;
+						continue;
+					}
+					arr.push(res);
+				}
+				console.log(arr);
+			}
+			m(10,1); //指定区间实参
+			
+			function max() {
+				var arr = arguments[0]; //声明一个数组
+				for (var i = 0; i < arguments.length; i++) { //循环当前数组
+					arr = arr > arguments[i] ? arr : arguments[i]; //判断当前数组的最大值
+				}
+				return arr; //返回arr
+			}
+			var res = max(324,432,543,6453,234,43); //向max输入数组
+			console.log(res); //输出最大值
+		</script>
+	</body>
+</html>

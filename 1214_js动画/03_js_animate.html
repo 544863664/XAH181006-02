@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+			#wrap {
+				width: 1000px;
+				height: 600px;
+				position: relative;
+				margin: 0 auto;
+				background: #8FBC8F;
+			}
+			#box {
+				width: 100px;
+				height: 100px;
+				background: #00CED1;
+				position: absolute;
+				left: 100px;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.getElementById('wrap');
+			var box = document.getElementById('box');
+//			
+			//匀速运动
+			var i = 30;
+			setInterval(function() {
+				//获取box的left值
+				var bl = box.offsetLeft;
+				//累加
+				bl += i;
+				//将累加之后的结果设置成盒子新的left值
+				box.style.left = bl + 'px';
+				i--;
+			},300)
+			
+//			var i = 60;
+//			setInterval(function() {
+//				//获取box的left值
+//				var bl = box.offsetLeft;
+//				//累加
+//				bl += 1;
+//				//将累加之后的结果设置成盒子新的left值
+//				box.style.left = bl + 'px';
+//				i -= 5;
+//			},i)
+		</script>
+	</body>
+</html>

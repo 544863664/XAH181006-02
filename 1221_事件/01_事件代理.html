@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件代理</title>
+	</head>
+	<body>
+		<ul id="list">
+			<li>孔子</li>
+			<li>孟子</li>
+			<li>墨子</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 事件委托：
+			 	将本来应该绑给若干相同子级的事件，绑定给父级元素。点击子级元素，就是在点击父级元素，一定会触发父级元素的点击事件处理程序
+			 	，我们可以通过事件对象e.target；的方式，获取到触发事件处理程序的具体子级元素，并对其做操作。
+			 * */
+			//获取元素
+			var list = document.querySelector('#list');
+			//绑定点击事件
+			list.onclick = function (ev) {
+				//事件对象
+				var e = ev || window;
+				//e.target；触发父级事件处理程序的子级元素
+				console.log(e.target.innerHTML);
+			}
+		</script>
+	</body>
+</html>

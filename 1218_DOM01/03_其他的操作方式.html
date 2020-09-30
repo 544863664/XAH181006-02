@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="wrap">
+			<p></p>
+			<mark></mark>
+		</div>
+		<script type="text/javascript">
+			//获取wrap
+			var wrap = document.getElementsByClassName('wrap')[0];
+			//获取wrap中的mark
+			var wm = document.querySelector('.wrap mark');
+			//创建一个新元素
+			var newEle = document.createElement('div');
+			//用新的元素替换wrap中的mark
+			wrap.replaceChild(newEle,wm);
+			
+			//获取wrap中的p标签
+			var wp = document.querySelector('.wrap p');
+			//从wrap中删除p标签
+			wrap.removeChild(wp);
+			
+			//删除节点本身
+			wrap.remove();
+		</script>
+	</body>
+</html>

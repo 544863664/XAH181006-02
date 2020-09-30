@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>秒表计时器</title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			.wrap {
+				margin: 0 auto;
+				text-align: center;
+			}
+			.numWrap {
+				width: 330px;
+				height: 100px;
+				font-size: 50px;
+				font-weight: 700;
+				line-height: 100px;
+				margin: 100px auto 0;
+				border-radius: 50px;
+				border: 1px solid;
+			}
+			button {
+				width: 60px;
+				margin: 20px 10px;
+			}
+			.nowNum {
+				width: 330px;
+				height: 20px;
+				font-weight: 600;
+				text-align: center;
+				margin: 0 auto;
+			}
+			.nowNum p {
+				margin: 5px;
+			}
+			.clear {
+				text-align: right;
+				display: none;
+				width: 330px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+		<div class="numWrap">00 : 00 : 00</div>
+		<br />
+		<button class="btn1">开始</button>
+		<button class="btn2">计次</button>
+		<button class="btn3">重置</button>
+		<div class="clear">清除数据</div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			var numWrap = document.querySelector('.numWrap');
+			var btn1 = document.querySelector('.btn1');
+			var btn2 = document.querySelector('.btn2');
+			var btn3 = document.querySelector('.btn3');
+			var clear = document.querySelector('.clear');
+			
+			var n = 0;
+			var i = 1;
+			var timer = null;
+			
+			//开始计时器
+			function bt() {
+				btn1.onclick = function () {
+					clearInterval(timer);
+					timer = setInterval(function () {
+						n++;
+						var h = parseInt(n / 3600);
+						var m = parseInt(n / 60);
+						var s = parseInt(n % 60);
+						numWrap.innerHTML = rn(h) + ' : ' + rn(m) + ' : ' + rn(s);
+					}, 1000 / 60)
+					btn1.innerHTML = '暂停';
+					btn1.onclick = function () {
+						clearInterval(timer);
+					}
+				}
+				
+			}
+			bt();
+			
+				var nowNum = document.createElement('div');
+				nowNum.className = 'nowNum';
+			
+			btn2.onclick = function () {
+				clear.appendChild(nowNum);
+				var nowTime = document.createElement('p');
+				nowNum.appendChild(nowTime);
+				nowTime.innerHTML = '计次' + rn(i++) +'&nbsp;&nbsp;&nbsp;'+ numWrap.innerHTML;
+				if (i % 2 == 0) {
+					nowTime.style.background = '#eee';
+				}
+				clear.style.display = 'block';
+				del();
+			}
+			function del() {
+				clear.onclick = function () {
+					this.removeChild(nowNum);
+					clear.style.display = 'none';
+				}	
+			}
+			btn3.onclick = function () {
+				clearInterval(timer);
+				numWrap.innerHTML = '00 : 00 : 00';
+				n = 0;
+				var nowNum = document.createElement('div');
+				nowNum.className = 'nowNum';
+				btn1.innerHTML = '开始';
+				bt();
+			}
+			function rn(e) {
+				return e < 10 ? '0' + e : e;
+			}
+		</script>
+	</body>
+</html>

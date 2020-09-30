@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘事件</title>
+	</head>
+	<body>
+		<input type="text" class="inp" name="" id="" value="" />
+		<script type="text/javascript">
+			
+			/*
+			 键盘事件：
+			 keydown：按下键盘上的任意键触发，其中，key指这个键代表的字符串（区分大小写），
+			keyCode指按下的这个键在所有键中的唯一标识。
+			 keyup:抬起一个键触发
+			 keypress：按下一个字符触发（；，。？）功能键不触发
+			 * */
+			
+			//onfocus:获取焦点
+			//onblur:失去焦点
+			//onchange:本次失去焦点的value值和上次失去焦点的value值作比较,值不同就触发
+			//oninput:边输入边触发
+			
+			//获取
+			var inp = document.querySelector('.inp');
+//			inp.onkeydown = function (ev) {
+//				var e = ev || window.event;
+//				console.log(e);
+//			}
+//			inp.onkeyup = function (ev) {
+//				var e = ev || window.event;
+//				console.log(e);
+//			}
+			inp.onkeypress = function (ev) {
+				var e = ev || window.event;
+				console.log(e);
+			}
+			
+		</script>
+	</body>
+</html>

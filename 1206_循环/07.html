@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>乘法表</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 双层for循环执行规律：
+			 	（1）外层循环控制行，内层循环控制列。
+			 	（2）外层循环体执行一次，代表层内循环执行一次（所有）
+			 	（3）可以在循环体代码中使用两个循环的循环变量。
+			 * */
+			 for (var i = 1; i < 10; i++) {
+				for (var j = 1; j < i + 1; j++) {
+					document.write(i +'*'+j+'='+i*j+'&nbsp;');
+				}
+				document.write('<br>');
+			}
+		</script>
+	</body>
+</html>

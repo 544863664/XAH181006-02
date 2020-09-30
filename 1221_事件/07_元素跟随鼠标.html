@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 100px;
+				height: 100px;
+				background: #999999;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript">
+			var wrap = document.querySelector('.wrap');
+			//为文档流绑定鼠标移动事件
+			document.onmousemove = function (ev) {
+				//获取鼠标移动的位置
+				var e = ev || window.event;
+				wrap.style.top = e.clientY - 50 + 'px';
+				wrap.style.left = e.clientX - 50 + 'px';
+				//将其设置成元素的left值和top值
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>碰壁反弹</title>
+		<style type="text/css">
+			#wrap {
+				width: 1000px;
+				height: 600px;
+				box-shadow: 0 0 10px #9A9A9A;
+				position: relative;
+				margin: 20px auto;
+			}
+			#box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.getElementById('wrap');
+			var box = document.getElementById('box');
+			//让box运动
+			var speedX = -1,speedY = -1;
+			setInterval( function () {
+				//left运动
+				var l = box.offsetLeft; //当前的left
+				if (l == 0 || l == wrap.offsetWidth - box.offsetWidth) {
+					speedX *= -1;
+				}
+				box.style.left = l + speedX + 'px'; //设置新的left
+				//top运动
+				var t = box.offsetTop; //当前的top
+				if (t == 0 || t == wrap.offsetHeight - box.offsetHeight) {
+					speedY *= -1;
+				}
+				box.style.top = t + speedY + 'px'; //设置新的top
+			}, 4)
+		</script>
+	</body>
+</html>

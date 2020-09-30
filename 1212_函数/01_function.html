@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box1,#box2,#box3 {
+				width: 200px;
+				height: 200px;
+				background: #000000;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="btn">
+			<button id="btn1">按钮1</button>
+			<button id="btn2">按钮2</button>
+			<button id="btn3">按钮3</button>
+		</div>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<script type="text/javascript">
+			//获取元素
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var btn3 = document.getElementById('btn3');
+			var box1 = document.getElementById('box1');
+			var box2 = document.getElementById('box2');
+			var box3 = document.getElementById('box3');
+			
+			btn1.onclick = function () {
+				changeBg(box1);
+			};
+			btn2.onclick = function () {
+				changeBg(box2);
+			};
+			btn3.onclick = function () {
+				changeBg(box3);
+			};
+			//声明一个函数，函数名叫做changeBg
+			function changeBg (ele) {
+				//生成一个随机色
+				var bg = '#' + String(Math.random()).slice(2, 6);
+				//将bg设置给第一个box
+				ele.style.background = bg;
+			}
+		</script>
+	</body>
+</html>

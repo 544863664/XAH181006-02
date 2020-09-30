@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装常用函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组去重
+			function arrNoRepeat(arr) {
+				//arr：形参，代表即将被去重的数组
+				var res = [];
+				for (var i = 0; i < arr.length; i++) {
+					//取出当前循环到的元素，判断其是否存在于res中
+					if (res.indexOf(arr[i]) < 0) {
+						//不存在，添加到res中
+						res.push(arr[i]);
+					}
+				}
+				return res;
+			}
+			var res1 = arrNoRepeat([34,5,4,64,34,8,323,4,2,24,54,5]);
+			console.log(res1);
+			var res2 = arrNoRepeat([23,53,4,32,4,23,6,75,5,7,6]);
+			console.log(res2);
+			
+			/*按照指定的字符链接数组中所有元素
+			 调用join时如果什么都不传，按照’，‘拼接
+			 传’‘，直接拼接所有元素
+			 传指定字符，按照指定字符拼接*/
+			function join(arr, char) {
+				//根据用户传入的数据确定需要什么字符串去拼接数组
+				char = char == undefined ? ',' : char == '' ? '' : char;
+				//遍历arr，将其中的每一个元素用char链接成一个新的字符串
+				var res = '';
+				for (var i = 0; i < arr.length; i++) {
+					//累积拼接
+					//var str = arr[i] + char;
+					var str = i == arr.length - 1 ? arr[i] : arr[i] + char;
+					res += str;
+				}
+				return res;
+			}
+			console.log(join([2,3,5,6,7], '*'));
+		</script>
+	</body>
+</html>

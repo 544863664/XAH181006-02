@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM0级和DOM2级的event.html</title>
+		<style type="text/css">
+			.wrap {
+				width: 500px;
+				height: 500px;
+				background: aliceblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript">
+			
+			//获取
+			var wrap = document.querySelector('.wrap');
+			
+			
+			/*
+			 为元素绑定监听事件：
+			 	DOM0级：
+			 		ele.onclick = function () {};
+			 	DOM2级：
+			 		ele.addEvenListener(eventName，fn，bol)；
+			 		eventNme：要绑定的事件类型
+			 		fn：事件处理的程序
+			 		bol：决定事件流的方向，默然false。
+			 	区别：
+			 		（1）DOM0级只能冒泡，DOM2级冒泡捕获都可以支持。
+			 		（2)当需要在不同的代码位置，为一个元素添加相同的监听事件
+			 		时，DOM0级方式新的事件处理程序会覆盖旧的，DOM2级可以实
+			 		现叠加添加动作。
+			 	注：
+			 	
+			 	IE浏览器下DOM2级添加监听事件的方式
+			 	ele.addEvenListener('onclick'，fn，bol)；
+			 	↑
+			 * */
+			
+			
+			/* wrap.addEventListener('click', function (ev) {
+			 	var e = ev || window.event;
+			 	console.log(e);
+			 })*/
+			
+			function test(ev) {
+				var e = ev || window.event;
+				console.log(e);
+			}
+			test();  //e : undefined
+			wrap.addEventListener('click',test)
+		</script>
+	</body>
+</html>

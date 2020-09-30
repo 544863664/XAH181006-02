@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>time</title>
+    <style type="text/css">
+    	#myLock {
+    		text-align: center;
+    		margin-top: 100px;
+    	}
+    </style>
+</head>
+<body>
+    <div id="myLock"></div>
+    <script type="text/javascript">
+    	var myLock = document.getElementById('myLock');
+    	var weekArr = '日一二三四五六';
+    	function clock() {
+    		var today = new Date();
+    		var years = today.getFullYear();
+    		var month = today.getMonth() + 1;
+    		var day = today.getDate();
+    		var week = today.getDay();
+    		var weeks = weekArr.charAt(week);
+    		var hours = today.getHours();
+    		var minutes = today.getMinutes();
+    		var seconds = today.getSeconds();
+    		myLock.innerHTML = '现在的时间是：' + years + '年' + month + '月' + day + '日  ' + '星期' + weeks +' '+ hours + ':' + minutes + ':' + seconds;
+    	}
+    	var myTime = setInterval('clock()', 1000);
+    </script>
+</body>
+</html>

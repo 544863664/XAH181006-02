@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		橘子：2 苹果：2.4 火龙果：3 葡萄：8
+		<input type="text" name="" id="fruit" value="" />
+		<button id="btn">判断</button>
+		<span id="res"></span>
+		<script type="text/javascript">
+			var fruit = document.getElementById('fruit');
+			var btn = document.getElementById('btn');
+			var res = document.getElementById('res');
+			btn.onclick = function () {
+				var type =fruit.value;
+				var count = 0;
+				switch(type) {
+					case '橘子':
+						count = 20 / 2;
+						break;
+					case '苹果':
+						count = 20 / 2.4;
+						break;
+					case '火龙果':
+						count = 20 / 3;
+						break;
+					case '葡萄':
+						count = 20 / 8;
+						break;
+					default:
+						count = 0;
+				}
+				res.innerHTML = count + '斤';
+			};
+			/*
+			 switch（data）{
+			 	case‘value1’：
+			 		code1
+			 	break；
+			 	case‘value2’：
+			 		code2
+			 	break；
+			 	case‘value3’：
+			 		code3
+			 	break；
+			 	...
+			 	case‘valuen’：
+			 		coden
+			 	break；
+			 	default:
+			 		code
+			 }
+			 switch...case语句执行步骤：
+			 	直接判断data的值：
+			 	    符合按照顺序匹配的case，匹配成功，执行这个case
+			 	 所对应的code，switch语句执行结束，匹配失败接着匹
+			 	 配下一个case，如果所有的case都匹配失败，执行default
+			 	 （default可以省略，省略不写不影响switch语句的正确流程。
+			 * */
+		</script>
+	</body>
+</html>

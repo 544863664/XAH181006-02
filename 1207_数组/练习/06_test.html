@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr1 = [];
+			for (var i = 0; i < 5; i++) {
+				arr1[i] = Math.round(Math.random() * 44) + 44;
+			}
+			console.log(arr1);
+			var max = arr1;
+			for (var j = 0; j < 5; j++) {
+				max = max > arr1[j] ? max : arr1[j];
+			}
+			console.log('最大数：' + max);
+			var min = arr1;
+			for (var j = 0; j < 5; j++) {
+				min = min < arr1[j] ? min : arr1[j];
+			}
+			console.log('最小数：' + min);
+		</script>
+	</body>
+</html>

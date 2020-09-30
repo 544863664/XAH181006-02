@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>1号店</title>
+	</head>
+	<style type="text/css">
+		table {
+			width: 300px;
+			margin: 50px auto;
+		}
+		
+		.twoDiv {
+			height: 800px;
+			border-top: 1px solid transparent;
+			background-color: #fcfcfc;
+		}
+		
+		.name {
+			width: 290px;
+			height: 40px;
+		}
+		
+		.pwd {
+			width: 290px;
+			height: 40px;
+		}
+		
+		.btn {
+			background-color: #E1E1E1;
+			width: 290px;
+			height: 60px;
+			border: none;
+		}
+		
+		.inp {
+			width: 290px;
+			height: 40px;
+			outline: none;
+			font-size: 14px;
+		}
+	</style>
+
+	<body>
+
+		<div class="twoDiv">
+
+			<table>
+				<tr>
+					<th colspan="2" style="padding-bottom: 10px;">
+						<input type="text" class="userName inp" placeholder="用户名" oninput="" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="padding-bottom: 10px;">
+						<input type="password" class="passWord inp" placeholder="密码" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="padding-bottom: 10px;">
+						<input type="text" class="tel inp" placeholder="手机号" oninput="" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="padding-bottom: 10px;">
+						<input type="text" class="Eml inp" placeholder="邮箱" oninput="" />
+					</th>
+				</tr>
+				<tr>
+					<th style="text-align: left;padding-bottom: 10px;">
+						<input type="checkbox" /><span>自动登录</span>
+					</th>
+					<th style="text-align: right;padding-bottom: 10px;">
+						<a href="#">忘记密码？</a>
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<input type="button" value="登录" class="btn" />
+					</th>
+				</tr>
+			</table>
+
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var inpList = document.querySelectorAll('input');
+			var btn = document.querySelector('.btn');
+			btn.onclick = function() {
+				//获取输入的三个信息，依次验证
+				var userName = inpList[0].value;
+				var passWord = inpList[1].value;
+				var tel = inpList[2].value;
+				var Eml = inpList[3].value;
+				if(userName != '') {
+					//代表用户名可用，验证密码
+					var pswdReg = /^\w{8,18}$/;
+					if(pswdReg.test(passWord)) {
+						//代表密码符合规则，验证电话号码
+						var telReg = /^1[3-9]\d{9}$/;
+						if(telReg.test(tel)) {
+							//代表电话符合规则
+							var EmlReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+							if (EmlReg.test(Eml)) {
+								alert('注册成功');
+								location.href = "index.html";
+							} else {
+								alert('邮箱有误请重新输入！');
+							}
+						} else {
+							alert('电话号码有误，请重新输入！')
+						}
+					} else {
+						alert('您输入的密码不正确！');
+					}
+				} else {
+					alert('用户名不能为空！');
+				}
+			};
+		</script>
+	</body>
+
+</html>

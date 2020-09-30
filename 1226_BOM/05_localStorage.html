@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>localStorage</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//向localStorage中村数据
+			//方式一
+			localStorage.movie = '美丽人生';
+			localStorage.dsj = '蛇蝎女佣';
+			localStorage.dm = '狐妖小红娘，大护法，大鱼海棠';
+			localStorage.book = '仙逆，鬼吹灯，麻衣神相';
+			
+			//方式二
+			localStorage['eat'] = '牛肉面';
+			localStorage['play'] = '刺激战场';
+			
+			//方式三
+			localStorage.setItem ('hero', '诸葛亮');
+			localStorage.setItem ('girl', '王昭君');
+			localStorage.setItem ('man', '李元芳');
+			
+			//覆盖已经存储的数据
+			localStorage.setItem ('man', '白起');
+			
+			//取数据
+			var res1 = localStorage.man;
+			console.log(res1);localStoragelocalStorage
+			var res2 = localStorage['movie'];
+			console.log(res2);
+			var res3 = localStorage.getItem('hero');
+			console.log(res3);
+			
+			/*
+			cookie:
+				（1）能存储大概4kb左右的数据
+				（2）浏览器一退出，数据被自动清空
+				（3）可通过设置阻止浏览器的清空
+			localStorage:
+				（1）能存储4mb左右的数据
+				（2）数据会一只存储
+				（3）可通过代码清除localStorage中的数据
+			*/
+			
+		</script>
+	</body>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--	-->
+
+</html>

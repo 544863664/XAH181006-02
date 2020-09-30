@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no"/>
+		<title>飞翔的小鸟</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+
+	<body>
+		<div class="wrap">
+			<img src="img/bg.jpg"/>
+			<img src="img/bg.jpg"/>
+			<!--开始界面-->
+			<div class="startPage" style="">
+				<!--开始动画-->
+				<div class="stratAni">
+					<div></div>
+				</div>
+				<!--按钮-->
+				<div class="btns">
+					<img src="img/start.jpg" />
+					<img src="img/submit.jpg" />
+				</div>
+			</div>
+			<!--结束界面-->
+			<div class="overPage" style="display: none;">
+				<img src="img/game_over.jpg" />
+				<div class="overScore">
+					<span class="nowScore">0</span>
+					<span class="bestScore">0</span>
+				</div>
+				<div>
+					<img src="img/ok.jpg" />
+				</div>
+			</div>
+			<!--分数-->
+			<div class="scoreWrap">
+				<img src="img/0.jpg" />
+			</div>
+			<!--小鸟-->
+			<div class="bird"></div>
+			<!--管道-->
+			<div class="pipeWrap">
+				<!--单个管道-->
+				<!--<div class="pipe">
+					<div class="pipeUpper">
+						<div class="pipeUpperTop"></div>
+					</div>
+					<div class="pipeLower">
+						<div class="pipeLowerTop"></div>
+					</div>
+				</div>-->
+			</div>
+			<!--草地-->
+			<div class="grass">
+				<img src="img/banner.jpg" />
+				<img src="img/banner.jpg" />
+			</div>
+			
+		</div>
+		<audio src="music/纯音乐 - 马戏团游戏背景音乐.mp3" id="gameMusic"></audio>
+		<audio src="music/失败.mp3" id="overMusic"></audio>
+
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>reg</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var reg = /1[3-9]\d{9}/g;  //电话号码正则
+			var str = '13584730982和18809372093';  // ["13584730982", "18809372093"]
+			var res = str.match(reg);
+			console.log(res);
+			
+			//search
+			var res2 = str.search(reg);
+			console.log(res2);
+			
+			//replace
+			var reg2 = /1[3-9]\d{9}/;
+			var res3 = str.replace(reg2, '***********');  //***********和18809372093
+			console.log(res3);
+			
+			var reg3 = /[\w\s$^%&]+/g;
+			var str3 = '曹操2$4刘备e56孙权7F9诸葛亮666郭嘉 3_';
+			var res3 = str3.split(reg3);
+			console.log(res3);
+			
+			/*
+			 字符串的函数：
+			 	1.match
+			 		str.match(reg);
+			 		（1）匹配成功，返回一个数组，匹配失败返回null。
+			 		（2）当正则表达式未设置全局匹配模式时（g），只返回匹配到的第一个结果，并包含这个结果在str中的index
+			 		和str本身（input）。
+			 		（3）如果正则表达式设置了全局匹配，那么就会以数组的形式，将所有符合正则表达式规则的结果都列出来。
+			 	2.search
+			 		str.search(reg);
+			 		（1）作用类似于indexof，只不过indexof返回的是正确的某个字符串在str中的位置，search返回的是符合reg的
+			 		字符串早str中的位置。
+			 		（2）无论是indexof还是search，都只能返回第一次出现的位置（匹配不到返回-1）。
+			 	3.replace
+			 		str.replace(oldStr,newStr);
+			 		用newStr替换str中的第一个oldStr；
+			 		
+			 		str.replace(reg.newStr);
+			 		如果reg未设置全局匹配模式，就会用newStr替换str中的第一个符合reg规则的字符串。
+			 		如果reg设置了全局匹配模式，用newStr替换str中所有的符合reg规则的字符串。
+			 	4.split
+			 		str.split(str2);
+			 		根据str2将str截取成一个数组。
+			 		
+			 		str。split（reg）； reg要设置成全局模式
+			 		根据str中符合reg规则的字符，将str截取成一个数组。
+			 * */
+		</script>
+	</body>
+</html>

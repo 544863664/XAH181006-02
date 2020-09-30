@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 1000px;
+				height: 600px;
+				position: relative;
+				margin: 0 auto;
+				background: #8FBC8F;
+			}
+			#box {
+				width: 100px;
+				height: 100px;
+				background: #00CED1;
+				position: absolute;
+				left: 100px;
+				top: 200px;
+				padding: 50px;
+				border: 10px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.getElementById('wrap');
+			var box = document.getElementById('box');
+			
+			//获取元素的样式（数值）
+			var l = box.offsetLeft; 
+			console.log(l); //100
+			var t = box.offsetTop; 
+			console.log(t); //200
+			
+			/*
+			   offsetWidth和offsetHeight获取到元素的宽和高的值是content（样式设置的width），
+			 +左右（上下）padding+左右（上下）border
+			 * */
+			console.log(box.offsetWidth); //100
+			console.log(box.offsetHeight); //100
+			
+			
+			/*
+			   clientWidth,clientHeight获取元素的宽高
+			 content+左右（上下）的padding
+			 * */
+			var cw = box.clientWidth;
+			var ch = box.clientHeight;
+			console.log(cw,ch);
+			/*
+			 IE浏览器获取计算后的样式
+			 ele.currentStyle.width;
+			 * */
+			/*注:
+			 offsetLeft，offsetRight，offsetWidth，offsetHeight
+			 都是只读方式。只能通过这种方式读取数值不能通过这种方式设置。
+			 如：ele.style.width;既能读取样式又能设置样式。
+			 getComputedStyle();也是一种只读方式。
+			 */
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

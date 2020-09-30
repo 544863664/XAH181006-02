@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>滚动偏移</title>
+    <style type="text/css" media="screen">
+    div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+    .toTopBtn {
+    	padding: 5px 10px;
+    	position: fixed;
+    	bottom: 200px;
+    	right: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+	<button class="toTopBtn">回到顶部</button>
+    <script type="text/javascript">
+    	// 获取元素
+    	var btn = document.querySelector('.toTopBtn'); // 回到顶部按钮
+
+    	/* 	
+		  onscroll事件： 
+		  滚轮滚动时触发。
+
+		  滚动偏移量: 页面内容过多，滚轮向下滚动，页面内容的顶部会走到可视窗口外面，内容顶部超出可视窗口的高度就是滚动偏移量。
+
+		  兼容所有浏览器的scrollTop的获取: 
+		  document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+    	 */
+    	document.onscroll = function() {
+    	  // safari
+    	  // var scrollTop = document.body.scrollTop;
+    	  
+    	  // firefox chrome
+    	  // var scrollTop = document.documentElement.scrollTop;
+    	  
+    	  // firefox chrome safari
+    	  // var scrollTop = window.pageYOffset;    	  
+    	}
+
+    	// 为按钮绑定点击事件
+    	btn.onclick = function() {
+    	  // 获取当前的滚动偏移量
+    	  var scrollTop = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+    	  // 如果页面内容不在顶部，就回到顶部
+    	  if(scrollTop > 0) {
+    	  	// 通过计时器控制
+    	  	var timer = setInterval(function() {
+    	  		scrollTop -= 10; 
+    	  		// 如果已经到达顶部，清除计时器
+    	  		if(scrollTop <= 0) {
+    	  			clearInterval(timer);
+    	  		}
+    	  		// 具体情况具体设置
+    	  		if(document.body.scrollTop) {
+    	  		  document.body.scrollTop = scrollTop;
+    	  		} else if(document.documentElement.scrollTop) {
+    	  		  document.documentElement.scrollTop = scrollTop;
+    	  		} else {
+    	  		  window.pageYOffset = scrollTop;
+    	  		}
+    	  	},10);
+    	  }
+    	}
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->

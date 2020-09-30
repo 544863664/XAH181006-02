@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页</title>
+	</head>
+	<body>
+		username:<input type="text" class="username" />
+		<br />
+		sex:<input type="text" class="sex" />
+		<br />
+		<button class="btn">注册</button>
+		<script type="text/javascript">
+			//获取元素
+			var username = document.querySelector('.username');
+			var sex = document.querySelector('.sex');
+			var btn = document.querySelector('.btn');
+			/*点击btn时，获取两输入框的value值，注册成功，跳转到首页*/
+			btn.onclick = function () {
+				var val1 = username.value;
+				var val2 = sex.value;
+				document.cookie = 'username=' + val1;
+				document.cookie = 'sex=' + val2;
+				//跳转页面
+				location.href = '03_homepage.html';
+			}
+		</script>
+	</body>
+</html>

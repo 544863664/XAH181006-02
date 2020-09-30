@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组的操作函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var arr = [];
+//			for (var i = 0; i < 5; i ++) {
+//				arr[i] = Math.round(Math.random() * 27) + 32;	
+//			}
+//			console.log(arr);
+			var arr = [];
+			arr.push('hello');
+			arr.push(true);
+			//push：向数组的尾部添加元素
+			
+			arr.unshift('大风起兮云飞扬');
+			//unshift：向数组的头部添加元素
+			
+			arr.pop();
+			//删除数组的最后一个元素
+			
+			arr.shift();
+			//删除数组中的第一个元素
+			console.log(arr);
+			
+			//在数组的指定位置，添加、删除元素
+			/*
+			 arr.splice（index。length，new-ele1，new-ele2...）
+			 index：即将要开始操作的位置。
+			 length：从index开始（包含index）要删除的元素个数，0代表不删除
+			 new-ele1，new-ele2...：要在index位置添加的元素，可以使一个也可以是多个
+			 * */
+			var arr2 = ['路漫漫','其修远','兮','无','将上下','求索'];
+			arr2.splice(2,2);
+			console.log(arr2);
+			arr2.splice(3,0,'而');
+			console.log(arr2);
+			arr2.splice(2,1,'吴江山下');
+			console.log(arr2);
+			
+			//conact：arr1.conact（arr2,arr3...）；合并arr1和arr2和arr3。产生一个新的结果。被合并的数组本身不会发生变化
+			var arr3=[1,4,2,7],arr4 = ['a','b','c','d'],arr5 = [true,false];
+			var res = arr3.concat(arr4,arr5);
+			var res1 = arr4.concat(arr5,arr3);
+			console.log('arr3',arr3);
+			console.log('arr4',arr4);
+			console.log(res);
+			console.log(res1);
+			var result = res.join();
+			console.log('result:',result);
+			var result1 = res.join('-');
+			console.log('result1:',result1);
+			var result2 = res.join('');
+			console.log('result2:',result2);
+			
+			
+			//检测一个数据在某个数组中是否存在，如果存在，可以获取到的位置
+			/*
+			 arr。indexOf（data）；
+			 	检测data代表的数据在arr中的位置，如果>=0，代表存在
+			 	如果为-1代表不存在，以为如果存在，下标不可能为负值
+			 * */
+			var data = 'hello';
+			var arr6 = [1,4,'world','hello'];
+			console.log(arr6.indexOf(data));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>判断滚轮是否到底</title>
+	<style type="text/css" media="screen">
+		div {
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 创建元素
+		function createEle() {
+		  for(var i = 0; i < 10; i++) {
+		  	var newDiv = document.createElement('div');
+		  	document.getElementsByTagName('body')[0].appendChild(newDiv);
+		  }
+		}
+		createEle();
+
+
+		// 在鼠标滚动时获取scrollTop(兼容)
+		document.onscroll = function() {
+		  /* 获取文档流的高度(body中没有内容或内容高度小于可视窗口高度时，文档流的高度默认为可视窗口高度) 
+
+	       js动态获取元素信息时，如果元素是js创建的，那么获取信息一定要在元素创建成功之后
+		  */
+		  var domH = document.documentElement.scrollHeight;
+		  console.log(domH);
+		  // 获取可视窗口的高度（如果这个获取在页面加载时，那么当浏览器窗口发生改变时，不能动态的获取到正确的可视窗口高度）。
+		  var windowH = document.documentElement.clientHeight;
+          var pyl = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+      
+          // 可视窗口高度 + scrollTop == 文档流高度; 到底
+          if(windowH + pyl == domH) {
+          	// var lastDiv = document.querySelector('body').lastElementChild.previousElementSibling;
+          	// lastDiv.style.background = 'greenyellow';
+          	if(document.querySelector('body').children.length < 41) {
+          		// 重新创建元素
+          		createEle();
+          	}
+          }
+		};	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->

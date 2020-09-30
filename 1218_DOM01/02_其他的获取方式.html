@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box">
+			<p>史记</p>
+			<!--文本是文本节点，注释是注释节点-->
+			<p class="author">司马迁</p><mark></mark>
+			人固有一死，或重于泰山，或轻于鸿毛。
+		</div>
+		<div>
+			史家之绝唱，无韵之离骚。
+		</div>
+		<script type="text/javascript">
+			/*
+			 对于浏览器来说：
+			 	代码中的标签是元素节点。
+			 	注释是注释节点。
+			 	文本是文本节点（标签与标签之间的换行和回车就是一个文本节点）。
+			*/
+			
+			//获取author
+			var author = document.getElementsByClassName('author')[0]; //根据类名获取
+			console.log(author);
+			
+			//获取author的后一个兄弟节点（包含文本节点、注释节点）
+			var n = author.nextSibling;
+			console.log(n); //标签和标签之间的换行
+			
+			//获取author的后一个元素兄弟节点（过滤文本和注释）
+			var ne = author.nextElementSibling;
+			console.log(ne); //mark标签
+			
+			//获取author的前一个兄弟节点（包含文本、注释）
+			var p = author.previousSibling;
+			console.log(p);
+			
+			//获取author的前一个元素兄弟节点
+			var pe = author.previousElementSibling;
+			console.log(pe);
+			
+			var box = document.querySelector('.box');
+			//获取父级标签中的最后一个子节点
+			var lc = box.lastChild
+			console.log(lc);
+			
+			//获取父级标签中最后一个元素子节点
+			var lce = box.lastElementChild;
+			console.log(lce);
+			
+			//获取元素的第一个子节点
+			var f = box.firstChild;
+			console.log(f);
+			
+			//获取元素的第一个元素子节点
+			var fce = box.firstElementChild;
+			console.log(fce);
+			
+			//获取元素的所有元素子节点
+			var ch = box.children
+			console.log(ch);
+			
+			//获取元素的所有子节点（包含文本节点）
+			var chn = box.childNodes;
+			console.log(chn);
+			
+			//获取指定的子节点
+			console.log(ch[1]);
+			
+			//获取元素的父级节点
+			var ap = author.parentNode;
+			console.log(ap);
+		</script>
+	</body>
+</html>

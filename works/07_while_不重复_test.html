@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//想一个数组中添加指定数量（5个）的num元素，这些元素的取值区间[6,18]
+			//取值区间会影响循环，区间：[6,9]，却需要5个不一样的数，循环执行到第
+			// 五次，永远也生成不了第五个不重复的数，循环结束不了，形成死循环
+			var arr = []; //声明一个空数组
+			//只要数组长度不是5，那就继续生成
+			while(arr.length < 5) {
+				//生成范围内的随机数
+				var num = Math.round(Math.random() * 12) + 6;
+				//判断num在arr中是否存在
+				if (arr.indexOf(arr[num]) < 0) {
+					//不存在
+					arr.push(num);
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

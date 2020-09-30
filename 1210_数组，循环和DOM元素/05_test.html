@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 250px;
+				margin: 50px auto;
+				display: flex;
+				flex-wrap: wrap; /*子元素换行*/
+			}
+			#wrap>div {
+				width: 50px;
+				height: 50px;
+				background: #000000;
+				border-radius: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			var wrap = document.getElementById('wrap'); //获取wrap
+			//创建25个元素并将它们添加到wrap中
+			for (var i = 0; i < 25; i++) {
+				//创建js对象
+				var newEle = document.createElement('div');
+				//将其添加到父级标签中
+				wrap.appendChild(newEle);
+				//为当前的这个标签添加绑定点击事件
+				newEle.onclick = function () {
+					//this
+					var bg = getComputedStyle(this).backgroundColor; //获取当前的背景色
+					console.log(newEle);
+					console.log(bg);
+					//根据当前的背景色，判断设置新的背景色
+					if (bg == 'rgb(0, 0, 0)') { //当前是黑色
+						this.style.background = 'yellow';
+					} else { //当前背景色是黄色
+						this.style.background = '#000000';
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

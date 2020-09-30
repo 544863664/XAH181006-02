@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>开关灯升级版</title>
+		<style type="text/css">
+			body {
+				text-align: center;
+				padding-top: 20px;
+			}
+			#wrap {
+				box-shadow: 0 0 12px #8FBC8F;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px auto;
+			}
+			#wrap div {
+				width: 50px;
+				height: 50px;
+				border-radius: 50px;
+				background: #000000;
+				box-shadow: 0 0 5px #7FFF00;
+				line-height: 50px;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<button id="btn1">初级</button>
+			<button id="btn2">中级</button>
+			<button id="btn3">高级</button>
+		</div>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			//获取元素
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var btn3 = document.getElementById('btn3');
+			var wrap = document.getElementById('wrap');
+			//当前页面灯泡的行和列
+			var row = 5,col = 7;
+			var eleArr = []; //用来承接所有灯泡元素的数组
+			//创建背景函数(不需要返回值)
+			function createBg() {
+				//先计算wrap的宽度
+				wrap.style.width = col * 50 + 'px';
+				//清除掉wrap中原来的元素
+				wrap.innerHTML = '';
+				for (var i = 0; i < row * col; i++) {
+					//创建新的元素
+					var newEle = document.createElement('div');
+					//为其设置文本内容
+					newEle.innerHTML = i;
+					//将其添加到wrap
+					wrap.appendChild(newEle);
+					//将其添加到eleArr中
+					eleArr.push(newEle);
+				}
+			}
+			//页面一加载就需要一个初始的游戏背景
+			createBg();
+			//为当前页面中的灯泡绑定点击事件
+			function eleClick() {
+				//循环eleArr数组
+				for (var i = 0; i < eleArr.length; i++) {
+					//找到每一个元素绑定点击事件
+					eleArr[i].onclick = function () {
+						//调用clickOneLight
+						clickOneLight(this);
+					}
+				}
+			}
+			eleClick();
+			//点击一个灯泡执行的函数
+			function clickOneLight(current) {
+				//切换当前元素的背景色
+				changeBg(current);
+				//计算当前元素在eleArr中的位置
+				var index = eleArr.indexOf(current);
+				//上
+				if (index > col - 1) {
+					changeBg(eleArr[index - col]);
+				}
+				//下
+				if (index < col * row - col) {
+					changeBg(eleArr[index + col]);
+				}
+				//左
+				if (index % col != 0) {
+					changeBg(eleArr[index - 1]);
+				}
+				//右
+				if (index % col != (col - 1)) {
+					changeBg(eleArr[index + 1]);
+				}
+			}
+			function changeBg(ele) {
+				//获取当前的背景色
+				var eleBg = getComputedStyle(ele).backgroundColor;
+				//判断、切换
+				if (eleBg == 'rgb(0, 0, 0)') {
+					ele.style.backgroundColor = 'yellow';
+				} else {
+					ele.style.backgroundColor = '#000';
+				}
+			}
+			//为按钮绑定点击事件，点击进行行和列的值
+			btn1.onclick = function () {
+				row = 5;
+				col = 7;
+				eleArr = []; //清空元素承接数组
+				createBg();
+				//为新创建的元素重新绑定事件
+				eleClick();
+			};
+			btn2.onclick = function () {
+				row = 10;
+				col = 15;
+				eleArr = [];
+				createBg();
+				eleClick();
+			};
+			btn3.onclick = function () {
+				row = 15;
+				col = 20;
+				eleArr = [];
+				createBg();
+				eleClick();
+			};
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<input type="number" name="" id="num1" value="" />
+			+
+			<input type="unmber" name="" id="num2" value="" />
+			<button id="btn">=</button>
+			<span id="res"></span>
+		</div>
+		<script type="text/javascript">
+			var num1 = document.getElementById('num1');
+			var num2 = document.getElementById('num2');
+			var res = document.getElementById('res');
+			var btn = document.getElementById('btn');
+			btn.onclick = function () {
+				var a = Number(num1.value);
+				var b = Number(num2.value);
+				//获得num1这个输入框中的值
+				//input的value值，无论输入的是什么，value的类型都是string
+				//number（数据），将数据强势转换成number
+				var c = a + b;
+				res.innerHTML = c;
+				//innerHTML：元素内部HTML内容
+			};
+			
+		</script>
+	</body>
+</html>

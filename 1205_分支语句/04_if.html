@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" name="" id="box" value="" />
+		<button id="btn">判断</button>
+		<span id="res"></span>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var btn = document.getElementById('btn');
+			var res = document.getElementById('res');
+			btn.onclick = function () {
+				var val = box.value;
+				//写法一
+				/*if(val % 2 == 0) {
+					res.innerHTML = '偶数';
+				}
+				if(val % 2 != 0) {
+					res.innerHTML = '奇数';
+				}*/
+				//写法二
+				if(val % 2 == 0) {
+					res.innerHTML = '偶数';
+				} else {
+					res.innerHTML = '奇数';
+				}
+			};
+			/*
+			 if:语句的执行步骤
+			 	先执行condition，condition可实施一个代码执行过程，
+			 	也可是单个的任意数据，只要最终能产生一个结果，都可以。
+			 	condition执行完毕后，经结果隐士转换成Boolean，
+			 	true执行code,false不做反馈。
+			 	
+			 if（condition）{
+			 	coda1
+			 } else {
+			 	code2
+			 }
+			 	condition为true执行code1（不执行code2），如果condition
+			 	为false，执行code2（不执行code1）。
+			 * */
+		</script>
+	</body>
+</html>

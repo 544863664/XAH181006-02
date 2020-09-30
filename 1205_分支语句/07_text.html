@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				transition: .8s;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="number" name="" id="num" value="" />
+		<button id="change-width">宽度</button>
+		<button id="change-height">高度</button><br />
+		<input type="text" name="" id="col" value="" />
+		<button id="change-color">字体颜色</button>
+		<button id="change-bg">背景颜色</button>
+		<div id="box">我是测试</div>
+		<script type="text/javascript">
+			var num = document.getElementById('num');
+			var col = document.getElementById('col');
+			var changeWidth = document.getElementById('change-width');
+			var changeHeight = document.getElementById('change-height');
+			var changeColor = document.getElementById('change-color');
+			var changeBg = document.getElementById('change-bg');
+			var box = document.getElementById('box');
+			changeWidth.onclick = function() {
+				var w = num.value;
+				box.style.width = w + 'px';
+			}
+			changeHeight.onclick = function() {
+				var h = num.value;
+				box.style.height = h + 'px';
+			}
+			changeColor.onclick = function() {
+				var c = col.value;
+				box.style.color = c;
+			}
+			changeBg.onclick = function() {
+				var b = col.value;
+				box.style.background = b;
+			}
+		</script>
+	</body>
+</html>

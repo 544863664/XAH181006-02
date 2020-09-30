@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" id="num1" />
+		<input type="number" id="num2" />
+		<button id="btn1">所有公约数</button>
+		<button id="btn2">最小公倍数</button>
+		<script type="text/javascript">
+			var num1 = document.getElementById('num1');
+			var num2 = document.getElementById('num2');
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			btn1.onclick = function() {
+				var val1 = Number(num1.value);
+				var val2 = Number(num2.value);
+				var max = val1>val2?val1:val2;
+				var min = val1<val2?val1:val2;
+				for (var i = 0; i < min; i++) {
+					if (val1 % i ==0 && val2 % i ==0){
+					console.log(i);
+					}
+				}
+			};
+			btn2.onclick = function() {
+				var val1 = Number(num1.value);
+				var val2 = Number(num2.value);
+				var max = val1>val2?val1:val2;
+				var min = val1<val2?val1:val2;
+				for (var i = 0; i < min; i++) {
+					if (val1 % i ==0 && val2 % i ==0){
+						var a = i;
+					}
+				}
+				var gbs = val1 * val2 / a;
+					console.log(gbs);
+			};
+		</script>
+	</body>
+</html>

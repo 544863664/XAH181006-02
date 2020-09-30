@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击放大</title>
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 200px;
+				margin: 100px auto;
+				background: red;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var i = 0;
+			box.onclick = function() {
+				i += 1;
+				if(i % 2 == 0) {
+					box.style.transform = 'scale(1.5,1.5)';
+				} else {
+					box.style.transform = 'scale(1,1)';
+				}
+			};
+			
+		</script>
+	</body>
+</html>

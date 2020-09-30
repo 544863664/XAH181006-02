@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function res(max, min) {
+				var arr = [];
+				for(var i = 0; i < 5; i++) {
+					var num = Math.round(Math.random() * max - min) + min;
+					if(arr.indexOf(num) >= 0) {
+						i--;
+						continue;
+					}
+					arr.push(num);
+				}
+				console.log(arr);
+			}
+			res(10, 1);
+
+			function join(arr, char) {
+				//根据用户传入的数据确定需要什么字符串去拼接数组
+				char = char == undefined ? ',' : char == '' ? '' : char;
+				//遍历arr，将其中的每一个元素用char链接成一个新的字符串
+				var res = '';
+				for(var i = 0; i < arr.length; i++) {
+					//累积拼接
+					//var str = arr[i] + char;
+					var str = i == arr.length - 1 ? arr[i] : arr[i] + char;
+					res += str;
+				}
+				return res;
+			}
+			console.log(join([2, 3, 5, 6, 7], '*'));
+		</script>
+	</body>
+
+</html>

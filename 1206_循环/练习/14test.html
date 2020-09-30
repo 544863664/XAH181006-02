@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title>水仙花数</title>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript">
+			var a,b,c,n = 0;
+				for (a = 1; a <= 9; a++) {
+					for (b = 0; b <= 9; b++) {
+			    		for (c = 0; c <= 9; c++) {
+			    			if (a * 100 + b * 10 + c == a * a * a + b * b * b + c * c * c) {
+			  					n = a * 100 + b * 10 + c;//在此处对n赋值
+			    				document.write('<p>' + '水仙花数：' + n + '</p>');
+			    				console.log(n);
+			    				break;
+			    			}
+			    		}
+			   		}
+				}
+
+		</script>
+	</body>
+</html>

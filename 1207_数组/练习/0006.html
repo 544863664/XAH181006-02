@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>5个随机数求最大最小数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [],max = arr[i],min = arr[i];
+			for (var i = 0; i < 5; i++) {
+				arr[i] = Math.round(Math.random() * 44) + 44;
+				max = max > arr[i] ? max : arr[i];
+				min = min < arr[i] ? min : arr[i];
+			}
+			console.log(arr);
+			console.log('最大数：' + max);
+			console.log('最小数：' + min);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 switch语句在执行时，找到第一个符合条件的case，执行这个
+			 case对应的代码，如果这个case的代码中，丢失了break，
+			  那么在执行完这个case代码后，switch会紧接着执行case中的 
+			 代码，如果还没有break，就继续执行，直到碰到break，停止。
+			 * */
+			var type = '苹果';
+			var i = 10;
+			switch(type) {
+				case'橘子':
+				i += 3;
+				case'葡萄':
+				i += 2;
+				case'苹果':
+				i += 1;
+			}
+			console.log(i);
+		</script>
+	</body>
+</html>

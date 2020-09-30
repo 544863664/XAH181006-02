@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>接金币游戏</title>
+		<style type="text/css">
+			body {
+				overflow: hidden;
+			}
+			.bowl {
+				width: 103px;
+				height: 48px;
+				background: url(img/pen.png) 100% 100%;
+				position: absolute;
+				left: 20px;
+				bottom: 100px;
+			}
+			.wrap img {
+				position: absolute;
+				top: -80px;
+				width: 80px;
+				height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<div class="bowl"></div>
+		<script type="text/javascript">
+			
+			/*
+			 1.不断地创建金币
+			 2.让金币掉落
+			 3.游戏运行过程中，做金币和完的碰撞检测
+			 4.碰撞成功移除金币
+			 * */
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			var bowl = document.querySelector('.bowl');
+			//全局变量
+			var coinArr = []; //承接存在于页面的所有金币
+			
+			bowl.onmousedown = function (ev) {
+				var e = ev || window.event;
+				var l = e.offsetX, t = e.offsetY;
+				document.onmousemove = function (mev) {
+					var me = mev || window.event;
+					bowl.style.left = me.clientX - l + 'px';
+					bowl.style.top = me.clientY - t + 'px';
+				}
+			}
+			//可视窗口的宽度
+			var ww = document.documentElement.clientWidth;
+			//可是窗口的高度
+			var wh = document.documentElement.clientHeight;
+			console.log(ww);
+			//随机函数
+			function rn(max,min) {
+				return Math.round(Math.random() * (max - min)) + min;
+			}
+			//碰撞检测函数
+			function hitJudge(coin) {
+				var lc = bowl.offsetLeft + bowl.offsetWidth >= coin.offsetLeft;
+				var tc = bowl.offsetTop + bowl.offsetHeight >= coin.offsetTop;
+				var rc = bowl.offsetTop <= coin.offsetLeft + coin.offsetWidth;
+				var bc = bowl.offsetTop <= coin.offsetTop + coin.offsetHeight;
+				if (lc && tc && rc && bc) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			//创建金币
+			var hz = 0;
+			function run() {
+				hz++;
+				//根据hz变量，控制执行频率
+				if (hz % 60 == 0) {
+					//创建金币
+					var coin = document.createElement('img');
+					coin.src = 'img/jin.png';
+					//为金币设置一个随机的left值
+					coin.style.left = rn(0, ww - 80) + 'px';
+					//奖金币添加到其父级标签中
+					wrap.appendChild(coin);
+					//奖金币添加到数组中
+					coinArr.push(coin);
+				}
+				//循环coinArr，昂每一个金币，在当前的top的基础上累加top值
+				for (var i in coinArr) {
+					var t = coinArr[i].offsetTop;
+					coinArr[i].style.top = ++t + 'px';
+					//判断，当金币移出可视窗口时，将其从页面数组中删除
+					if (t >= wh) {
+						coinArr[i].remove(); //移出节点
+						coinArr.splice(i, 1); //从数组中移出
+						i--; //防止漏判
+					}
+				}
+				//碰撞检测
+				for (var i in coinArr) {
+					//成功：true  失败false
+					var bol = hitJudge(coinArr[i]);
+					//如果碰撞成功
+					if (bol) {
+						//将其从页面里移除
+						coinArr[i].remove();
+						//从数组中移出
+						coinArr.splice(i, 1);
+					}
+				}
+				
+				requestAnimationFrame(run);
+			}
+			run();
+			
+			//拖拽碗
+			bowl.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

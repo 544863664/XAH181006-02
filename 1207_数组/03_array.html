@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//
+			/*
+			 * new：关键词，从一个类别中刻画出一个数据。
+				arr1:在声明的同时确定arr中的元素个数和具体的元素			 
+			 * */
+			var arr1 = new Array('hello',3,true);
+			console.log(arr1);
+			//arr2：在声明的时候只确定元素的个数，元素本身是什么值是未知的。
+			var arr2 = new Array(10);
+			console.log(arr2);
+			//字面量
+			var arr3 = ['韩信','萧何','张良'];
+			console.log(arr3);
+			//length：是获取数组的元素个数
+			console.log(arr3.length);
+			//获取或设置数组中的数据
+			console.log(arr3[2]);
+			//修改已有位置的数据
+			arr3[1] = '项羽';
+			console.log(arr3);
+			//添加数据
+			arr3[3] = '项伯';
+			console.log(arr3);
+			for(var i = 0; i < 4; i++) {
+				document.write('<h1>'+ arr3[i]+'</h1>');
+			};
+		</script>
+	</body>
+</html>

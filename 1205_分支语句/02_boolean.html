@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 数据类型的转换：
+			 	（1）显式转换
+			 	（2）隐式转换
+			 * */
+			console.log(String(true)); //true
+			console.log(String(89)); //89
+			console.log(String(null)); //null
+			console.log(String(undefined)); //undefined
+			
+			//number转Boolean，非0位true，0位false
+			console.log(Boolean(0)); //false
+			console.log(Boolean(1)); //true
+			console.log(Boolean(-1)); //true
+			
+			//字符串转Boolean，非空为true，空字符串为false
+			console.log(Boolean('')); //false
+			console.log(Boolean('大风歌')); //true
+			console.log(Boolean(' ')); //true
+			
+			//null和undefined都是false
+			console.log(Boolean(null));//false
+			console.log(Boolean(undefined)); //false
+		</script>
+	</body>
+</html>

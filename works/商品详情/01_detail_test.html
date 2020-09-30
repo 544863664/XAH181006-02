@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品详情页</title>
+	</head>
+	<body>
+		<h1 class="title"></h1>
+		<img src=""/>
+		<script type="text/javascript">
+			//声明数据
+			var list = [{
+				img: 'img/1.jpg',
+				title: '草莓奶油蛋糕',
+				mess: '甜润奶油，与草莓的自然甜度搭配',
+				labels: ['情侣>', '人气>'],
+				price: '￥228.00/2.0磅',
+			}, {
+				img: 'img/2.jpg',
+				title: '黑森林',
+				mess: '樱桃酒味，从巧克力卷的缝隙飘出',
+				labels: ['情侣>', '人气>'],
+				price: '￥398.00/2.0磅',
+			}, {
+				img: 'img/3.jpg',
+				title: '平安夜',
+				mess: '一层新雪下，啊看见对方很骄傲',
+				labels: ['情侣>', '人气>', '生日>'],
+				price: '￥328.00/2.0磅',
+			}, {
+				img: 'img/4.jpg',
+				title: '小重组',
+				mess: '均一，青褐的千层酥',
+				labels: ['情侣>', '人气>', '生日>'],
+				price: '￥298.00/160g',
+			}];
+			//获取元素
+			var title = document.querySelector('.title');
+			var img = document.querySelector('img');
+			function getDetailByOrder() {
+				//获取到当前要展示详情商品的循序
+				var order = location.search.slice(18);
+				//根据这个order获取到对应的商品详情
+				var obj = list[order];
+				//从obj中获取数据，展示到商品详情
+				title.innerHTML = obj.title;
+				img.src = obj.img;
+			}
+			getDetailByOrder();
+		</script>
+	</body>
+</html>

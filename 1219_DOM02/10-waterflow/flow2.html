@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流02</title>
+		<style>
+			ul,li {
+				list-style: none;
+			}
+			ul {
+				font-size: 0;
+				border: 1px solid #000;
+				padding: 0;
+				text-align: center;
+			}
+			li {
+				display: inline-block;
+				width: 200px;
+				margin: 10px;
+				vertical-align: top;
+			}
+			li>div {
+				text-align: center;
+				font-size: 6rem;
+				color: #fff;
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			
+		</ul>
+		<script type="text/javascript">
+			// 获取元素
+			var list = document.querySelector('.list');
+			// 所有li标签
+			var liArr = []; 
+			// liArr对应的li标签的高度列表
+			var heightArr = []; 
+			
+			// 根据当前可视窗口的宽度计算出li标签的个数
+		    function createLi() {
+		    	  // 可视窗口宽
+		    	  var windowW = document.documentElement.clientWidth - 18;
+		    	  // 计算li标签的数量
+		    	  var liNum = Math.floor(windowW / 220);
+		    	  // 创建li标签
+		    	  for(var i = 0; i < liNum; i++) {
+		    	  	var newLi = document.createElement('li');
+		    	  	list.appendChild(newLi);
+		    	  	liArr.push(newLi);
+		    	  	
+		    	  	heightArr.push(0);
+		    	  }
+		    }
+		    createLi();
+		    
+		    // 获取最小的下标
+		    function getMinIndex() {
+		    	  // 从heightArr中找到最小的数所对应的下标，并返回
+		    	  var min = heightArr[0];
+		    	  for(var i = 1; i < heightArr.length; i++) {
+		    	  	min = heightArr[i] < min ? heightArr[i] : min;
+		    	  }
+		    	  return heightArr.indexOf(min);
+		    }
+			
+			// 随机数函数
+			function rN(min,max) {
+				return Math.round(Math.random() * (max - min) + min);
+			}
+			
+			// 创建div
+			function createDiv() {
+				for(var i = 0; i < 50; i++) {
+					// 创建
+					var newDiv = document.createElement('div');
+					// 设置样式(随机高度和颜色)
+					var nowHeight = rN(100,400);
+					newDiv.style.height = nowHeight +'px';
+					newDiv.style.lineHeight = nowHeight + 'px';
+					newDiv.style.background = '#' + String(Math.random()).substr(2,6);
+					newDiv.innerText = i;
+					// 找到最小下标(getMinIndex)
+					var minIndex = getMinIndex();
+					// 添加到对应的列中 liArr[最小下标]
+					liArr[minIndex].appendChild(newDiv);
+					// 改变heightArr中的值
+					heightArr[minIndex] += nowHeight + 30;
+				}
+			}
+			createDiv();
+			
+			// 浏览器窗口发生大小变化时触发
+			window.onresize = function() {
+				//清空页面中原来的内容
+				list.innerHTML = '';
+				liArr = [];
+				heightArr = [];
+				
+				createLi();
+				createDiv();
+			}
+		</script>
+	</body>
+</html>

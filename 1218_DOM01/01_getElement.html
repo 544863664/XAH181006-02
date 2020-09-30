@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取元素</title>
+	</head>
+	<body>
+		<!-- 
+			JS三大组成部分
+				1.ECMAScrip，js标准。es5(es2015)
+				2.DOM
+					document object model：文档流对象模型
+					提供了一些列的操作dom节点的方式方法
+				3.BOM
+					browser object model：浏览器对象模型
+					提供了和浏览器的一些交互方式
+		-->
+		<div id="wrap">
+			<div class="box">1</div>
+			<div class="box">2</div>
+			<div class="box">3</div>
+		</div>
+		<div class="box">4</div>
+		<input type="text" name="username">
+		<input type="text" name="password">
+		<input type="text" name="password">
+		<script>
+			//获取dom节点
+			//根据元素的ID名称获取元素
+			document.getElementById('wrap');
+			console.log(wrap);
+			
+			//根据元素的类名（class名称）获取元素
+			/*
+			 	1.根据getElementsByClassName获取到的额元素是一个元素集合，HTMLCollection。
+			 	2.哪怕只有一个符合规则的元素，返回的也还是一个集合。
+			 	3.如果没有符合规则的元素，那么返回的是一个空集合
+			 	4.这个集合不是数组，不可以将其当做数组使用，但是可以循环他，也可以根据【index】的方式拿出指定元素
+			 * */
+			var boxes = document.getElementsByClassName('box');
+			console.log(boxes);
+			
+			//在指定的标签内部，获取符合条件的子元素
+			var boxesOfWrap = wrap.getElementsByClassName('box');
+			console.log(boxesOfWrap);
+			
+			//根据元素的标签获取元素(集合)
+			var inps = document.getElementsByTagName('input');
+			console.log(inps);
+			
+			//根据元素的name属性值获取元素(集合)
+			var inps2 = document.getElementsByName('password');
+			console.log(inps2);
+			
+			//用css选择器的方式获取元素
+			/*querySelector(selector)
+			 	selecotr: css 选择器
+			 	获取符合selecotr的第一个元素（获取结果是惟一的，即如果页面有若干个符合selector的元素，返回的也是第一个）
+			 	*/
+			var wrap2 = document.querySelector('#wrap');
+			console.log(wrap2);
+			
+			/*
+			 querySelectorAll
+			 	返回所有符合selector的元素构成的nodelist。
+			 	如果只有一个符合规则的元素，返回的也是一个nodelist
+			 	如果没有一个符合规则的元素，返回的是一个空的nodelist*/
+			var wrap2 = document.querySelectorAll('#wrap .box');
+			console.log(wrap2);
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

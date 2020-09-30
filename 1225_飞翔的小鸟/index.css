@@ -1,0 +1,221 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+.wrap {
+	width: 343px;
+	height: 480px;
+	/*background: url(img/bg.jpg);*/
+	margin: 100px auto;
+	overflow: hidden;
+	position: relative;
+}
+.wrap>img:nth-child(1) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: grass1 3s linear infinite;
+}
+.wrap>img:nth-child(2) {
+	position: absolute;
+	top: 0;
+	left: 343px;
+	animation: grass2 3s linear infinite;
+}
+
+/*分数*/
+.scoreWrap {
+	position: absolute;
+	z-index: 1;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 0;
+	display: none;
+}
+/*开始动画*/
+.stratAni {
+	width: 100%;
+	height: 77px;
+	background: url(img/head.jpg) no-repeat;
+	background-position: 74% 0;
+	position: absolute;
+	top: 110px;
+	animation: startFrame 1s linear infinite;
+}
+.stratAni div {
+	width: 40px;
+	height: 26px;
+	background: url(img/bird0.png);
+	position: absolute;
+	top: 0;
+	left: 230px;
+	animation: swimg .5s linear infinite;
+}
+.btns {
+	position: absolute;
+	z-index: 2;
+	top: 330px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+.btns img {
+	margin:  0 10px;
+}
+/*结束界面*/
+.overPage {
+	position: relative;
+	z-index: 2;
+}
+.overPage>img {
+	position: absolute;
+	top: 110px;
+	left: 57px;
+}
+.overScore {
+	position: absolute;
+	top: 170px;
+	width: 100%;
+	height: 150px;
+	background: url(img/message.jpg) no-repeat;
+	background-position: 50%;
+}
+.nowScore {
+	font-size: 30px;
+	font-weight: bolder;
+	color: yellow;
+	position: absolute;
+	right: 62px;
+	top: 37px;
+}
+.bestScore {
+	font-size: 30px;
+	font-weight: bolder;
+	color: yellow;
+	position: absolute;
+	right: 62px;
+	top: 88px;
+}
+.overPage>div:nth-child(3) {
+	width: 100%;
+	position: absolute;
+	top: 330px;
+	text-align: center;
+}
+.grass {
+	width: 686px;
+	height: 14px;
+	position: absolute;
+	bottom: 43px;
+}
+.grass>img:nth-child(1) {
+	position: absolute;
+	left: 0;
+	animation: grass1 2s linear infinite;
+}
+.grass>img:nth-child(2) {
+	position: absolute;
+	left: 343px;
+	animation: grass2 2s linear infinite;
+}
+.bird {
+	width: 40px;
+	height: 26px;
+	background: url(img/bird0.png);
+	animation: swimg .2s linear infinite;
+	position: absolute;
+	z-index: 1;
+	top: 200px;
+	left: 40px;
+	display: none;
+}
+/*管道设置样式*/
+.pipeWrap {
+	position: absolute;
+}
+.pipe {
+	position: absolute;
+	left: 343px;
+	width: 62px;
+	height: 423px;
+}
+.pipeUpper {
+	height: 150px;
+	width: 62px;
+	position: absolute;
+	background: url(img/up_mod.png) repeat;
+}
+.pipeUpperTop {
+	width: 62px;
+	height: 60px;
+	background: url(img/up_pipe.png);
+	position: absolute;
+	bottom: 0;
+}
+.pipeLower {
+	height: 150px;
+	background: url(img/down_mod.png) repeat;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.pipeLowerTop {
+	width: 62px;
+	height: 60px;
+	background: url(img/down_pipe.png);
+	position: absolute;
+	top: 0;
+}
+
+
+
+
+
+
+
+
+/*草地动画*/
+@keyframes grass1 {
+	from{
+		left: 0;
+	}
+	to{
+		left: -343px;
+	}
+}
+@keyframes grass2 {
+	from{
+		left: 343px;
+	}
+	to{
+		left: 0;
+	}
+}
+/*小鸟切换翅膀动画*/
+@keyframes swimg{
+	from{
+		background: url(img/bird0.png);
+	}
+	to{
+		background: url(img/bird1.png);
+	}
+}
+/*开始界面的动画*/
+@keyframes startFrame{
+	0%{
+		top: 100px;
+	}
+	50%{
+		top: 130px;
+	}
+	100%{
+		top: 100px;
+	}
+}
+
+
+
+
+

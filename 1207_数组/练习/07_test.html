@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			var arr1 = [];
+			for (var i = 0; i < 20; i++) {
+				arr[i] = Math.round(Math.random() * 68) + 20;
+				if (arr1.indexOf(arr[i]) == -1) {
+					arr1.push(arr[i]);
+				}
+			}
+			console.log(arr);
+			console.log(arr1);
+		</script>
+	</body>
+</html>

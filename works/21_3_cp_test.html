@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>彩票生成</title>
+		<style type="text/css">
+			.wrap {
+				display: flex;
+				align-content: center;
+				width: 850px;
+				margin: 100px auto;
+			}
+			
+			.ball {
+				width: 100px;
+				height: 100px;
+				background: linear-gradient(yellow, red);
+				border-radius: 50px;
+				margin: 0 10px;
+				box-shadow: 0 0 5px rgba(255, 0, 0, .25);
+				font-size: 50px;
+				font-weight: bolder;
+				line-height: 100px;
+				text-align: center;
+				color: #FFFFFF;
+				text-shadow: 0 0 5px #EEEEEE;
+			}
+			
+			.item {
+				background: linear-gradient(deepskyblue, blue);
+				box-shadow: 0 0 5px rgba(0, 0, 255, .25);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!--红色球-->
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<!--蓝色球-->
+			<div class="ball item"></div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var ballList = document.querySelectorAll('.ball');
+			//生成红球和篮球的数组
+			var numArr = [];
+			//当前随机生数字的小球在ballList数组中的index，默认0
+			var index = 0;
+			//声明随机函数
+			function rn(max,min) {
+				return Math.round(Math.random() * (max - min)) + min;
+			}
+			//生成一个数字切不能是numArr中的数字
+			function getNum() {
+				//如果当前是红色小球，index值<=5
+				if (index <= 5) {
+					var num = rn(33, 1);
+				} else {
+					var num = rn(16, 1);
+				}
+				return num;
+			}
+			var i = 0;
+			//控制小球切换的计时器
+			var timer = setInterval(function () {
+				i++;
+				//生成一个随机数字
+				var num = getNum();
+				//红色小球的内容在切换时，要判断这个数字在不在numArr中
+				if (index <= 5) {
+					//如果这个数字在numArr中，那么就要重新生成一个num
+					while (numArr.indexOf(num) >= 0){
+						num = getNum();
+					}
+				}
+				//将这个值设置成当前切换的ball的innerHTML
+				ballList[index].innerHTML = num < 10 ? '0' + num : num;
+				//每次达到3秒的倍数时，就让index累加
+				if (i % 100 == 0) {
+					index++;
+					numArr.push(num);
+				}
+				//当所有小球生成完毕时，要清除计时器
+				if (i == 700) {
+					clearInterval(timer);
+				}
+			}, 30)
+		</script>
+	</body>
+</html>

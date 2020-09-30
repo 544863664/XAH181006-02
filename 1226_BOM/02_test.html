@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//var data = document.cookie;
+			var data = '李白=浪; 周瑜=帅; 曹操=丑';
+			//从data中获取指定的人所对应的特点
+			function getT(people) {
+				//将data截取成数组 
+				//['李白=浪', '周瑜=帅', '曹操=丑']
+				var arr = data.split('; ');
+				for (var i = 0; i < arr.length; i++) {
+					var res = arr[i].split('=');
+					if (people == res[0]) {
+						return res[1];
+					}
+				}
+			}
+			var type = getT('李白');
+			console.log(type);
+		</script>
+	</body>
+</html>

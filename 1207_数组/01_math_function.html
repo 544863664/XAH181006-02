@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//随机数 [0~1) 包0不含1
+			var num = Math.random();
+			console.log(num);
+			var num1 = Math.random();
+			console.log(num1);
+			var num2 = Math.random()*10;
+			console.log(Math.round(num2));
+			
+			var num3 = Math.round(Math.random() * 56) + 45;
+			console.log(num3);
+			/*
+			 求两个数min，max之间的随机数：
+			 	Math.round（Math.random（）*（max-min）+min）；
+			 * */
+			var res = Math.max(5,44,2);
+			console.log(res);
+			
+			console.log(Math.min(4,5,0)); //最小数
+			
+			console.log(Math.pow(2,10)); //2的10次幂
+			
+			console.log(Math.sqrt(4)); //平方根
+			
+			console.log(Math.abs(-1)); //绝对值
+			
+			console.log(Math.round(5.7)); //6 四舍五入
+			
+			console.log(Math.ceil(6.001)); //上舍入，去这个数在数轴上右边的整数 7
+			
+			console.log(Math.floor(6.999)); //下舍入，去这个数在数轴上左边的整数 6
+			
+		</script>
+	</body>
+</html>

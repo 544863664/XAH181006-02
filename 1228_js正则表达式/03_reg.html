@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>reg</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var reg1 = /[a-z]*/;
+			var str1 = 'abs';
+			var res1 = reg1.exec(str1);
+			console.log(res1);  //["abs", index: 0, input: "abs", groups: undefined]
+			
+			var reg2 = /[A-Z]*/i;
+			var str2 = 'aA';
+			var res2 = reg2.exec(str2);
+			console.log(res2);  //不加i，就匹配不到a
+			
+			var reg3 = /[a-zA-Z]/;  //不能/[a-Z]/这样限制范围
+			var str3 = 'z';
+			var res3 = reg3.exec(str3);
+			console.log(res3);
+			
+			var reg4 = /[a-zA-Z0-9]{6,18}/;  //由字母（大小写）和数组构成，6~18位
+			var str4 = 'djisnASJF34113Swi53d';
+			var res4 = reg4.exec(str4);
+			console.log(res4);
+			
+			//脱字符^
+			var reg5 = /[^0-9]/;
+			var str5 = '5';
+			var res5 = reg5.exec(str5);
+			console.log(res5);  //null
+			
+			//脱字符代表非的意思（只有当期出现在[]中时，才代表非）
+			var reg6 = /[^0-9]/;
+			var str6 = '7w';
+			var res6 = reg6.exec(str6);
+			console.log(res6);
+			
+			var reg7 = /\d/;  //匹配所有的数字：[0-9] 	/\D/;[^0-9]
+			var str7 = '6';
+			var res7 = reg7.exec(str7);
+			console.log(res7);  //6
+			
+			//\w;[a-zA-Z0-9]	\W;[^a-zA-Z0-9]
+			var reg8 = /\w/; 
+			var str8 = '-';
+			var res8 = reg8.exec(str8);
+			console.log(res8);
+			
+			//\s;空格，制表符
+			var reg9 = /\s/;
+			var str9 = '	';
+			var res9 = reg9.exec(str9);
+			console.log(res9);
+			
+			var reg10 = /\S/;
+			var str10 = '	';
+			var res10 = reg10.exec(str10);
+			console.log(res10);
+			
+			// ^ $
+			var reg11 = /^[a-z]$/;
+			var str11 = '2hello';
+			var res11 = reg11.exec(str11);
+			console.log(res11);
+			
+			var reg12 = /^[a-z]{4,}$/g;
+			var str12 = 'hello';
+			var res12 = reg12.exec(str12);
+			console.log(res12);
+			
+			//js的命名规则，只能能以数字，字母，$，_构成且不能以数字开头
+			var reg13 = /^[a-zA-Z_$][\w$]*$/;  //   /^[a-zA-Z_$][\w$]*$/;
+			var str13 = '_as15';
+			var res13 = reg13.exec(str13);
+			console.log(res13);
+			
+			//电话号码正则表达式
+			var reg14 = /^1[3-9]\d{9}$/;
+			var str14 = '13571377508';
+			var res14 = reg14.exec(str14);
+			console.log(res14);
+			
+			//邮箱正则表达式
+			var reg15 = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+			var str15 = '123@qq.com';
+			var res15 = reg15.exec(str15);
+			console.log(res15);
+			
+			var reg16 = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+			var str16 = '123@qq.com';
+			var res16 = reg16.exec(str16);
+			console.log(res16);
+			
+			//	[\b];	匹配退格键
+			//	\n; 匹配换行键
+			//	\r; 匹配回车键
+			//	\f; 匹配换页键
+			//	\t; 查找制表符tab
+			
+			/*
+			 1.如果某些字符是连续的，那么可以用‘-’来连接，如0-9，a-z等。
+			 
+			 * */
+		</script>
+	</body>
+</html>

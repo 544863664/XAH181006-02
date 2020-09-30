@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流2</title>
+		<style type="text/css">
+			.list {
+				list-style: none;
+				margin: 0 auto;
+				border: 10px solid;
+				padding: 20px;
+				text-align: center;
+			}
+			
+			.list li {
+				display: inline-block;
+				vertical-align: top;
+				margin: 0 10px;
+				width: 220px;
+			}
+			
+			.list li div {
+				margin-bottom: 20px;
+				font-size: 60px;
+				text-align: center;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="list"></ul>
+		<script type="text/javascript">
+			/*
+						 获取可视窗口的宽高：
+						 document.documentElement.clientWidth
+						 document.documentElement.clientHeight
+						获取文档流的宽高（包含超出可视窗口的部分）：
+						 document.documentElement.scrollWidth
+						 document.documentElement.scrollHeight
+						 * */
+			//获取list
+			var list = document.querySelector('.list');
+			//heightArr
+			var heightArr = [];
+			var liArr = [];
+
+			//根据可视窗口的宽度，计算列的个数
+			//根据列的个数创建对应数量的里标签
+			//创建对应的heightArr数组
+			function getCol() {
+				//获取当前可视窗口的宽度
+				var w = document.documentElement.clientWidth;
+				//列的数量
+				var count = Math.floor((w - 76) / 240);
+				//创建对应数量的li标签
+				for(var i = 0; i < count; i++) {
+					var newLi = document.createElement('li');
+					list.appendChild(newLi);
+					liArr.push(newLi);
+					heightArr.push(0);
+				}
+			}
+			getCol();
+			//随机数
+			function rn(max, min) {
+				return Math.round(Math.random() * (max - min)) + min;
+			}
+			//获取最小下标
+			function getMinIndex() {
+				var min = heightArr[0];
+				//求出heightArr中的最小值
+				for(var i = 0; i < heightArr.length; i++) {
+					min = min < heightArr[i] ? min : heightArr[i];
+				}
+				//根据最小值,拿到最小的index
+				return heightArr.indexOf(min);
+			}
+			//循环创建item
+			function createItem() {
+				//循环创建
+				for(var i = 0; i < 50; i++) {
+					//创建
+					var newEle = document.createElement('div');
+					newEle.innerHTML = i;
+					newEle.style.background = '#' + String(Math.random()).substr(2, 6);
+					//生成一个随机高度
+					var nowHeight = rn(300, 80);
+					//将这个高度设置给newEle
+					newEle.style.height = nowHeight + 'px';
+					//设置line-height
+					newEle.style.lineHeight = nowHeight + 'px';
+					//获取最小的index
+					var minIndex = getMinIndex();
+					//将newEle添加到最矮的li中
+					liArr[minIndex].appendChild(newEle);
+					//更新heightArr
+					heightArr[minIndex] += nowHeight + 20;
+				}
+			}
+			createItem();
+			//捕捉窗口的大小变化
+			window.onresize = function() {
+				//重新创建li
+				list.innerHTML = ''; //清除页面中原来的li
+				liArr = [];
+				heightArr = [];
+				getCol();
+				createItem();
+			}
+		</script>
+	</body>
+
+</html>

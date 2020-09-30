@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="number" min="1" max="30" name="" id="day" value="" />
+		<button id="btn">判断</button>
+		<span id="res"></span>
+		<script type="text/javascript">
+			var day = document.getElementById('day');
+			var btn = document.getElementById('btn');
+			var res = document.getElementById('res');
+			btn.onclick = function () {
+				var val = day.value;
+				if(val >= 1 && val <= 10) {
+					res.innerHTML = '上旬';
+				} else if(val > 10 && val <= 20) {
+					res.innerHTML = '中旬';
+				} else {
+					res.innerHTML = '下旬';
+				} 
+			};
+			/*
+			 if(condition1) {
+			 	code1
+			 }else if（condition2） {
+			 	code2
+			 }else if（condition3） {
+			 	code3
+			 }else {
+			 	code4
+			 }
+			 一个if...else if ...else语句，先按照顺序判断condition，
+			  为真，执行其所对应的code，为假判断下一个condition，直到这个语句结束。
+			 * */
+		</script>
+	</body>
+</html>

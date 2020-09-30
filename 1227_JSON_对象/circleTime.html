@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>circleTime</title>
+		<style type="text/css">
+			.box {
+				width: 730px;
+				height: 730px;
+				margin: 100px auto;
+				border-radius: 100%;
+				box-shadow: 0 0 20px saddlebrown inset;
+				border: 1px solid transparent;
+				background: url(img/bg.jpg) 50% 50%;
+				
+			}
+			
+			.wrap {
+				width: 550px;
+				height: 550px;
+				border: 2px solid #CCCCCC;
+				border-radius: 100%;
+				margin: 89px auto;
+				box-shadow: 0 0 60px #8A8C7F inset;
+				position: relative;
+				background: #FFFFFF;
+			}
+			
+			.center {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				box-shadow: 0 0 50px #d19275 inset;
+				position: absolute;
+				top: 267px;
+				left: 267px;
+				z-index: 10;
+			}
+			
+			.center>div {
+				width: 12px;
+				height: 12px;
+				border-radius: 15px;
+				background: #000000;
+				margin: 4px auto;
+			}
+			
+			.todayTime {
+				width: 200px;
+				height: 50px;
+				position: absolute;
+				top: 350px;
+				left: 177px;
+				text-align: center;
+				font-size: 20px;
+				color: #999999;
+				font-weight: 600;
+			}
+			
+			.hourHand,
+			.minuteHand,
+			.secondHand {
+				position: absolute;
+				border-radius: 100%;
+				overflow: hidden;
+			}
+			
+			.hourHand {
+				width: 20px;
+				height: 210px;
+				left: 267px;
+				top: 101px;
+				z-index: 7;
+				transform-origin: 13px 173px;
+			}
+			
+			.minuteHand {
+				width: 14px;
+				height: 235px;
+				left: 270px;
+				top: 85px;
+				z-index: 8;
+				transform-origin: 7px 192px;
+			}
+			
+			.secondHand {
+				width: 10px;
+				height: 275px;
+				top: 50px;
+				left: 272px;
+				z-index: 9;
+				transform-origin: 5px 227px;
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.timeNum {
+				width: 70px;
+				height: 100%;
+				font-size: 40px;
+				text-align: center;
+				font-weight: 900;
+				position: absolute;
+				left: 240px;
+				color: #4EDB85;
+			}
+			
+			.timeNum .upNum {
+				margin-top: 10px;
+			}
+			
+			.timeNum .downNum {
+				width: 54px;
+				height: 54px;
+				position: absolute;
+				bottom: 10px;
+				left: 7px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="wrap">
+				<div class="todayTime"></div>
+				<div class="center">
+					<div></div>
+				</div>
+				<div class="hourHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<div class="minuteHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<div class="secondHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<!--<div class="timeNum">
+				<div class="upNum">12</div>
+				<div class="downNum">6</div>
+				</div>-->
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap'); //时钟背景
+			var todayTime = document.querySelector('.todayTime'); //背景时间日期
+			var hourHand = document.querySelector('.hourHand'); //时针
+			var minuteHand = document.querySelector('.minuteHand'); //分针
+			var secondHand = document.querySelector('.secondHand'); //秒针
+
+			//添加背景日期
+			var weekArr = '日一二三四五六'; //星期字符串数组
+			setInterval(function() {
+				var today = new Date();
+				var years = today.getFullYear(); //获取年份
+				var month = today.getMonth() + 1; //获取月份
+				var day = today.getDate(); //获取日
+				var week = weekArr.charAt(today.getDay()); //获取星期
+				var hours = today.getHours(); //获取时
+				var minutes = today.getMinutes(); //获取分
+				var seconds = today.getSeconds(); //获取秒
+				//设置时针、分针、秒针的旋转比例
+				hourHand.style.transform = 'rotate(' + (hours * 30 + minutes * 0.5 + seconds * 0.5 / 60) + 'deg)';
+				minuteHand.style.transform = 'rotate(' + (minutes * 6 + seconds * 0.1) + 'deg)';
+				secondHand.style.transform = 'rotate(' + seconds * 6 + 'deg)';
+				//判断月、日、时、分、秒如果小于10，前面加0
+				var _month = month < 10 ? '0' + month : month;
+				var _day = day < 10 ? '0' + day : day;
+				var _hours = hours < 10 ? '0' + hours : hours;
+				var _minutes = minutes < 10 ? '0' + minutes : minutes;
+				var _seconds = seconds < 10 ? '0' + seconds : seconds;
+				//当当前日期时间添加到todayTime中
+				todayTime.innerHTML = years + '年' + _month + '月' + _day + '日  ' + '<br />' + '星期' + week + '<br />' + _hours + ':' + _minutes + ':' + _seconds;
+			}, 1000)
+			//循环旋转并创建6对时间数字
+			for(var i = 1; i < 7; i++) {
+				//创建元素
+				var timeNum = document.createElement('div'); //创建盛放上下数字
+				timeNum.className = 'timeNum';
+				wrap.appendChild(timeNum);  //将其添加到wrap中
+				timeNum.style.transform = 'rotate(' + i * 30 + 'deg)';  //每一对旋转30°
+				var upNum = document.createElement('div'); //创建上边数字容器
+				upNum.className = 'upNum';
+				upNum.style.transform = 'rotate(' + -i * 30 + 'deg)';  //将上边数字旋转回来
+				upNum.innerHTML = i;
+				timeNum.appendChild(upNum);  //将其添加到timeNum中
+				var downNum = document.createElement('div'); //创建下边数字容器
+				downNum.className = 'downNum';
+				downNum.style.transform = 'rotate(' + -i * 30 + 'deg)';
+				downNum.innerHTML = i + 6;
+				timeNum.appendChild(downNum);
+			}
+		</script>
+	</body>
+
+</html>

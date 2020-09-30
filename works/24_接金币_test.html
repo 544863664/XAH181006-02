@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>接金币</title>
+		<style type="text/css">
+			body {
+				overflow: hidden;
+			}
+			.bowl {
+				width: 103px;
+				height: 48px;
+				background: url(../1224/img/pen.png) 100% 100%;
+				position: absolute;
+				left: 20px;
+				bottom: 100px;
+			}
+			.wrap img {
+				position: absolute;
+				top: -80px;
+				width: 80px;
+				height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<div class="bowl"></div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			var bowl = document.querySelector('.bowl');
+			//全局变量  用于承接页面所有的金币
+			var coinArr = [];
+			bowl.onmousedown = function (ev) {
+				var e = ev || window.event;
+				var l = e.offsetX,t = e.offsetY;
+				document.onmousemove = function (mev) {
+					var me = mev || window.event;
+					bowl.style.left = me.clientX - l + 'px';
+					bowl.style.top = me.clientY - l + 'px';
+				}
+			}
+			//可是窗口的宽度
+			var ww = document.documentElement.clientWidth;
+			//获取可是窗口的高度
+			var wh = document.documentElement.clientHeight;
+			//碰撞检测函数
+			function hitjudeg(coin) {
+				var tc = bowl.offsetTop + bowl.offsetHeight >= coin.offsetTop;
+				var lc = bowl.offsetLeft + bowl.offsetWidth >= coin.offsetLeft;
+				var rc = bowl.offsetTop <= coin.offsetLeft + coin.offsetWidth;
+				var bc = bowl.offsetTop <= coin.offsetTop + coin.offsetHeight;
+				if (tc && lc && rc && bc) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			//创建金币
+			var hz = 0;
+		</script>
+	</body>
+</html>

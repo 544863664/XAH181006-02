@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1 {
+				width: 100px;
+				height: 100px;
+				background: #00CED1;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.box2 {
+				width: 200px;
+				height: 200px;
+				background: #A2C1F8;
+				position: absolute;
+				top: 300px;
+				left: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<script type="text/javascript">
+			//获取元素
+			var box1 = document.querySelector('.box1');
+			var box2 = document.querySelector('.box2');
+			//鼠标点击
+			box1.onmousedown = function (downEv) {
+				var downE = downEv || window.event;
+				document.onmousemove = function (ev) {
+					var e = ev || window.event;
+					box1.style.left = e.clientX - downEv.offsetX + 'px';
+					box1.style.top = e.clientY - downEv.offsetY + 'px';
+					//碰撞检测
+					var leftCase = box1.offsetLeft + box1.offsetWidth >= box2.offsetLeft;
+					var bottomCase = box1.offsetTop <= box2.offsetTop + box2.offsetHeight;
+					var rightCase = box1.offsetLeft <= box2.offsetLeft + box2.offsetWidth;
+					var topCase = box1.offsetTop + box1.offsetHeight >= box2.offsetTop;
+					if (leftCase && bottomCase && rightCase && topCase) {
+						box2.style.background = '#' + String(Math.random()).substr(3, 6);
+					} else {
+						box2.style.background = '#A2C1F8';
+					}
+				}
+			}
+			box1.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

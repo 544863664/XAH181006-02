@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.active {
+				color: #fff;
+				border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			/*
+			1.使用js方式创建元素：
+			 	document.createElement('tagName');
+			2.将js创建的元素添加到页面中：
+			 	document.appendChild(newEle);
+			 	newEle必须是一个由js的document.createElement方式创建的元素
+			3.js值操作使用js方式创建的标签和使用js方式获取的标签。
+				ele.style。background = ‘red’；
+				ele.value；
+				ele必须是个js中的标签对象
+			 * */
+			var wrap = document.getElementById('wrap'); //获取wrap			
+			var newEle = document.createElement('div'); //对象  创建一个标签，将其以js方式存储
+			newEle.className = 'active';
+			wrap.appendChild(newEle); //将newEle添加到wrap中
+			//使用js方式为newEle设置样式，只要这个js创建的标签被添加到html中，那么js代码对其所做的操作都会实时响应在页面渲染上。
+			//通过js为元素设置的样式是行间样式（设置在style属性上）
+			newEle.style.background = 'red';
+			newEle.style.width = '200px';
+			newEle.style.height = '200px';
+			//innerHTML：向标签中写入一些内容
+			newEle.innerHTML = '<h1>hello</h1>';
+		</script>
+	</body>
+</html>

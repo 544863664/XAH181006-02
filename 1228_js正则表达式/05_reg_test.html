@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单输入检测</title>
+	</head>
+	<body>
+		usernamr:<input type="text" class="usernamr" />
+		<br />
+		password:<input type="password" class="password" placeholder="8~18位的数字字母下划线构成" />
+		<br />
+		tel:<input type="text" class="tel" placeholder="请输入电话号码" />
+		<br />
+		<button class="btn">注册</button>
+		<script type="text/javascript">
+			//获取元素
+			var inpList = document.querySelectorAll('input');
+			var btn = document.querySelector('.btn');
+			
+			//点击btn时依次验证三个信息的输入，不正确，做出对应提示，正确，注册成功。
+			btn.onclick = function () {
+				//获取输入的三个信息，依次验证
+				var userName = inpList[0].value;
+				var passWord = inpList[1].value;
+				var tel = inpList[2].value;
+				if (userName != '') {
+					//代表用户名可用，验证密码
+					var pswdReg = /^\w{8,18}$/;
+					if (pswdReg.test(passWord)) {
+						//代表密码符合规则，验证电话号码
+						var telReg = /^1[3-9]\d{9}$/;
+						if (telReg.test(tel)) {
+							//代表电话符合规则
+							alert('注册成功');
+						} else {
+							alert('电话号码有误，请重新输入。')
+						}
+					} else {
+						alert('您输入的密码不正确！');
+					}
+				} else {
+					alert('用户名不能为空');
+				}
+			};
+		</script>
+	</body>
+</html>

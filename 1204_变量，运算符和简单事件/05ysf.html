@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//运算符是最简单最基础的数据操作方式。
+			//数据和运算可以构成代码的最小单位，表达式。
+			/*1.算数运算符：
+				+、-、*、/、% 自增和自减
+					复合运算符
+					+=、-=、*=、/=、%=、
+			  2.关系运算符
+			    >、<、>=、<=
+			    ==、===、!=、!==
+			  3.逻辑运算符
+			    &&、||、！
+			* */
+			var i = 50;
+			i += 36;
+			console.log(i);
+			i /= 10;
+			console.log(i);
+			i *= 50;
+			console.log(i);
+			//自增自减 ++ --
+			var i = 9;
+			i++ + 5;/*运算结果14，再让i自增*/
+//			++i +5;/*先让i自增，在用之后的结果+5*/
+			console.log(i);
+			
+			
+			//+
+			var num1 = 23;
+			var num2 = 78;
+			console.log(num1 + num2);
+			var a = 'kvan';
+			var b = '434324';
+			console.log(a + b);
+			var c = 'wr2y38he';
+			var d = '43dnu32huwh';
+			console.log(c + d);
+			var e = null;
+			var f = 'dajsj923jd';
+			console.log(e + f);
+			var g = true;
+			var h = 434324;
+			console.log(g + h);
+			/*
+				字符串和number，boolean，null，undefined相加，是在做字符串拼接运算，形成一个新的字符串。
+			 * */
+			/*
+			 * Boolean在和number做数学运算时，会先转换成number（true：1，false：0），然后在进行运算
+			 * */
+			/*
+			 - 除了number、Boolean，null是正常的数学运算只外，其他的都是NaN（not a number）
+			 */
+		</script>
+	</body>
+</html>

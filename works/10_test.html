@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var arr =[23,235,54,454,23,45,4,324,43,23]; //声明一个数组
+//			var res = []; //声明一个空数组，放不重复
+//			for (var i = 0; i < arr.length; i++) { //判断下标小于当前循环次数
+//				if (res.indexOf(arr[i]) < 0) { //判断在res里面的arr的下标小于0，执行下一
+//					res.push(arr[i]); //符合上一步，向res添加
+//				}
+//			}
+//			console.log(res); //输出不重复的数组
+
+
+//			var arr = []; //声明一个空数组
+//			for (var i =0; i < 5; i++) {  //添加5个元素
+//				var num = Math.round(Math.random() *9) + 10; //10~19
+//				if (arr.indexOf(num) >= 0) { //判断当前数下标小于0
+//					i--; //不符合重新执行此次
+//					continue;
+//				}
+//				arr.push(num);
+//			}
+//			console.log(arr);
+
+
+			var arr = [23,23,54,4,454,2,55,67,80]; //声明一个数组
+			for (var i =0; i < arr.length; i++) { //判断当前条件
+				if (arr[i] % 2 ==0) { //循环当前数组判断奇偶
+					arr.splice(i,1); //删除偶数
+					i--; 
+				}
+			}
+			console.log(arr); //输出非偶数
+		</script>
+	</body>
+</html>

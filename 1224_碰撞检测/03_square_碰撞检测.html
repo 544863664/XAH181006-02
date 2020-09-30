@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1 {
+				width: 100px;
+				height: 100px;
+				background: #7FFFD4;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.box2 {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 300px;
+				left: 300px;
+				background: #808080;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		
+		<script type="text/javascript">
+			//获取元素
+			var box1 = document.querySelector('.box1');
+			var box2 = document.querySelector('.box2');
+			//鼠标点击
+			box1.onmousedown = function (downEv) {
+				var downE = downE || window.event;
+				document.onmousemove = function (ev) {
+					var e = ev || window.event;
+					box1.style.left = e.clientX - downE.offsetX + 'px';
+					box1.style.top = e.clientY - downE.offsetY + 'px';
+					/*
+					 top:    1.offsettop + 1.offsetheight >= 2.offsettop
+					 right:  1.offsetLeft <= 2.offsetwidth + 2.offsetleft
+					 bottom: 1.offsettop <= 2.offsettop + offsetheight
+					 left:   1.offsetleft + 1.offsetwidth >= 2.offfsetleft
+					*/
+					//碰撞检测的判断
+					var leftCase = box1.offsetLeft + box1.offsetWidth >= box2.offsetLeft;
+					var bottomCase = box1.offsetTop <= box2.offsetTop + box2.offsetHeight;
+					var rightCase = box1.offsetLeft <= box2.offsetWidth + box2.offsetLeft;
+					var topCase = box1.offsetTop + box1.offsetHeight >= box2.offsetTop;
+					if (leftCase && bottomCase && rightCase && topCase) {
+						box2.style.background = '#' + String(Math.random()).substr(3,6);
+					} else {
+						box2.style.background = '#808080';
+					}
+				}
+			}
+			//鼠标抬起
+			box1.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

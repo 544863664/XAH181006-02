@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="" id="" value="10" />
+		<div id="wrap"></div>
+		<div class="box"></div>
+		<img src="../1215/作业/img/1.jpg"/>
+		<button id="btn">切换</button>
+		<script type="text/javascript">
+			//获取元素
+			var inp = document.getElementsByTagName('input')[0];
+			var wrap = document.querySelector('#wrap');
+			var box = document.getElementsByClassName('box')[0];
+			var img = document.querySelector('img');
+			var btn = document.getElementById('btn');
+			var flag = true;
+			btn.onclick = function () {
+				//切换img标签的src
+				var newSrc;
+				if (flag) {
+					newSrc = '../1215/作业/img/2.jpg';
+					flag = false;
+				} else {
+					flag = true;
+					newSrc = '../1215/作业/img/1.jpg';
+				}
+				img.src = newSrc;
+				
+				//改变或设置某个元素的ID名称
+				wrap.id = 'wrap2';
+				box.id = 'center';
+				
+				//设置输入框的value值
+				//inp.value = 'this is setted...';
+				//获取输入框的value值
+				//var val = inp.value;
+				//console.log(val);
+			}
+		</script>
+	</body>
+</html>

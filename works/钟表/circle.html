@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>circleTime</title>
+		<style type="text/css">
+			.box {
+				width: 730px;
+				height: 730px;
+				margin: 40px auto;
+				border-radius: 100%;
+				box-shadow: 0 0 20px saddlebrown inset;
+				border: 1px solid transparent;
+				background: url(img/bg.jpg) 50% 50%;
+				
+			}
+			
+			.wrap {
+				width: 500px;
+				height: 500px;
+				border: 2px solid #CCCCCC;
+				border-radius: 100%;
+				margin: 110px auto;
+				box-shadow: 0 0 60px #b87333 inset;
+				position: relative;
+				background: #FFFFFF;
+			}
+			
+			.center {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				box-shadow: 0 0 50px #d19275 inset;
+				position: absolute;
+				top: 240px;
+				left: 240px;
+				z-index: 10;
+			}
+			
+			.todayTime {
+				width: 200px;
+				height: 50px;
+				position: absolute;
+				top: 350px;
+				left: 150px;
+				text-align: center;
+				font-size: 20px;
+				color: #999999;
+				font-weight: 600;
+			}
+			
+			.hourHand,
+			.minuteHand,
+			.secondHand {
+				position: absolute;
+				border-radius: 100%;
+				overflow: hidden;
+			}
+			
+			.hourHand {
+				width: 20px;
+				height: 220px;
+				left: 240px;
+				top: 70px;
+				z-index: 7;
+				transform-origin: 9px 179px;
+			}
+			
+			.minuteHand {
+				width: 14px;
+				height: 235px;
+				left: 243px;
+				top: 57px;
+				z-index: 8;
+				transform-origin: 7px 192px;
+			}
+			
+			.secondHand {
+				width: 11px;
+				height: 275px;
+				top: 25px;
+				left: 244px;
+				z-index: 9;
+				transform-origin: 7px 225px;
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.timeNum {
+				width: 70px;
+				height: 500px;
+				font-size: 40px;
+				text-align: center;
+				font-weight: 900;
+				position: absolute;
+				left: 215px;
+				color: #d98719;
+			}
+			
+			.timeNum .upNum {
+				margin-top: 10px;
+			}
+			
+			.timeNum .downNum {
+				width: 54px;
+				height: 54px;
+				position: absolute;
+				bottom: 10px;
+				left: 7px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="wrap">
+				<div class="todayTime"></div>
+				<div class="center"></div>
+				<div class="hourHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<div class="minuteHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<div class="secondHand">
+					<img src="img/zz.jpg" alt="" />
+				</div>
+				<!--<div class="timeNum">
+				<div class="upNum">12</div>
+				<div class="downNum">6</div>
+				</div>-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			var todayTime = document.querySelector('.todayTime');
+			var hourHand = document.querySelector('.hourHand');
+			var minuteHand = document.querySelector('.minuteHand');
+			var secondHand = document.querySelector('.secondHand');
+			
+			//添加背景日期
+			var weekArr = '日一二三四五六';
+			
+			//获取年月日
+			setInterval(function () {
+				var today = new Date();
+				var years = today.getFullYear(); //年
+				var month = today.getMonth() + 1; //月
+				var day = today.getDate(); //日
+				var week = weekArr.charAt(today.getDay()); //星期
+				var hours = today.getHours(); //时
+				var minutes = today.getMinutes(); //分
+				var seconds = today.getSeconds(); //秒
+				hourHand.style.transform = 'rotate('+ (hours * 30 + minutes * 0.5 + seconds * 0.5 / 60) +'deg)';
+				minuteHand.style.transform = 'rotate('+ (minutes * 6 + seconds * 0.1) +'deg)';
+				secondHand.style.transform = 'rotate('+ seconds  * 6 +'deg)';
+				todayTime.innerHTML = years + '年' + month + '月' + day + '日  ' + '<br />' + '星期' + week;
+			}, 1000)
+			for (var i = 1; i < 7; i++) {
+				//创建元素
+				var timeNum = document.createElement('div'); //创建上下数字容器
+				timeNum.className = 'timeNum';
+				wrap.appendChild(timeNum);
+				timeNum.style.transform = 'rotate('+ i * 30 +'deg)';
+				var upNum = document.createElement('div'); //创建上边数字容器
+				upNum.className = 'upNum';
+				upNum.style.transform = 'rotate(' + -i * 30 + 'deg)';
+				upNum.innerHTML = i;
+				timeNum.appendChild(upNum);
+				var downNum = document.createElement('div'); //创建下边数字容器
+				downNum.className = 'downNum';
+				downNum.style.transform = 'rotate(' + -i * 30 + 'deg)';
+				downNum.innerHTML = i + 6;
+				timeNum.appendChild(downNum);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流3（图片）</title>
+		<style type="text/css">
+			.wrap {
+				position: relative;
+			}
+			.wrap img {
+				position: absolute;
+				width: 200px;
+				transition: .8s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript">
+			/*
+						1.循环创建所有的img，添加到父级标签wrap中
+						2.为所有的图片一次设置其定位值
+							（1）找到最矮的一列
+							（2）计算出应该设置的left值和top值
+						3.当窗口响应时，根据窗口重新计算列，重新设置所有图片的定位值
+						*/
+			//获取元素
+			var wrap = document.querySelector('.wrap');
+			//heightArr数组，根据其可计算当前图片定位的left和top
+			var heightArr = [];
+			//所有的图片标签对象所在的数组
+			var list = [];
+			var initLeft = 0;
+			
+			//根据浏览器的可是窗口的宽度，计算出可以盛放几个列
+			function getCol () {
+				//获取浏览器可是窗口的宽度
+				var w = document.documentElement.clientWidth;
+				//计算列的数量
+				var col = Math.floor((w - 16) / 220);
+				
+				//计算left初始值
+				initLeft = (w - col * 220) / 2;
+				
+				//生成对应的heightArr数组
+				for (var i = 0; i < col; i++) {
+					heightArr.push(0);
+				}
+			}
+			getCol();
+			//封装一个函数，计算图片高度累积最小的一个列在所有列中的顺序
+			function getMinIndex () {
+				//求出heightArr中最小的元素
+				var min = heightArr[0];
+				for (var i = 0; i < heightArr.length; i++) {
+					min = min < heightArr[i] ? min : heightArr[i];
+				}
+				//根据min求出最小值所在的index
+				return heightArr.indexOf(min);
+			}
+			//创建img
+			function createImg () {
+				for (var i = 0; i < 90; i++) {
+					//创建
+					var newImg = document.createElement('img');
+					//添加src
+					newImg.src = 'imgs/' + i + '.jpg';
+					//将其添加到wrap中
+					wrap.appendChild(newImg);
+					//添加到数组中
+					list.push(newImg);
+				}
+			}
+			createImg();
+			//为所有图片一次设置left和top
+			function setPosition() {
+				//循环list
+				for (var i = 0; i < list.length; i++) {
+					//获取最矮的一列的index
+					var index = getMinIndex();
+					//计算left和top值
+					var l = index * 220;
+					var t = heightArr[index] + 20;
+					//设置
+					list[i].style.left = l + initLeft + 'px';
+					list[i].style.top = t + 'px';
+					//更新heightArr素组
+					heightArr[index] += list[i].offsetHeight + 20;
+				}
+			}
+			window.onload = function () {
+				setPosition();
+			}
+			
+			//改变可视窗口的宽度，重新计算col，重新设置所有的定位值
+			window.onresize = function () {
+				//列
+				heightArr = [];
+				getCol();
+				//重置定位值
+				setPosition();
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 200px;
+				height: 200px;
+				background: red;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			box.onclick = function () {
+				box.style.background = 'blue';
+				box.style.borderRadius = '50px';
+				box.style.transform = 'translate(300px,300px) scale(1.5,1.5) rotate(100deg)';
+			};
+		</script>
+	</body>
+</html>

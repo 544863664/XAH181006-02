@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流01</title>
+	<style type="text/css" media="screen">
+		ul,li {
+			list-style: none;
+		}
+		ul {
+			font-size: 0;
+			border: 1px solid #000;
+			margin: 0 auto;
+			width: 660px;
+		}
+		li {
+			display: inline-block;
+			margin: 10px;
+			vertical-align: top;
+		}
+		li>div {
+			width: 200px;
+			font-size: 6rem;
+			text-align: center;
+			color: #fff;
+			margin-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+	<script>
+		// 获取元素
+		var list = document.querySelectorAll('ul li');
+		
+		// 高度数组，方便动态的保存每一列的高度，并且找到最矮的列
+		var heightArr = [0,0,0]; // 251
+		
+		// 随机数的函数
+		function rN(min,max) {
+			return Math.round(Math.random() * (max - min) + min);
+		}
+	
+		// 创建元素
+		function createEle() {	
+		  for(var i = 0; i < 20; i++ ) {
+		    // 创建元素
+		    var newDiv = document.createElement('div');
+		    // 高度
+		    var nowHeight = rN(80,300);
+		    newDiv.style.height = nowHeight + 'px';
+		    newDiv.style.lineHeight = nowHeight + 'px';
+		    var color = '#' + String(Math.random()).substr(2,6);
+		    newDiv.style.background = color;
+		    newDiv.innerText = i; 
+		    
+		    // 找到最矮的列，将新元素添加到这列中
+			var minHeight = Math.min(heightArr[0],heightArr[1],heightArr[2]);
+			var minIndex = heightArr.indexOf(minHeight);
+			list[minIndex].appendChild(newDiv);
+			
+			// 动态的改变heightArr的值
+			heightArr[minIndex] += nowHeight + 30;
+		  }
+		}
+		createEle();
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->

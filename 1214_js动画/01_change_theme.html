@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>切换字体颜色</title>
+	</head>
+	<body style="text-align: center;">
+		<h1 id="title" style="font-size: 50px;">焦大是红楼梦里的屈原</h1>
+		<script type="text/javascript">
+			//获取元素
+			var title = document.getElementById('title');
+			//生成随机颜色，为title设置成字体颜色
+			function setColor () {
+				//颜色
+				var color = '#' + String(Math.random()).substr(2, 6);
+				//为title设置这个随机颜色
+				title.style.color = color;
+			}
+			setColor(); //调用
+			
+			//每隔一段时间就去改变一字体颜色
+			setInterval(setColor,100)
+			
+			/*
+			var a = setColor;
+			var b = setColor();
+			a:代表setColor函数本身，a数function，可以a（）；
+			b：代表setColor函数执行后的返回值，是一个数据
+			*/
+		</script>
+	</body>
+</html>

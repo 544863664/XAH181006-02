@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Window对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*BOM : browser object model
+			       提供了一系列与浏览器交互的方式
+			       BOM中的数据几乎都是以对象的形式呈现*/
+			var num = 100;
+			var str = '迢迢牵牛星，皎皎河汉女，盈盈一水间，脉脉不得语';
+			str += '夫妻本是同林鸟，大难临头各自飞';
+			console.log(window.num);
+			function fn() {
+				console.log('你永远也不知道明天和意外哪个先来，所以珍惜当下');
+			}
+			window.fn();
+			console.log(window);
+			/*
+			 window对象：
+			 	1.是浏览器为js提供的一个根对象，涵盖了js代码中所有的数据
+			 	2.所有的全局变量和全局的函数被声明之后，会自动的成为window对象的键对
+			 	3.使用window对象的键值对时，可以省略window
+			 	4.我们平时常用的document对象，localStorage对象都是window对象的子对象
+			 * */
+			//获取浏览器距离屏幕左上角的像素值
+			console.log(window.screenLeft);
+			console.log(window.screenTop);
+			
+			//获取浏览器可是窗口的大小
+			console.log(window.innerWidth);
+			console.log(window.innerHeight);
+		</script>
+	</body>
+</html>

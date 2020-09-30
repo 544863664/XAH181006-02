@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>留言板</title>
+		<style type="text/css">
+			.wrap {
+				width: 1000px;
+				margin: 50px auto;
+				border: 10px solid;
+				padding: 20px;
+			}
+			
+			.wrap textarea {
+				resize: none;
+				width: 100%;
+				height: 200px;
+				box-sizing: border-box;
+			}
+			
+			.send {
+				display: inline-block;
+				background: #000000;
+				border-radius: 8px;
+				padding: 8px 15px;
+				color: #FFFFFF;
+				margin-top: 20px;
+			}
+			
+			.send:hover {
+				cursor: pointer;
+			}
+			.list {
+				margin: 30px 0;
+			}
+			.item {
+				background: #000000;
+				color: #FFFFFF;
+				padding: 20px;
+				border-radius: 8px;
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+			.item span:nth-child(1) {
+				float: right;
+			}
+			.item span:nth-child(1):hover {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<textarea name="" rows="" cols=""></textarea>
+			<div class="send">发表留言</div>
+			<div class="list"></div>
+		</div>
+		<script type="text/javascript">
+			//获取元素
+			var textArea = document.querySelector('.wrap textarea');
+			var send = document.getElementsByClassName('send')[0];
+			var list = document.getElementsByClassName('list')[0];
+			send.onclick = function () {
+				//获取留言
+				var message = textArea.value;
+				//如果留言为空，直接结束代码的执行
+				if (message == '') {
+					return;
+				}
+				//message不为 ''
+				//创建新元素
+				var newEle = document.createElement('div');
+				newEle.className = 'item'; //添加类名
+				//删除按钮
+				var del = document.createElement('span');
+				del.innerHTML = 'X';
+				newEle.appendChild(del);
+				//为del绑定点击事件
+				del.onclick = function () {
+					//删除当前del所在的item
+					this.parentNode.remove();
+				}
+				//留言内容
+				var mess = document.createElement('span');
+				mess.innerHTML = message;
+				newEle.appendChild(mess);
+				//将当前创建的留言内容展示在留言列表list中
+				list.prepend(newEle);
+			}
+		</script>
+	</body>
+</html>

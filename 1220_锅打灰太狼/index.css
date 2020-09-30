@@ -1,0 +1,54 @@
+.initPage {
+	position: absolute;
+    top: 85%;
+    left: 36%;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.score {
+	position: absolute;
+	top: 9px;
+	left: 60px;
+	color: #A2C1F8;
+	font-size: 19px;
+}
+.wrap {
+	width: 320px;
+	height: 480px;
+	background: url(imgs/game_bg.jpg) no-repeat;
+	background-size: 100% 100%;
+	margin: 30px auto;
+	position: relative;
+}
+.time-wrap {
+	position: absolute;
+	top: 66px;
+	left: 63.3px;
+	width: 180px;
+	height: 16px;
+	background: linear-gradient(to right,red,yellow);
+	border-radius: 50px;
+}
+.wolves {
+	position: relative;
+}
+.wolves img {
+	position: absolute;
+}
+.res {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #000000;
+    text-align: center;
+    line-height: 850px;
+    font-weight: bolder;
+    font-size: 20px;
+    
+}
+
+
+
+

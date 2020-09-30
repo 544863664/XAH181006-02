@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>滚轮事件兼容</title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			//滚轮滚动时触发的处理程序
+			function scrollEvent(ev) {
+				//事件对象本身的兼容
+				var e = ev || window.event;
+				//e.wheelDelta在非火狐浏览器中获取正常，但是在火狐浏览器中，为nudefined
+				//e.detail 在非火狐浏览器中是0，在火狐中正常
+				if(e.wheelDelta) {
+					//非火狐，用e.wheelDelta判断滚轮方向
+					if(e.wheelDelta < 0) {
+						console.log('滚动条向下走，文档流向上走');
+					} else if(e.wheelDelta > 0) {
+						console.log('滚动条向上走，文档流向下走');
+					}
+				} else if (e.detail) {
+					//火狐 ，用e.detail判断滚轮方向
+					if(e.detail < 0) {
+						console.log('滚动条向上走，文档流向下走');
+					} else if(e.detail > 0) {
+						console.log('滚动条向下走，文档流向上走');
+					}
+				}
+			}
+			//兼容非火狐浏览器的滚轮事件绑定
+			document.onmousewheel = scrollEvent;
+			//火狐浏览器的滚轮事件的绑定(不能使用DOM0级的方式绑定)
+			document.addEventListener('DOMMouseScroll', scrollEvent);
+		</script>
+	</body>
+
+</html>
+
+<!---->
