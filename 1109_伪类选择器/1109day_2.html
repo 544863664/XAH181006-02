@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>after</title>
+	<style type="text/css">
+		/*div>span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.footer {
+			width: 500px;
+			font-size: 0;
+			background: black;
+		}
+		span {
+			color: #fff;
+			font-size: 16px;
+			padding: 0 27px 0;
+			border: 1px solid #000;
+		}
+		.right {
+			border-right: 1px solid #fff;
+		}*/
+		.footer {
+			/*去掉inlne标签同行排列产生的页面间距*/
+			font-size: 0;
+			text-align: center;
+		}
+		.footer span {
+			/*回复span的字体大小*/
+			font-size: 16px;
+		}
+		.footer>span:after {
+			content: "|";
+			margin: 0 30px;
+		}
+		.footer .box:after {
+			content: "";
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="footer">
+		<span class="right">企业合作</span>
+		<span class="right">联系我们</span>
+		<span class="right">加入联盟</span>
+		<span class="box">线上购买</span>
+	</div>
+</body>
+</html>

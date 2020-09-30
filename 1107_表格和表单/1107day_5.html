@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>课程表</title>
+	<style type="text/css">
+		.wrap {
+			width: 660px;
+			margin: 0 auto;
+		}
+		.box {
+			width: 660px;
+			font-size: 30px;
+			text-align: center;
+			/*让一个元素中的文本内容，在元素的宽度范围内对齐（左中右）
+				为这个元素设置样式：
+				text-margin:center;
+							left
+							right
+			  */
+		}
+		table {
+			width: 660px;
+			height: 390px;
+			border: 2px solid #d9d919;
+			margin: 0 auto;
+			/*让一个black标签在父级标签中左右居中，为这个black标签设置样式:margin: 0 auto;*/
+
+			border-collapse: collapse;
+			/*去掉间隙*/
+			background:linear-gradient(to bottom,#bbffbb,#bebebe);
+			
+		}
+		td,th {
+			border: 1px solid #000;
+			text-align: center;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		.box1 {
+			width: 35px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">课程表</div>
+		<table>
+			<tr>
+				<th class="box1"></th>
+				<th>星期一</th>
+				<th>星期二</th>
+				<th>星期三</th>
+				<th>星期四</th>
+				<th>星期五</th>
+			</tr>
+			<tr>
+				<td rowspan="3" class="box1">上午</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+			</tr>
+			<tr>
+				
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+			</tr>
+			<tr>
+				
+				<td>自习</td>
+				<td>自习</td>
+				<td>自习</td>
+				<td>自习</td>
+				<td>体育</td>
+			</tr>
+			<tr>
+				<td class="box1">中午</td>
+				<td colspan="5"></td>
+				
+			</tr>
+			<tr>
+				<td rowspan="3" class="box1">下午</td>
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+			</tr>
+			<tr>
+				
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+				<td>语文</td>
+			</tr>
+			<tr>
+				
+				<td>自习</td>
+				<td>自习</td>
+				<td>自习</td>
+				<td>自习</td>
+				<td>自习</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>定位2-绝对定位</title>
+	<style type="text/css">
+		.wrap {
+			width: 300px;
+			height: 280px;
+			box-shadow: 0 0 20px #000;
+			/*盒子阴影*/
+			border-radius: 10px;
+			position: fixed;
+			/*fixed:基于浏览器可是窗口定位*/
+		}
+		.wrap span {
+			display: inline-block;
+			background: #333;
+			color: orange;
+			border-radius: 5px;
+			position: absolute;
+			/*position: absolute;
+				设置让一个标签基于其父级标签定位.
+				left:被定为的标签子级标签的左边标签距离其父级标签左边的具体像素值
+				其余方向意义相同
+				条件:父级必须是一个定位元素;
+				*/
+			/*absolute:基于父元素定位*/
+			/*fixed:基于浏览器可是窗口定位*/
+			left: 20px;
+			top: 20px;
+		}
+		.wrap h3 {
+			position: absolute;
+			top: 100px;
+		}
+		.wrap mark {
+			position: absolute;
+			top: 150px;
+		}
+
+		/*
+			定位引发的问题解决方案:
+			当为一个元素设置定位时,这个元素会从原来的文档流脱离,并且不参与父级标签的高度计算。
+			如果一个定位元素和普通元素同层展示,那么定位在上,普通元素在下。
+		*/
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<span>英雄更新</span>
+		<h3>“是时候展现真正的技术”</h3>
+		<mark>探险家 伊泽瑞尔</mark>
+	</div>
+
+</body>
+</html>

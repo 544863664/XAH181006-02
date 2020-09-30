@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表格的单元格合并</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<!-- 
+			表格的单元格合并
+			（1）行合并，让上一行的这一列和下一行的这一列合并成一个单元格。
+			   <td rowspan="2"></td>
+			 (2)列合并，让某一行的的某一列和其后面的若干列合并成一个单元格。
+			   	<td colspan="2"></td>
+		 -->
+		<tr>
+			<td rowspan="2">一列</td>
+			<td>两列</td>
+			<td>三列</td>
+			<td>四列</td>
+			<td>五列</td>
+		</tr>
+		<tr>
+			<td colspan="2">两列</td>
+			<td>三列</td>
+			<td>四列</td>
+		</tr>
+	</table>
+</body>
+</html>

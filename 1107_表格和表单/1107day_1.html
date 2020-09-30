@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表格和表单</title>
+	<style>
+		table {
+			border: 1px solid #000;
+			border-collapse: collapse;
+			}
+		td {
+			border: 1px solid #e2e5; 
+			}
+	</style>
+</head>
+<body>
+	<!-- 
+		表格： table标签
+		1.类型（table，有block的特点）
+		2.默认样式：
+		（1）单元格和其外面四周的内容之间的间隙，这个间隙不是td的margin，也不是td的代码换行造成的间隙。
+		  是浏览器给的默认样式，要去掉，为table标签设置样式：border-collapse: collapse;
+		（2）单元格之间的间隙去掉之后，单元格的boder会重合（a单元格和b单元格共用一个boder）
+		   单元格和table的boder也会重合。
+		（3）一个列中所有的单元格的宽度，回合和这个列中最宽的单元格的宽度一样（单元格的默认宽度有内容撑开，也可通过widht属性设置）。
+		（4）为td设置宽度
+		     <td widht="200"></td>
+	 -->
+	 <mark>我是mark</mark>
+	<table cellpadding="0">
+		<tr>
+			<td width="200" height="50">第一行第一列</td>
+			<td></td>
+			<td>第一行第三列</td>
+			<td>第一行第四列</td>
+		</tr>
+		<tr>
+			<td width="200" height="50">第二行第一列</td>
+			<td>第二行第二列</td>
+			<td>第二行第三列</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td width="200" height="50">第三行第一列</td>
+			<td>第三行第二列</td>
+			<td></td>
+			<td>第三行第四列</td>
+		</tr>
+	</table>
+</body>
+</html>

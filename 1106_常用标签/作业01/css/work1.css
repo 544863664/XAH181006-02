@@ -1,0 +1,19 @@
+.wrap { width: 1000px; height: 540px; border-top: 1px solid #000; border-bottom: 1px solid #000; margin: 110px auto; }
+.wrap>div { display: inline-block; vertical-align: middle; }
+ ul { list-style: none; }
+ li { line-height: 45px; }
+.box1-1>li { width: 90px; height: 40px; margin: 0px 0 6px; font-weight: bold; }
+.box1-1>li:hover { color: red; text-decoration: underline; font-size: 17px; cursor: pointer; }
+.box2 { width: 600px; margin-top: 5px; }
+.box2>ul { padding-left: 0px; }
+ .box2-1 { border-bottom: 1px dashed #000; }
+.text { color: blue; }
+ a { width: 100px; height: 35px; margin: 0 10px 0; }
+ a:hover { color: red; text-decoration: underline; font-size: 17px;cursor: pointer; }
+ img { width: 110px; height: 50px; }
+ .box3 { margin-left: 10px; }
+.box3-1-1>img { width: 178px; height: 80px; }
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>盒子排列</title>
+		<style>
+			.box{ width: 1174px; height: 596px; background: #f7f; margin: 0 auto; margin-top: 50px; }
+			.box1{ width: 1142px; height: 215px; margin: 16px 16px 16px; display: inline-block; }
+			.box2{ width: 1142px; height: 100px; margin: 0px 16px 0px; background: #00e3e3; }
+			.box3{ width: 1142px; height: 215px; margin: 16px 16px 16px; }
+			#box{ width: 215px; height: 215px; background: #00e3e3; display: inline-block; vertical-align: middle;}
+			.boxs{ margin: 0 6px 0; }
+			.box-R{ margin-right: 6px; }
+			.box-L{ margin-left: 6px; }
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="box1">
+				<div id="box" class="box-R"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="box-L"></div>
+			</div>
+			<div class="box2"></div>
+			<div class="box3">
+				<div id="box" class="box-R"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="boxs"></div>
+				<div id="box" class="box-L"></div>
+			</div>
+		</div>
+	</body>
+</html>

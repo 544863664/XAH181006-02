@@ -1,0 +1,17 @@
+.wrap{ width: 200px; background: rgb(217,95,115); color: #fff; margin: 0 auto; padding: 20px 0; }
+/*让一个black元素在其父级标签中左右居中，将其左右的margi都设置成auto*/
+/*浏览器为部分标签设置了默认样式body有8px四周的外边距，这些默认样式和我们写的普通样式一样，如果不想要可覆盖。  如 :body{ margin： 0px; }*/
+.item{ margin: 7px 0; padding: 0 30px 0 30px; }
+/*当元素上下排列，且互相的margin属性相向时，采用较大值，不叠加*/
+.hasBoder{ border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.toRight1{ margin-left: 34px; }
+/*群组选择器：选择器a，选择器b*/
+.toRight2{ margin-left: 15px; }
+.toRight3{ margin-left: 32px; }
+.toRight4{ margin-left: 57px; }
+.circle{ display: inline-block; width: 6px; height: 6px; border: 5px solid #eee; border-radius: 100px; }
+.dh,.circle{ margin-left: -20px; }
+.dh{ margin-right: 3px; }
+.item span{ vertical-align: middle; }
+
+

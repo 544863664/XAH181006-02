@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>透明度</title>
+	<style type="text/css">
+		body {
+			background: #000;
+		}
+		.box {
+			width: 200px;
+			height: 200px;
+			/*
+			1.red/green
+			2.#+0-9+a-f
+			3.rgb(a,b,c);
+			*/
+			/*透明度的第二种设置方式：
+				rgba(a,b,c,d);
+				a,b,c:取值范围【0-255】的整数分别代表red，green，blue三原色的数值。
+				d：【0-1】透明度*/
+			background: rgba(45,210,80,0.3);
+			/*background: #fff;*/
+			/*opacity: 0.2;*/
+			/*透明度的第一种设置方式*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

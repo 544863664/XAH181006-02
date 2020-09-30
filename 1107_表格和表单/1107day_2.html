@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>常用的表格和表单</title>
+	<style>
+		table {
+			width: 300px;
+			border: 1px solid #000;
+			border-collapse: collapse;
+			/*去掉表格的默认样式（单元格td之间的缝隙）*/
+		}
+		td {
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		table的宽度：
+		（1）不为table标签设置宽度时，table的宽度由一个行内的所有列撑开（列td的宽度由td中的内容撑开）
+		（2）为table设置宽度之后，table中的列会按照列中的内容所占的宽度的比例，均分table宽度
+		（例如：table宽600，有三列，这三列的宽度比分别是10px，20px，30px，那么列的宽度比就是1：2：3，故三列的宽度就是10px，200px，300px）
+		 (3)table有宽度。如果给某一个列，给了一个百分比的widht值（如《td widht="30%"></td>）那么这个列的实际宽度是table的宽度乘这个百分比，除了这个列之外的其余列，还是按照内容比的均分剩余的宽度。
+	 -->
+	<table cellpadding="0">
+		<tr>
+			<td width="30%">第一列</td>
+			<td>第二列</td>
+			<td>第三列</td>
+		</tr>
+		<tr>
+			<td>第一列</td>
+			<td>第二列</td>
+			<td>第三列</td>
+		</tr>
+		<tr>
+			<td>第一列</td>
+			<td>第二列</td>
+			<td>第三列</td>
+		</tr>
+	</table>
+</body>
+</html>
